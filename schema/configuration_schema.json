@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "BBBlue_conf",
+	"type": "object",
+	"properties": {
+		"LED": {
+			"type": "object",
+			"properties": {
+				"RED" : {"oneOf": [{"type": "string"}, null]},
+				"GREEN" : {"oneOf": [{"type": "string"}, null]}
+			}
+		},
+		"Button": {
+			"type": "object",
+			"properties": {
+				"PAUSE" : {"oneOf": [{"type": "string"}, null]},
+				"MODE" : {"oneOf": [{"type": "string"}, null]}
+			}
+		},
+		"Motor": {
+			"type": "object",
+			"properties": {
+				"motors": {
+					"type": "array",
+					"items": {"oneOf" :[null, {"type": "string"}]},
+					"minItems":1,
+					"maxItems":4,
+					"uniqueItems": true,
+					"$comment": "Note that the motor channel numbers are determined by the array index"
+				}
+			},
+			"required": ["motors"] 
+		}
+	}
+}

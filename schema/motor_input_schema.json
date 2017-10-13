@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "BBBlue_motor_input",
+	"oneOf": [
+		{
+			"type": "number", 
+			"minimum": "-1.0",
+			"maximum": "1.0"
+		},
+		{"type": "string", "enum": ["FREE", "BRAKE"]}
+	]
+}
