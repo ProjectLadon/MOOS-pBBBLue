@@ -18,18 +18,132 @@
 			}
 		},
 		"Motor": {
+			"type": "array",
+			"items": {"oneOf" :[null, {"type": "string"}]},
+			"minItems":0,
+			"maxItems":4,
+			"uniqueItems": true,
+			"$comment": "Note that the motor channel numbers are determined by the array index" 
+		},
+		"Encoders": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					null,
+					{"type": "string"},
+					{
+						"type": "object",
+						"properties": {
+							"name": {"type": "string", "$comment": "name of the published DOUBLE variable"},
+							"init": {"type": "number", "$comment": "initial value"}
+						},
+						"required":["name"]
+					}
+				]
+			},
+			"minItems": 0,
+			"maxItems": 4
+		},
+		"ADC" : {
 			"type": "object",
 			"properties": {
-				"motors": {
+				"batteryVoltage": {"type": "string", "$comment": "Current control battery voltage"},
+				"jackVoltage":  {"type": "string", "$comment": "Current power input jack voltage"},
+				"rawChannels": {
 					"type": "array",
-					"items": {"oneOf" :[null, {"type": "string"}]},
-					"minItems":1,
-					"maxItems":4,
-					"uniqueItems": true,
-					"$comment": "Note that the motor channel numbers are determined by the array index"
+					"items": {"oneOf": [null, {"type": "string"}]},
+					"minItems":0,
+					"maxItems":7
+				},
+				"voltChannels": {
+					"type": "array",
+					"items": {"oneOf": [null, {"type": "string"}]},
+					"minItems":0,
+					"maxItems":4
+				}
+			}
+		},
+		"Servos": {
+			"type" : "array",
+			"items": {
+				"oneOf": [
+					null,
+					{
+						"type": "object",
+						"properties": {
+							"name": {"type": "string"},
+							"action": {
+								"type": "string",
+								"enum": ["servo90", "servo180", "servo360", "micros", "ESC"],
+								"$comment": "servo90 designates a servo with a zero to 90 degree range",
+								"$comment": "servo180 designates a servo with a zero to 180 degree range",
+								"$comment": "servo360 designates a servo with a zero to 360 degree range",
+								"$comment": "micros designates a servo commanded in microseconds",
+								"$comment": "ESC designates an electronic speed control which accepts inputs from 0.0 to 100.0 (percent throttle)"
+							},
+							"period": {"type": "integer", "$comment": "Period in microseconds, default to 20000 (50 Hz)"},
+							"minServo": {"type": "number", "$comment" : "Minimum bound on comand; smaller commands will be set to this value"},
+							"maxServo": {"type": "number", "$comment" : "Maximum bound on comand; larger commands will be set to this value"},
+							"center": {"type": "integer", "$comment": "Location of center position, in microseconds. Defaults to 1500"},
+							"invert": {"type": "boolean", "$comment": "Reverses the direction of travel if true"}
+						},
+						"required": ["name", "action"]
+					}
+				]
+			}
+		},
+		"IMU": {
+			"type" : "object",
+			"properties" : {
+				"mode": {"type": "string", "enum": ["Random", "DMP"]},
+				"magnetometer": {
+					"type": "boolean", 
+					"$comment": "If this is true, magnetometer is on",
+					"$comment": "default is false"
+				},
+				"accelRange": {
+					"type": "string", 
+					"enum": ["2G", "4G", "8G", "16G"],
+					"$comment": "default is 4G"
+				},
+				"gyroRange": {
+					"type": "string", 
+					"enum": ["250DPS", "500DPS", "1000DPS", "2000DPS"],
+					"$comment": "default is 1000DPS"
+				},
+				"accelFilter": {
+					"type": "string",
+					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
+					"$comment": "default is 92"
+				},
+				"gyroFilter": {
+					"type": "string",
+					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
+					"$comment": "default is 92"
+				},
+				"orientation": {
+					"type": "string",
+					"enum": [
+						"Z_UP", "Z_DN", 
+						"X_UP", "X_DN", 
+						"Y_UP", "Y_DN",
+						"X_FWD", "X_BACK"
+					],
+					"$comment": "defaults to Z_UP"
+				},
+				"dmpSampleRate": {
+					"type": "integer",
+					"enum": [200,100,50,40,25,20,10,8,5,4],
+					"$comment": "Sample rate in Hz. Must be an integer divisor of 200",
+					"$comment": "default is 100"
+				},
+				"dmpCompassTimeConstant": {
+					"type": "number",
+					"minimum": 0.1,
+					"$comment": "Units of seconds, defaults to 5.0"
 				}
 			},
-			"required": ["motors"] 
+			"required":["mode"]
 		}
 	}
 }

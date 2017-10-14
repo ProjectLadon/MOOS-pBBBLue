@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "BBBlue_IMU_quaternion",
+	"type": "object",
+	"properties" : {
+		"x1": {"type": "number"},
+		"x2": {"type": "number"},
+		"x3": {"type": "number"},
+		"x4": {"type": "number"}
+	},
+	"required": ["x1", "x2", "x3", "x4"]
+}
