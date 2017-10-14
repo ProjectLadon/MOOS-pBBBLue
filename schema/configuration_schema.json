@@ -144,6 +144,49 @@
 				}
 			},
 			"required":["mode"]
+		},
+		"Barometer": {
+			"type": "object",
+			"properties": {
+				"oversample": {
+					"type": "integer",
+					"enum": [1, 2, 4, 8, 16]
+				},
+				"filter": {
+					"type": "integer",
+					"enum": [0, 2, 4, 8, 16]
+				}
+			}
+		},
+		"GPIO": {
+			"type" : "array",
+			"items" : {
+				"type": "object",
+				"properties": {
+					"gpioName": {
+						"type":"string",
+						"enum": [
+							"GPIO1_25",
+							"GPIO1_17",
+							"GPIO3_20",
+							"GPIO3_17",
+							"GPIO3_2",
+							"GPIO3_1",
+							"LED_RED",
+							"LED_GRN"
+						],
+						"$comment": "Note that if you try to set the LEDs both here and in the LEDs section, pBBBLue will exit with an error"
+					},
+					"gpioVar": {"type": "string"},
+					"function": {
+						"type": "string",
+						"enum": ["OUTPUT", "INPUT", "INPUT_PU", "INPUT_PD"]
+					}
+				},
+				"required": ["gpioName", "gpioVar", "function"]
+			},
+			"minItems": 0,
+			"maxItems": 8
 		}
 	}
 }

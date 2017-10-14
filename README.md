@@ -20,7 +20,7 @@ In general, the configuration json defines variable names that the pBBBlue will 
 * If the documentation indicates that the variable has two and only two possible states, then the MOOS type will be BINARY.
 * Otherwise, the type will be DOUBLE. 
 
-## LEDs
+## [LEDS](http://www.strawsondesign.com/#!manual-leds)
 In configuration, you can assign named variable to each LED (RED & GREEN). If the names are present, the module subscribes to the specified BINARY variable(s) and uses them to control the named LEDs. The configuration sub-schema is as follows:
 ```
 "LED": {
@@ -34,7 +34,7 @@ In configuration, you can assign named variable to each LED (RED & GREEN). If th
 
 Setting the subscribed binary variable to true turns the LED on and setting it false turns the LED off. 
 
-## Buttons
+## [Buttons](http://www.strawsondesign.com/#!manual-buttons)
 In configuration, you can ssign named variables to the two buttons (PAUSE and MODE). If a name is provided, they publish a BINARY variable with the specified name and ties it to pressing (or releasing) the button. The configuration sub-schema is as follows:
 ```
 "Button": {
@@ -46,8 +46,8 @@ In configuration, you can ssign named variables to the two buttons (PAUSE and MO
 }
 ```
 
-## DC Motors
-The four motor channels are configured together in a single array. The array index for each element corresponds to the motor channel it controls. If the element is a null value (or missing), the channel is disabled. If it is a string, it names a STRING variable that the module will subscribe to. It expects the messages to be json conforming to the input schema described below. The configuration schema is as follows:
+## [DC Motors](http://www.strawsondesign.com/#!manual-dc-motors)
+The four motor driver channels are configured together in a single array. The array index for each element corresponds to the motor channel it controls. If the element is a null value (or missing), the channel is disabled. If it is a string, it names a STRING variable that the module will subscribe to. It expects the messages to be json conforming to the input schema described below. The configuration schema is as follows:
 ```
 "Motor": {
 	"type": "object",
@@ -83,7 +83,7 @@ Each motor has three possible states -- a direction/duty cycle command ranging f
 }
 ```
 
-## Encoders
+## [Encoders](http://www.strawsondesign.com/#!manual-encoders)
 Encoders may be set to a given value on startup. In the absence of a given value, each channel will initialize to zero. The array index of each element in the configuration array corresponds to the channel. A null value in any entry turns off that encoder channel.
 ```
 "Encoders": {
@@ -106,7 +106,7 @@ Encoders may be set to a given value on startup. In the absence of a given value
 }
 ```
 
-## ADC
+## [ADC](http://www.strawsondesign.com/#!manual-adc)
 While the Sitara at the core of the Beaglebone has eight channels, only seven are connected. Each one is 12 bits and measures 0-1.8V. They are connected as follows:
 * AIN0 -- pin 3 of ADC header
 * AIN1 -- pin 4 of ADC header
@@ -117,14 +117,12 @@ While the Sitara at the core of the Beaglebone has eight channels, only seven ar
 * AIN6 -- Battery voltage (through a voltage divider)
 * AIN7 -- 3.3V rail (through a voltage divider)
 
-The battery and DC jack voltages are available as processed voltages that take into account the voltage dividers. They can be used directly, as for vehicle health monitoring. 
+The battery and DC jack voltages are available as processed voltages that take into account the voltage dividers. They can be used directly, as for vehicle health monitoring. If you only want to include them, include a blank ADC object. 
 
 ```
 "ADC" : {
 	"type": "object",
 	"properties": {
-		"batteryVoltage": {"type": "string", "$comment": "Current control battery voltage"},
-		"jackVoltage":  {"type": "string", "$comment": "Current power input jack voltage"},
 		"rawChannels": {
 			"type": "array",
 			"items": {"oneOf": [null, {"type": "string"}]},
@@ -141,7 +139,12 @@ The battery and DC jack voltages are available as processed voltages that take i
 }
 ```
 
-## Servos & ESCs
+### Published Variables
+* BBBL_BATTERY_VOLTAGE (DOUBLE) -- Current battery voltage, in volts
+* BBBL_JACK_VOLTAGE (DOUBLE) -- Voltage at the DC input jack, in volts.
+
+
+## [Servos & ESC](http://www.strawsondesign.com/#!manual-servos)
 The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are configured as follows:
 ```
 "Servos": {
@@ -178,7 +181,7 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 ### Subscribed variables
 * BBBL_SERVO_PWR (BINARY) -- If this variable is present and true, pBBBlue will turn on the 6V servo power rail. 
 
-## IMU
+## [IMU](http://www.strawsondesign.com/#!manual-imu
 
 ```
 "IMU": {
@@ -248,8 +251,33 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 * BBBL_DMP_HEADING (DOUBLE) -- Filtered heading in degrees
 * BBBL_DMP_HEADING_RAW (DOUBLE) -- Magnetometer heading in radians
 
-## Barometer
+## [Barometer](http://www.strawsondesign.com/#!manual-barometer)
+The barometer measures current atmospheric pressure. This can be used either for measuring the weather (if altitude is known approximately) or altitude, if the current sea level barometric pressure is known. The only parameters to configure are the oversampling rate and filter constant. Configuration of these properties is not required, but an empty Barometer parameter is required in order to activate the barometer. 
 
-## GPIO
+```
+"Barometer": {
+	"type": "object",
+	"properties": {
+		"oversample": {
+			"type": "integer",
+			"enum": [1, 2, 4, 8, 16]
+		},
+		"filter": {
+			"type": "integer",
+			"enum": [0, 2, 4, 8, 16]
+		}
+	}
+}
+```
 
-## PWM
+### Published Variables
+* BBBL_BARO_TEMP (DOUBLE) -- Temperature of the sensor, in degrees Celsius
+* BBBL_BARO_PRES (DOUBLE) -- Current atmospheric pressure, in pascals. 
+* BBBL_BARO_ALT (DOUBLE) -- Current altitude in meters, based on sea level pressure
+
+### Subscribed Variables
+* BBBL_BARO_SEA_LEVEL (DOUBLE) -- Sea level pressure, in pascals. If this is not present, it defaults to standard sea level pressure (101325 Pa). 
+
+## [GPIO](http://www.strawsondesign.com/#!manual-gpio)
+
+## [PWM](http://www.strawsondesign.com/#!manual-pwm)
