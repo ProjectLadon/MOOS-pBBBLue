@@ -1,6 +1,13 @@
-# pBBBlue
+# MOOS-pBBBlue
 An interface from MOOS to the Beaglebone Blue roboticscape library. Since the roboticscape will only run in a single process on the entire machine, it is necessarily a single process per Beaglebone Blue
 
+## Dependencies
+* MOOS-IvP
+* https://github.com/Tencent/rapidjson/ -- provides JSON parse/deparse
+* https://curl.haxx.se/libcurl/ -- provides HTTP client interface
+* http://www.strawsondesign.com/#!manual-install -- roboticscape library, provides Beaglebone Blue interface
+
+## Functions
 Only these listed sections are planned for implementation:
 * [LEDS](http://www.strawsondesign.com/#!manual-leds) -- only LED on/off shall be implemented
 * [Buttons](http://www.strawsondesign.com/#!manual-buttons) -- button state shall be published, but shall have no further effect.
