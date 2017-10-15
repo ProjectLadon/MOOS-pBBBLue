@@ -13,15 +13,15 @@ Only these listed sections are planned for implementation:
 * [GPIO](http://www.strawsondesign.com/#!manual-gpio)
 * [PWM](http://www.strawsondesign.com/#!manual-pwm)
 
-Configuration is set by a single json object provided either in the moos file configuration block or as a separate file and described in the schema/configuration_schema.json. The contents of each sub-section of this schema and related I/O schema are described in the section of this document for each roboticscape section.
+Configuration is set by a single json object provided either in the moos file configuration block or as a separate file and described in schema/configuration_schema.json. The contents of each sub-section of this schema and related I/O schema are described in the section of this document for each roboticscape section listed above.
 
-In general, the configuration json defines variable names that the pBBBlue will subscribe to. The types of those variables can be deduced as follows:
+In general, the configuration json defines variable names that the pBBBlue will subscribe to or publish. The types of those variables can be deduced as follows:
 * If the documentation names a JSON schema for published or received data, then the MOOS type of that data is STRING. In general, all STRING data will be json encoded in order to make parsing easier.
 * If the documentation indicates that the variable has two and only two possible states, then the MOOS type will be BINARY.
 * Otherwise, the type will be DOUBLE. 
 
 ## [LEDS](http://www.strawsondesign.com/#!manual-leds)
-In configuration, you can assign named variable to each LED (RED & GREEN). If the names are present, the module subscribes to the specified BINARY variable(s) and uses them to control the named LEDs. The configuration sub-schema is as follows:
+In this block, you can assign named variable to each LED (RED & GREEN). If the names are present, the module subscribes to the specified BINARY variable(s) and uses them to control the named LEDs. The configuration sub-schema is as follows:
 ```
 "LED": {
 	"type": "object",
@@ -32,10 +32,10 @@ In configuration, you can assign named variable to each LED (RED & GREEN). If th
 }
 ```
 
-Setting the subscribed binary variable to true turns the LED on and setting it false turns the LED off. 
+Setting the subscribed variable to true turns the LED on and setting it false turns the LED off. 
 
 ## [Buttons](http://www.strawsondesign.com/#!manual-buttons)
-In configuration, you can ssign named variables to the two buttons (PAUSE and MODE). If a name is provided, they publish a BINARY variable with the specified name and ties it to pressing (or releasing) the button. The configuration sub-schema is as follows:
+In this block, you can assign named variables to the two buttons (PAUSE and MODE). If a name is provided, pBBBlue will publish a BINARY variable with the specified name and ties it to the state of the button. The configuration sub-schema is as follows:
 ```
 "Button": {
 	"type": "object",
@@ -47,7 +47,7 @@ In configuration, you can ssign named variables to the two buttons (PAUSE and MO
 ```
 
 ## [DC Motors](http://www.strawsondesign.com/#!manual-dc-motors)
-The four motor driver channels are configured together in a single array. The array index for each element corresponds to the motor channel it controls. If the element is a null value (or missing), the channel is disabled. If it is a string, it names a STRING variable that the module will subscribe to. It expects the messages to be json conforming to the input schema described below. The configuration schema is as follows:
+The four motor driver channels are configured together in a single array. The array index for each element corresponds to the motor channel it controls. If the element is a null value (or missing), the channel is disabled. If it is a string, it names a STRING variable that the module will subscribe to. pBBLue expects the messages to be json conforming to the input schema described below. The configuration schema is as follows:
 ```
 "Motor": {
 	"type": "object",
@@ -65,6 +65,8 @@ The four motor driver channels are configured together in a single array. The ar
 
 ### Subscribed Variables
 * BBBL_MOTORS_ACTIVE (BINARY) -- If any of the motor channels are active, this process shall subscribe to this variable. If it true or missing, it will enable the motors; if it is false, it will disable all motors and leave them free spinning.
+* BBBL_MOTORS0_FREQUENCY (DOUBLE) -- If present, sets the frequency for the lower pair of motor channels. Values in Hertz.
+* BBBL_MOTORS1_FREQUENCY (DOUBLE) -- If present, sets the frequency for the upper pair of motor channels. Values in Hertz.
 
 ### Command Schema
 Each motor has three possible states -- a direction/duty cycle command ranging from -1.0 to 1.0, free spinning, or braking. The command must conform to the following schema:
@@ -181,7 +183,16 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 ### Subscribed variables
 * BBBL_SERVO_PWR (BINARY) -- If this variable is present and true, pBBBlue will turn on the 6V servo power rail. 
 
-## [IMU](http://www.strawsondesign.com/#!manual-imu
+## [IMU](http://www.strawsondesign.com/#!manual-imu)
+The IMU has two modes -- Random and DMP. 
+
+In Random mode, the accelerometer, gyroscopes, magnetometer, and temperature can all be read at any time. Additionally, the pBBBlue process calculates the tilt-compensated compass heading of the X axis in random mode. Optionally, the *compassFilter* property may be used to add a low pass filter to this value -- the numbers correspond to the cutoff frequency.
+
+In DMP mode, the sensor fusion algorithms in the IMU run at a fixed rate (set by *dmpSampleRate*) and generate both a normalized quaternion output and a set of Tait-Bryan (Euler) angles. The heading (yaw) axis of the Tait-Bryan output converges to the raw compass heading on a time constant set by *dmpCompassTimeConstant*. Minimum value is 0.1.
+
+In both modes, it is possible to set the range of the accelerometer and gyros. Picking the smallest value that encompasses the behavior of your robot will result in more precise measurements. 
+
+There are also low pass input filters for the gyro and accelerometer, which can be set with the *accelFilter* and *gyroFilter* properties. The setting correspond roughly to the cutoff frequency.
 
 ```
 "IMU": {
@@ -212,6 +223,11 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 			"type": "string",
 			"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
 			"$comment": "default is 92"
+		},
+		"compassFilter": {
+			"type": "string",
+			"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
+			"$comment": "default is OFF"
 		},
 		"orientation": {
 			"type": "string",
@@ -244,6 +260,7 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 * BBBL_IMU_ACCEL (STRING) -- Acceleration in units of m/s^2, packed according to BBBlue_IMU_tuple
 * BBBL_IMU_MAG (STRING) -- Magnetic field in units of micro Tesla, packed according to BBBlue_IMU_tuple
 * BBBL_IMU_GYRO (STRING) -- Angular rates in units of degree/s, packed according to BBBlue_IMU_tuple
+* BBBL_IMU_COMPASS (DOUBLE) -- Compass heading in degrees. Calculated with a simple tilt compensated compass algorith. 
 
 ### Published Variables, DMP Mode
 * BBBL_DMP_TBA (STRING) -- The Tait-Bryan angles, units of degrees, packed according to BBBlue_IMU_tuple
@@ -279,5 +296,79 @@ The barometer measures current atmospheric pressure. This can be used either for
 * BBBL_BARO_SEA_LEVEL (DOUBLE) -- Sea level pressure, in pascals. If this is not present, it defaults to standard sea level pressure (101325 Pa). 
 
 ## [GPIO](http://www.strawsondesign.com/#!manual-gpio)
+There are eight accessible GPIO pins, including the two used for the red and green LEDs. If you try to configured the LEDs with an *LED* block and then again with a *GPIO* block, you will get an error on startup and pBBBlue will exit. 
+
+Each GPIO pin can be attached to a MOOS variable, either published or subscribed based on the direction. These variables will be BINARY. In addition to being set to input or output, the *function* property for each pin can be set to an input with a pull-up or a pull-down. 
+
+Attempting to set a single GPIO twice in this black will cause pBBBlue to throw an error and exit on startup.
+
+The configuration JSON is defined as follows:
+```
+"GPIO": {
+	"type" : "array",
+	"items" : {
+		"type": "object",
+		"properties": {
+			"gpioName": {
+				"type":"string",
+				"enum": [
+					"GPIO1_25",
+					"GPIO1_17",
+					"GPIO3_20",
+					"GPIO3_17",
+					"GPIO3_2",
+					"GPIO3_1",
+					"LED_RED",
+					"LED_GRN"
+				],
+				"$comment": "Note that if you try to set the LEDs both here and in the LEDs section, pBBBLue will exit with an error"
+			},
+			"gpioVar": {"type": "string"},
+			"function": {
+				"type": "string",
+				"enum": ["OUTPUT", "INPUT", "INPUT_PU", "INPUT_PD"]
+			}
+		},
+		"required": ["gpioName", "gpioVar", "function"]
+	},
+	"minItems": 0,
+	"maxItems": 8
+},
+```
 
 ## [PWM](http://www.strawsondesign.com/#!manual-pwm)
+There are three PWM interfaces (0, 1, and 2) each with two channels, A & B. Channels 0 and 1 are dedicated to the motor drivers; if you attempt to both configure both the motor drivers and the PWM interface for one of these two channels, you will get an error and pBBBLue will exit during the startup phase. 
+
+For each of the three PWM subsystems, there are five variables that can be configured.
+* frequency -- this can be either a fixed numeric value or the name of a DOUBLE variable to subscribe to.
+* dutyCycle{A|B} -- this is the name of a DOUBLE variable to subscribe to for the duty cycle of each of the two channels. It must have a value between 0.0f and 1.0f.
+* dutycycle{A|B}ns -- this is like the regular duty cycle variable but takes a value in nanoseconds rather than a percentage. If you attempt to define both for a given interface and channel, pBBBlue will throw and error and exit. 
+
+```
+"PWM": {
+	"type": "array",
+	"items": {
+		"oneOf": [
+			null,
+			{
+				"type": "object",
+				"properties": {
+					"frequency": {
+						"oneOf": [
+							{"type": "string"},
+							{"type": "integer"}
+						]
+					},
+					"dutyCycleA": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+					"dutyCycleB": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+					"dutyCycleAns": {"type": "string"},
+					"dutyCycleBns": {"type": "string"}
+				},
+				"required": ["frequency"]
+			}
+		]
+	},
+	"minItems": 0,
+	"maxItems": 3
+}
+```

@@ -121,6 +121,11 @@
 					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
 					"$comment": "default is 92"
 				},
+				"compassFilter": {
+					"type": "string",
+					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
+					"$comment": "default is OFF"
+				},
 				"orientation": {
 					"type": "string",
 					"enum": [
@@ -187,6 +192,32 @@
 			},
 			"minItems": 0,
 			"maxItems": 8
+		},
+		"PWM": {
+			"type": "array",
+			"items": {
+				"oneOf": [
+					null,
+					{
+						"type": "object",
+						"properties": {
+							"frequency": {
+								"oneOf": [
+									{"type": "string"},
+									{"type": "number"}
+								]
+							},
+							"dutyCycleA": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+							"dutyCycleB": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+							"dutyCycleAns": {"type": "string"},
+							"dutyCycleBns": {"type": "string"}
+						},
+						"required": ["frequency"]
+					}
+				]
+			},
+			"minItems": 0,
+			"maxItems": 3
 		}
 	}
 }
