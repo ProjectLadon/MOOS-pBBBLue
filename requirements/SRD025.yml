@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 4.2
+links: []
+normative: true
+ref: ''
+reviewed: 58390d556eb15fcab26378f3ae8582c3
+text: |
+  If the ```MODE``` key is present and the value is not null, this module **shall** publish a variable with the name given whose value is true if the mode button is pressed and false otherwise.

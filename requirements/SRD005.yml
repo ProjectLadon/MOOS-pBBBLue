@@ -1,0 +1,11 @@
+active: true
+derived: false
+level: 4.0
+links: []
+normative: true
+ref: ''
+reviewed: 75d68bb1c9b0287efe715a0c61ffc26d
+text: |
+  Buttons
+
+  The Beaglebone Blue has two user controllable button, mode and pause.

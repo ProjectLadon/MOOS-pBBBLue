@@ -4,7 +4,6 @@ An interface from MOOS to the Beaglebone Blue roboticscape library. Since the ro
 ## Dependencies
 * MOOS-IvP
 * https://github.com/Tencent/rapidjson/ -- provides JSON parse/deparse
-* https://curl.haxx.se/libcurl/ -- provides HTTP client interface
 * http://www.strawsondesign.com/#!manual-install -- roboticscape library, provides Beaglebone Blue interface
 
 ## Functions
@@ -20,7 +19,7 @@ Only these listed sections are planned for implementation:
 * [GPIO](http://www.strawsondesign.com/#!manual-gpio)
 * [PWM](http://www.strawsondesign.com/#!manual-pwm)
 
-Configuration is set by a single json object provided either in the moos file configuration block or as a separate file and described in schema/configuration_schema.json. The contents of each sub-section of this schema and related I/O schema are described in the section of this document for each roboticscape section listed above.
+Configuration is set by a single json object provided either in the moos file configuration block specified by ```conf``` or as a separate file specified by ```confFile```. In either case, it must conform to schema/configuration_schema.json. The contents of each sub-section of this schema and related I/O schema are described in the section of this document for each roboticscape section listed above.
 
 In general, the configuration json defines variable names that the pBBBlue will subscribe to or publish. The types of those variables can be deduced as follows:
 * If the documentation names a JSON schema for published or received data, then the MOOS type of that data is STRING. In general, all STRING data will be json encoded in order to make parsing easier.
@@ -136,7 +135,7 @@ The battery and DC jack voltages are available as processed voltages that take i
 			"type": "array",
 			"items": {"oneOf": [null, {"type": "string"}]},
 			"minItems":0,
-			"maxItems":7
+			"maxItems":8
 		},
 		"voltChannels": {
 			"type": "array",
@@ -151,7 +150,6 @@ The battery and DC jack voltages are available as processed voltages that take i
 ### Published Variables
 * BBBL_BATTERY_VOLTAGE (DOUBLE) -- Current battery voltage, in volts
 * BBBL_JACK_VOLTAGE (DOUBLE) -- Voltage at the DC input jack, in volts.
-
 
 ## [Servos & ESC](http://www.strawsondesign.com/#!manual-servos)
 The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are configured as follows:

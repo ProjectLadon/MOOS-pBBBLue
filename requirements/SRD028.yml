@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.1
+links: []
+normative: true
+ref: ''
+reviewed: e10dff950c57801fb887988f73439c9d
+text: |
+  Each array element in the configuration JSON **shall** correspond to the motor channel with the same index. For example, the first element in the array (index 0) configures motor channel 0.

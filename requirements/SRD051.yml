@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 7.2.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  These variables **shall** only be published if the configuration JSON contains an ADC object.

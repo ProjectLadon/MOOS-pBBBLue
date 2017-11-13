@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 6.1
+links: []
+normative: true
+ref: ''
+reviewed: 38eb6a62663e91e32ab9f35a8ad0466f
+text: |
+  Each element in the configuration JSON array **shall** correspond to an encoder channel with the same number. For example, the first element in the array (index 0) configures encoder channel 0.

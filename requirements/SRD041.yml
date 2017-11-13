@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.4.1
+links: []
+normative: true
+ref: ''
+reviewed: a988700d2597287440f25803bb6a62b5
+text: |
+  If the JSON object is a number with a value between -1.0f and 1.0f, that number **shall** be written to the corresponding motor channel.

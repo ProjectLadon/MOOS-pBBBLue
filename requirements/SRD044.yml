@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 9ed6ced45bd8d7a2db0d53dd3bf0216f
+text: |
+  If the value is BRAKE, the motor channel **shall** be set to brake mode.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.4
+links: []
+normative: true
+ref: ''
+reviewed: 6d42d2c1bacd92f5a521b008ac948daf
+text: |
+  LED switching **shall** happen when the OnNewMail() function is executed.

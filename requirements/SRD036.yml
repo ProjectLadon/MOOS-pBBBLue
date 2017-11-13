@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 7a71057aba6dd0db369ddb1875eecef8
+text: |
+  If this value is present and false, the motor drivers **shall** be deactivated, allowing any attached motors to freewheel.

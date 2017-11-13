@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 6.3
+links: []
+normative: true
+ref: ''
+reviewed: f28f4883fcb9b8bb3bde7af4dbe08b58
+text: |
+  If the array object has a ```name``` key, this module **shall** publish the value of that encoder to the named variable.

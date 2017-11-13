@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1
+links: []
+normative: true
+ref: ''
+reviewed: 1c5a42b42c456e5f249586c45fc07bf2
+text: |
+  This module **shall** subscribe to a BINARY community variable named by the ```RED``` key.

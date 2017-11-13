@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.3.0
+links: []
+normative: true
+ref: ''
+reviewed: 5a5d44f5a95d7d4b84a4ba5191535229
+text: |
+  This module **shall** subscribe to the DOUBLE variable BBBL_MOTORS0_FREQUENCY.

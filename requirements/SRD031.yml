@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.4.0
+links: []
+normative: true
+ref: ''
+reviewed: 880875f0be1a344424acb78f547cef3e
+text: |
+  The subscribed variable **must** be a STRING containing a JSON object conforming to schema/motor_input_schema.json.

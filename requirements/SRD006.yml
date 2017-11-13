@@ -1,0 +1,11 @@
+active: true
+derived: false
+level: 5.0
+links: []
+normative: true
+ref: ''
+reviewed: 0782cccd3c55399c6b930ab56876d34b
+text: |
+  DC Motors
+
+  The Beaglebone Blue has four DC motor driver channels. Each can drive 1.2A at the main battery voltage. The driving values are +/- 1.0f.

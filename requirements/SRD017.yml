@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4
+links: []
+normative: true
+ref: ''
+reviewed: 6117604b54a32cad0526e923b1afee60
+text: |
+  The configuration JSON **must** conform to the schema defined in schema/configuration_schema.json.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.2
+links: []
+normative: true
+ref: ''
+reviewed: 4de3ca22df39175ccb3a750e6495564a
+text: |
+  Only one instance of this module **may** run on a particular Beaglebone Blue. Attempts to run multiple instances **shall** result in the second and later instances exiting with an error.

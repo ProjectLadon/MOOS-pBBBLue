@@ -1,0 +1,11 @@
+active: true
+derived: false
+level: 3.0
+links: []
+normative: false
+ref: ''
+reviewed: fdd8f1b5af62bb5447b275be871f8b66
+text: |
+  LEDs
+
+  The Beaglebone Blue has two user-controllable LEDs, one red and one green.

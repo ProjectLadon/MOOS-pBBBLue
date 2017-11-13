@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 7.1.6
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  ```rawChannel``` values **shall** be published as a 12-bit integer, i.e. 0-4095.

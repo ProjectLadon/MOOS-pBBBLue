@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.2
+links: []
+normative: true
+ref: ''
+reviewed: cef87ba972d19f849cb612a280891ef4
+text: |
+  This module **shall** subscribe to a BINARY community variable named by the ```GREEN``` key.

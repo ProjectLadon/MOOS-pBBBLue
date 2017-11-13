@@ -1,0 +1,11 @@
+active: true
+derived: false
+level: 6.0
+links: []
+normative: true
+ref: ''
+reviewed: fe465c4bdeb731ce3cdad1f892ab357e
+text: |
+  Encoders
+
+  The Beaglebone Blue has four incremental encoder channels.

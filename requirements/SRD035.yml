@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 8e1a3b94c9507be7a984fb65b6c7511a
+text: |
+  If this value is true or missing, the motor drivers that are configured **shall** be enabled and active.

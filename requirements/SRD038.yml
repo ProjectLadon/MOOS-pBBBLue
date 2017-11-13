@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 9c73810f461f3a44dde9b282b87012f4
+text: |
+  If present, the frequency of the motor PWM, in Hz, for channels 0 and 1 **shall** be set to the value of this variable upon receipt.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 7.2.3
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If active, this module **shall** publish the DC input voltage as a DOUBLE variable named BBBL_JACK_VOLTAGE.

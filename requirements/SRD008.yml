@@ -1,0 +1,11 @@
+active: true
+derived: false
+level: 7.0
+links: []
+normative: true
+ref: ''
+reviewed: f8c901666a17f3834089d0139fa2be09
+text: |
+  ADC
+
+  The Beaglebone Blue has eight ADC channels measuring 0-1.8V. Of these, the lower four are available for external connections. The top three are connected through voltage dividers for system health monitoring. They measure the DC jack voltage, the battery voltage, and the level of the 3.3V rail.

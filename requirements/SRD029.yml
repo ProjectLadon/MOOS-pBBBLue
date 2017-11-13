@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.2
+links: []
+normative: true
+ref: ''
+reviewed: 1ffacde3c4efe306ba3c60a888458dae
+text: |
+  If a particular array index is not present or has a value of null, then the corresponding motor channel **shall** be deactivated.

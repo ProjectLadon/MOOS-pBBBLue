@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 4.3
+links: []
+normative: true
+ref: ''
+reviewed: 31a739a8dd0b48b3bb3137662fea2680
+text: |
+  The buttons **shall** be sampled on every tick.

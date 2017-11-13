@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5
+links: []
+normative: true
+ref: ''
+reviewed: 9ac3c2962ef554e95f7c13b9b55a222e
+text: |
+  If the configuration JSON is invalid, this module **shall** exit with an error.

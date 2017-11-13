@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 7.1.5
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If an array entry is not null, the output of the corresponding channel **shall** be published on a DOUBLE variable with the name defined in that array element.

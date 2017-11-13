@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.1
+links: []
+normative: true
+ref: ''
+reviewed: 1ead3028a5987371f35af0a72cc76513
+text: |
+  This module **shall** read in the contents of the .moos file key conf as a JSON object, if present.

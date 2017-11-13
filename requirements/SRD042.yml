@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.4.2.0
+links: []
+normative: false
+ref: ''
+reviewed: f85561a4a5776687e2923384e50a66e0
+text: |
+  If the JSON object is a string, it **must** have a value of either FREE or BRAKE.

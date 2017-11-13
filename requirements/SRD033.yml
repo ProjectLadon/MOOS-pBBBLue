@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.2.0
+links: []
+normative: true
+ref: ''
+reviewed: 8e2111044d5a2a4fe09e94395625fc2a
+text: |
+  This module **shall** subscribe to the BINARY variable BBBL_MOTORS_ACTIVE.

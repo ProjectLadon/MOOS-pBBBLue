@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: a6a5316a79fe0112a2f04a85b3444d2a
+text: |
+  If the value is FREE, the motor channel **shall** be set to free spinning mode.

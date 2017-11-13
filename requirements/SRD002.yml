@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.1
+links: []
+normative: true
+ref: ''
+reviewed: b79777d46a181a2da37662617932db44
+text: |
+  This shall be implemented as a MOOS-IvP AppCasting app.

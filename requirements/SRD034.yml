@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.2.1
+links: []
+normative: true
+ref: ''
+reviewed: e3f9c1d0a519c4740f3b9989e5d86774
+text: |
+  Actions taken in response to subscribed variables **shall** be taken upon receipt.

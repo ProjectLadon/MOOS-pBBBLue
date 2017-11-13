@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.3
+links: []
+normative: true
+ref: ''
+reviewed: b0b96a7c22706ffc17219f12aff829ad
+text: |
+  If one of the named variables is true, the corresponding LED **shall** be turned on, and off if the variable is false.
