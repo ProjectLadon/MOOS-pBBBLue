@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.3.5
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If the value of ```action``` is ```servo360```, the servo **shall** accept a value between 0.0 and 360.0, corresponding to the servo angle in degrees.

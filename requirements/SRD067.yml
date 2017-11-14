@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.3.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  The ```action``` element **must** have one of the following values: ```servo90```, ```servo180```, ```servo360```, ```micros```, or ```ESC```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.2.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If this variable is missing or true, the 6V servo power rail **shall** be turned on, and off if it is both present and false.

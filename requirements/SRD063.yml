@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  Each element of the of the configuration JSON array **shall** correspond to the servo channel of the same number.

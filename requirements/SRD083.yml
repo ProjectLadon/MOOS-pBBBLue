@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.7.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If present, this **shall** set the center servo command, in microseconds.

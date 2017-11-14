@@ -173,15 +173,17 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 						"$comment": "ESC designates an electronic speed control which accepts inputs from 0.0 to 100.0 (percent throttle)"
 					},
 					"period": {"type": "integer", "$comment": "Period in microseconds, default to 20000 (50 Hz)"},
-					"minServo": {"type": "number", "$comment" : "Minimum bound on comand; smaller commands will be set to this value"},
-					"maxServo": {"type": "number", "$comment" : "Maximum bound on comand; larger commands will be set to this value"},
+					"minServo": {"type": "number", "$comment" : "Minimum bound on comand in microseconds; smaller commands will be set to this value"},
+					"maxServo": {"type": "number", "$comment" : "Maximum bound on comand in microseconds; larger commands will be set to this value"},
 					"center": {"type": "integer", "$comment": "Location of center position, in microseconds. Defaults to 1500"},
 					"invert": {"type": "boolean", "$comment": "Reverses the direction of travel if true"}
 				},
 				"required": ["name", "action"]
 			}
 		]
-	}
+	},
+	"minItems":0,
+	"maxItems":8
 }
 ```
 

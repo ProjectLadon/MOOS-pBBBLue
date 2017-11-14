@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.5.1
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If present, this **shall** set the minimum servo command, in microseconds.

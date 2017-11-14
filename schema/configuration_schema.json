@@ -90,7 +90,9 @@
 						"required": ["name", "action"]
 					}
 				]
-			}
+			},
+			"minItems":0,
+			"maxItems":8
 		},
 		"IMU": {
 			"type" : "object",

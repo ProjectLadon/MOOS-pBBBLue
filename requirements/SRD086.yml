@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.9
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  Commands between the minimum and center values of the input command **shall** be interpolated between the ```minServo``` and ```center``` values.

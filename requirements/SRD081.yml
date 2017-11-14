@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.6.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If it is missing or null, this value **shall** default to 2000 microseconds.

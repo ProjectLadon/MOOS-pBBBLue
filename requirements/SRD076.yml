@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.5.0
+links: []
+normative: false
+ref: ''
+reviewed: null
+text: |
+  A non-null array alement **may** have a ```minServo``` element.

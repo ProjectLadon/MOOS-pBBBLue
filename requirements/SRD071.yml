@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.3.6
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If the value ```action``` is ```micros```, the servo signal in microseconds **shall** be set to this value.

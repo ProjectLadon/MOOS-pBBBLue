@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.4.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  This value **shall** default to 20,000 (50 Hz) if this value is missing or null.

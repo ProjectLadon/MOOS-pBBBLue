@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 8.1.2
+links: []
+normative: true
+ref: ''
+reviewed: null
+text: |
+  If a given array element is null, the corresponding channel **shall** be disabled.
