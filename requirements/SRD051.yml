@@ -4,6 +4,6 @@ level: 7.2.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: d89b01eea7ee038f7d7e867bb6be8ee4
 text: |
   These variables **shall** only be published if the configuration JSON contains an ADC object.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.4.1
+links: []
+normative: true
+ref: ''
+reviewed: e956f5d3407787bb7c01065655011aef
+text: |
+  The value of this key **must** be "OFF", "184", "92", "41", "20", "10", or "5", which defines the cutoff frequency, in hertz, of the first order internal low pass filter.

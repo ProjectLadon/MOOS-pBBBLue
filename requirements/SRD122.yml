@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.4
+links: []
+normative: true
+ref: ''
+reviewed: 5fbed2cea0f3f5c776a97f5fba12ef9e
+text: |
+  In random mode, this module **shall** publish BBBL_IMU_GYRO (STRING), a JSON STRING containing the angular rates in units of degree/s, packed according to schema/imu_tuple_schema.json.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.2
+links: []
+normative: true
+ref: ''
+reviewed: db6596b0465ed2a44994c763595e0447
+text: |
+  Every app tick, this modules **shall** sample and publish all variables described below, depending on the current mode.

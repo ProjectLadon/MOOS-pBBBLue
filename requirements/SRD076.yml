@@ -4,6 +4,6 @@ level: 8.1.5.0
 links: []
 normative: false
 ref: ''
-reviewed: null
+reviewed: 878fb4e3f13b9527cc29c2f4249b3aef
 text: |
   A non-null array alement **may** have a ```minServo``` element.

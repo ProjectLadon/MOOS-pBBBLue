@@ -4,6 +4,6 @@ level: 8.2.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: d1a490ecb715c358a01864405cca6707
 text: |
   If active, this module **shall** subscribe to a BINARY variable, BBBL_SERVO_PWR.

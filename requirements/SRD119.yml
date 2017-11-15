@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 4110ed40f3c297272ff8d2145b77ab9f
+text: |
+  In random mode, this module **shall** publish BBBL_IMU_TEMP, a DOUBLE equal to the temperature of the sensor in degrees celsius

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 2dd4b4b8d5f98090783ececa0feffadc
+text: |
+  In random mode, this module **shall** publish BBBL_IMU_MAG (STRING), a JSON STRING containing the magnetic field in units of micro Tesla, packed according to schema/imu_tuple_schema.json.

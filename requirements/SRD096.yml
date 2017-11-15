@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.2.1
+links: []
+normative: true
+ref: ''
+reviewed: c4d6c77c58c5c663119a9c1f83bfa847
+text: |
+  If present, it **must** have a value of "2G", "4G", "8G", or "16G", which define the acceleration range in gravities.

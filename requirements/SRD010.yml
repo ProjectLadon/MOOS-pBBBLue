@@ -1,9 +1,11 @@
 active: true
 derived: false
-level: 9
+level: 9.0
 links: []
 normative: true
 ref: ''
-reviewed: d4d2c7138727a9d12848e0ce87a5c8bf
+reviewed: 94611e65f72d28f83facba25ccac1826
 text: |
   IMU
+
+  The Beaglebone Blue has an onboard nine-axis IMU. It can be used in two modes -- either random access mode or DMP (direct motion processor). When in random access mode, this module generates a tilt-compensated compass output. DMP generates quaternion and Tait-Bryan output angles.

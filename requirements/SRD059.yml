@@ -4,6 +4,6 @@ level: 7.1.6
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 4552221177bd70987bb9b83747b8b3e7
 text: |
   ```rawChannel``` values **shall** be published as a 12-bit integer, i.e. 0-4095.

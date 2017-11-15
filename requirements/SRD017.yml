@@ -4,6 +4,6 @@ level: 2.4
 links: []
 normative: true
 ref: ''
-reviewed: 6117604b54a32cad0526e923b1afee60
+reviewed: 2f3e8c4302a4a94cd91a3c96c77bb4b0
 text: |
   The configuration JSON **must** conform to the schema defined in schema/configuration_schema.json.

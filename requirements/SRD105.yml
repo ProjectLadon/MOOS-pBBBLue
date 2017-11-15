@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.4.2
+links: []
+normative: true
+ref: ''
+reviewed: d639097d767f7444c5d75aa647957371
+text: |
+  This value, if present, **shall** be written to the acceleration filter register.

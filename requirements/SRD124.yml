@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.6
+links: []
+normative: true
+ref: ''
+reviewed: 006dcba7e3e8d885caade1fa3e1c465c
+text: |
+  The random mode compass heading **shall** be calculated with the tilt-compensation algorithm described in http://www.cypress.com/file/130456/download

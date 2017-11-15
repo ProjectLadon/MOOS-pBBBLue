@@ -4,6 +4,6 @@ level: 2.2
 links: []
 normative: true
 ref: ''
-reviewed: d9c50c7dd0f69daddcbd0e7219595471
+reviewed: f21cc4cb4afe34e63b07ec2ae26ca666
 text: |
   This module **shall** read in the contents of the file specified by the .moos file key ```confFile``` as JSON, if present.

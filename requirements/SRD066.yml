@@ -4,6 +4,6 @@ level: 8.1.3.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 4711e8a8ae4a2defc03d89fe262a8d2b
 text: |
   The ```name``` element **shall** name a DOUBLE variable that this module will subscribe to and attach to the corresponding servo channel.

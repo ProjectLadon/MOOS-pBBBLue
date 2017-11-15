@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.1.0
+links: []
+normative: false
+ref: ''
+reviewed: 7485791116939048a1ebcd633abc3d31
+text: |
+  The configuration JSON **must** have a ```mode``` key.

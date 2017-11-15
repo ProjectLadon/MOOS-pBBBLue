@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.6.1
+links: []
+normative: true
+ref: ''
+reviewed: 8895f56b696b557a3cf3123ec22391fc
+text: |
+  This key, if present, **must** have a value of "Z_UP", "Z_DN", "X_UP", "X_DN", "Y_UP", "Y_DN", "X_FWD", or "X_BACK".

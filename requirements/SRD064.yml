@@ -4,6 +4,6 @@ level: 8.1.2
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 0b840a7e7997b735ad51822c95ccd3aa
 text: |
   If a given array element is null, the corresponding channel **shall** be disabled.

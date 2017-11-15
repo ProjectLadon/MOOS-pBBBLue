@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.4.4
+links: []
+normative: true
+ref: ''
+reviewed: d2c234dd1ed1320859f14cba406ec41e
+text: |
+  In DMP mode, this module **shall** publish BBBL_DMP_HEADING_RAW, a DOUBLE containing the unflitered magnetometer heading in radians.

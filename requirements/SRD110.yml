@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.5.3
+links: []
+normative: true
+ref: ''
+reviewed: a2a28a295aad032c4f4e55ed86dcf039
+text: |
+  The default value **shall** be "92".

@@ -4,6 +4,6 @@ level: 7.1.2
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: b3987bb164d5e13ed86be01864c6611b
 text: |
   The ```rawChannels``` array **may** contain up to eight entries, covering all eight analog inputs.

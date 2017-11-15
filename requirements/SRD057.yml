@@ -4,6 +4,6 @@ level: 7.1.4
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: dae9074ae9dfff22ef4d093d270afcdc
 text: |
   The ```voltChannels``` array **may** have up to four entries, covering only those channels that are available for outside connections.

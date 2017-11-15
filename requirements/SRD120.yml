@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.2
+links: []
+normative: true
+ref: ''
+reviewed: ff38750880d84450b41098b8be5e5541
+text: |
+  In random mode, this module **shall** publish BBBL_IMU_ACCEL, a JSON STRING containing acceleration in units of m/s^2, packed according to schema/imu_tuple_schema.json.

@@ -4,6 +4,6 @@ level: 7.2.2
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: b75d123c5ae7971195c7c520cdf45971
 text: |
   If active, this module **shall** publish the battery voltage as a DOUBLE variable named BBBL_BATTERY_VOLTAGE.

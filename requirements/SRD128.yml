@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.4.3
+links: []
+normative: true
+ref: ''
+reviewed: d10861aa4c40ac418af45ddacf0b5d5b
+text: |
+  In DMP mode, this module **shall** publish BBBL_DMP_HEADING, a DOUBLE containing the filtered heading in degrees.

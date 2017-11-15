@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.5.1
+links: []
+normative: true
+ref: ''
+reviewed: 0b3181982bb54a00f813f00a59c38fee
+text: |
+  The AppCast report **shall** contain all published variables.

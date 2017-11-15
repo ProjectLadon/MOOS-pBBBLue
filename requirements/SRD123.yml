@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.3.5
+links: []
+normative: true
+ref: ''
+reviewed: d7c404f7ae4c7357b8b08d075522e2bc
+text: |
+  In random mode, this module **shall** publish BBBL_IMU_COMPASS, a DOUBLE containing the compass heading of the positive X axis degrees.

@@ -4,6 +4,6 @@ level: 7.1.8
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 35c130bcc4cd583d1111c350118aec72
 text: |
   All configured analog variables **shall** be published on every tick.

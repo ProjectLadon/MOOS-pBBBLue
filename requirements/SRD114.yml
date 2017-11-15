@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.6.3
+links: []
+normative: true
+ref: ''
+reviewed: fb6d3c283581aacfbc3dc9697c97a171
+text: |
+  The default value **shall** be "Z_UP"

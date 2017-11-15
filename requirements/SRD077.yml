@@ -4,6 +4,6 @@ level: 8.1.5.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 7983ab7cf594c601e9eb394e874ce3de
 text: |
   If present, this **shall** set the minimum servo command, in microseconds.

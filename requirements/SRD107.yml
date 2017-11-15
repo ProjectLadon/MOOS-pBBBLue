@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.5.0
+links: []
+normative: false
+ref: ''
+reviewed: 6ea0310a3a383cb25e2b0563bca06720
+text: |
+  There **may** be a ```gyroFilter``` key.

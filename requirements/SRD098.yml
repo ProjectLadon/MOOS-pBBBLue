@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 8f7357f0c2f256be8c63128a72633d4c
+text: |
+  The default value **shall** be "4G"

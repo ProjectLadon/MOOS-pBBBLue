@@ -4,6 +4,6 @@ level: 7.1.7
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 9f10e75e52d6e076e0b875c8d6623dc2
 text: |
   ```voltChannel``` values **shall** be scaled to 0-1.8 to cover the analog input voltage range.

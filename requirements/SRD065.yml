@@ -4,6 +4,6 @@ level: 8.1.3.0
 links: []
 normative: false
 ref: ''
-reviewed: null
+reviewed: 757ae9bac91f6bf8a29fbc3b9c83e6c8
 text: |
   A non-null array element **must** have a ```name``` element and an ```action``` element.

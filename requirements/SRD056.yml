@@ -4,6 +4,6 @@ level: 7.1.3
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 0bbc252983b97af4e506fa7ce085df7e
 text: |
   Each element of the ```voltChannels``` array **shall** correspond to the matching AIN channel.

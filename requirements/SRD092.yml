@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.1.1.1
+links: []
+normative: true
+ref: ''
+reviewed: a0fac7a54dfb6692cdc4a7943d144050
+text: |
+  The value of ```mode``` **must** be either "Random" or "DMP"

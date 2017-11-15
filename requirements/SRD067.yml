@@ -4,6 +4,6 @@ level: 8.1.3.2
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: 593fe0d74ac60ea6571db3e576ad6e39
 text: |
   The ```action``` element **must** have one of the following values: ```servo90```, ```servo180```, ```servo360```, ```micros```, or ```ESC```.

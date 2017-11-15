@@ -4,6 +4,6 @@ level: 7.1.5
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: d9f0c4b6b11f3aa98633749d013cb5b3
 text: |
   If an array entry is not null, the output of the corresponding channel **shall** be published on a DOUBLE variable with the name defined in that array element.

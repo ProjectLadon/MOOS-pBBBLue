@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 9.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 2197eadbab02a62b500082a3a30a9176
+text: |
+  In DMP mode, this module **shall** publish BBBL_DMP_TBA, a JSON STRING containing the Tait-Bryan angles in units of degrees, packed according to schema/imu_tuple_schema.json.

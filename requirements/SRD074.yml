@@ -4,6 +4,6 @@ level: 8.1.4.1
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: ea0bda073f823ea6314536184658ba8e
 text: |
   If it is present, it **shall** define the period of the servo signal in microseconds.

@@ -4,6 +4,6 @@ level: 8.1.7.0
 links: []
 normative: false
 ref: ''
-reviewed: null
+reviewed: 2c1fc3d0a09863221cd0d9556aafc3a9
 text: |
   A non-null array alement **may** have a ```center``` element.

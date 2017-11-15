@@ -4,6 +4,6 @@ level: 8.1.8
 links: []
 normative: true
 ref: ''
-reviewed: null
+reviewed: c01550a8a43c9e8a1508382d41d2b594
 text: |
   Commands between the center and maximum values of the input command **shall** be interpolated between the ```center``` and ```maxServo``` values.
