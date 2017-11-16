@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.6
+links: []
+normative: true
+ref: ''
+reviewed: d37246c1c8ada5effadd99313a37befc
+text: |
+  All published variables shall be published in an AppCast as well.

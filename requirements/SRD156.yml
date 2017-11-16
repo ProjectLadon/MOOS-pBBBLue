@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.3.1
+links: []
+normative: true
+ref: ''
+reviewed: ccddd646c40d21ff2a254d24db4d6d21
+text: |
+  The value of this key **must** be ```OUTPUT```, ```INPUT```, ```INPUT_PU```, or ```INPUT_PD```.

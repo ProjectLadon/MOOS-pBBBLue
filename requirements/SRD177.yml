@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.6.1
+links: []
+normative: true
+ref: ''
+reviewed: 06c3d0d735602bfa0612c73f6e4da511
+text: |
+  If neither or both are present, this function **shall** print and error and force pBBBlue to exit.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.4.0
+links: []
+normative: false
+ref: ''
+reviewed: 9524ededa43162f9d478e7805ee14fb2
+text: |
+  This function **shall** subscribe to BBBL_BARO_SEA_LEVEL, a DOUBLE containing the current sea level pressure in pascals.

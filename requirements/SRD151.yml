@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.1
+links: []
+normative: true
+ref: ''
+reviewed: 1aa7c91daa401b6da0501030dd0933aa
+text: |
+  The configuration JSON **must** consist of a JSON array of not more than eight items.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.4
+links: []
+normative: true
+ref: ''
+reviewed: 392d9d976972a728982d45c05b7ce2dc
+text: |
+  This software **shall** pass valgrind memcheck with no memory leaks or corrupted memory.

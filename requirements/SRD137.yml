@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.2.2
+links: []
+normative: true
+ref: ''
+reviewed: a5a961fc5faec3f9fffde5fd93f9d118
+text: |
+  The oversample register **shall** be set to the value of this key if present.

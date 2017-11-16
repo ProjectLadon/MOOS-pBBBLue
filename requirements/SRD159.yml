@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.3.4
+links: []
+normative: true
+ref: ''
+reviewed: 3b1dea796a0541b254b541360c9c3485
+text: |
+  If the value is ```INPUT_PU```, this function **shall** set that GPIO pin to an input with a pull-up.

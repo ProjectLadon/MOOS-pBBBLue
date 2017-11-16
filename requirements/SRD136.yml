@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 249328754efb9ea3dddf27a8842fca2a
+text: |
+  If this key is present, it **must** have an integer value of 1, 2, 4, 8, or 16.

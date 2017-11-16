@@ -1,9 +1,11 @@
 active: true
 derived: false
-level: 12
+level: 12.0
 links: []
 normative: true
 ref: ''
-reviewed: ba3cf3984b8212c4abb0db3653161339
+reviewed: b2a2cbfa829e72a0f9ac680c4198d2a4
 text: |
   PWM
+
+  The Beaglebone Blue has three PWM interfaces (0, 1, and 2) with two channels each. Interfaces 0 and 1 are dedicated to the motor drivers and may not be configured here if the motors are active. Each interface can be set to a different PWM frequency.

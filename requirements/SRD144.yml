@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.5.1
+links: []
+normative: true
+ref: ''
+reviewed: 7c7fe1b23140237d72d0243c23d42184
+text: |
+  Variables **shall** be published if and only if this function is active.

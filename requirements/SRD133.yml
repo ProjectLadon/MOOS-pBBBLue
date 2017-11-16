@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.3
+links: []
+normative: true
+ref: ''
+reviewed: 4d4208ace5af1707b0b9881f5c1531a7
+text: |
+  All failures **shall** result in an error message that accurately describes the error and makes the source of the failure clear.

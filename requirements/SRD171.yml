@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.4
+links: []
+normative: true
+ref: ''
+reviewed: da03f144b975dc559448b0c63f9c2923
+text: |
+  If the DC motors are configured and either the 0 or 1 elements are not null, this function **shall** print an error and force pBBBlue to exit.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 49bbfd5a0dd0dd9021edbafc22510b67
+text: |
+  If this variable is not available, the value **shall** default to standard sea level pressure, 101325 Pa.

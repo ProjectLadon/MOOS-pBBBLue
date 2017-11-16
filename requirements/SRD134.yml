@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.1
+links: []
+normative: true
+ref: ''
+reviewed: dfcb23e673121f5e4301773116c4ff2f
+text: |
+  This function **shall** be activated if and only if a ```Barometer``` key is present in the configuration JSON. Its value **may** be null.

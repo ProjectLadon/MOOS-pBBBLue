@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.4.0
+links: []
+normative: false
+ref: ''
+reviewed: 84ab5314ff439b32432e64658a5d5a3e
+text: |
+  Each element **must** contain a ```gpioVar``` key.

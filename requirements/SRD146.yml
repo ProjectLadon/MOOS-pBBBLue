@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.5.3
+links: []
+normative: true
+ref: ''
+reviewed: 8b90d62ea0578a7eceda09d7ee39d5ec
+text: |
+  This function **shall** publish BBBL_BARO_PRES, a DOUBLE containing the current atmospheric pressure, in pascals.

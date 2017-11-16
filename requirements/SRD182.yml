@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.7.2
+links: []
+normative: true
+ref: ''
+reviewed: f37b3a81091d51b58632bab96b0ee5ac
+text: |
+  If ```dutyCycleB``` is present, the named variable exists, is of type DOUBLE, and has a value between 0.0f and 1.0f, inclusive, then the duty cycle of channel A of the corresponding interface shall be set to that value.

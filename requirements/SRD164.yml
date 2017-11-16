@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.2
+links: []
+normative: true
+ref: ''
+reviewed: 475b392258a147715a1f6be4c6158253
+text: |
+  This function **shall** propagate subscribed variables to the corresponding outputs upon receipt.

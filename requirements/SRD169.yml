@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.2
+links: []
+normative: true
+ref: ''
+reviewed: f3e73f50a8e50145d57649ba0dad4fab
+text: |
+  Each element **shall** configure the corresponding PWM interface.

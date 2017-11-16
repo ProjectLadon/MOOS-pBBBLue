@@ -1,9 +1,11 @@
 active: true
 derived: false
-level: 10
+level: 10.0
 links: []
 normative: true
 ref: ''
-reviewed: a700d851bc8ef34f59df45b43003b8db
+reviewed: 9db56ba1eca9eeb8dac1678e5ac9fdd0
 text: |
   Barometer
+
+  The Beaglebone Blue has an onboard barometric pressure sensor. If the current sea level pressure is known, it can be used to measure altitude. It only has two parameters, the oversampling level and the filter constant, but these do not have to be configured.

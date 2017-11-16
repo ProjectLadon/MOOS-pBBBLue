@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.2.0
+links: []
+normative: false
+ref: ''
+reviewed: bc9b36ede506ed22caf54f76f731d06b
+text: |
+  The ```Barometer``` element **may** contain an ```oversample``` key.

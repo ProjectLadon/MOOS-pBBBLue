@@ -1,9 +1,11 @@
 active: true
 derived: false
-level: 11
+level: 11.0
 links: []
 normative: true
 ref: ''
-reviewed: 28976310cd4160c2bff724432513731a
+reviewed: d2c313668d7dcadafd5b1e98483c6ae7
 text: |
   GPIO
+
+  The Beaglebone Blue has eight free GPIO lines, including the two used for the red and green LEDs. Each of these can be connected to a corresponding MOOS variable; whether it is published or subscribed depends on the pin direction. Additionally, there are pull ups and pull downs which can be set on inputs.

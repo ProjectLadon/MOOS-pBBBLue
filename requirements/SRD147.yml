@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.5.4
+links: []
+normative: true
+ref: ''
+reviewed: adef1a747a89426f121ceec268d544db
+text: |
+  This function **shall** publish BBBL_BARO_ALT, a DOUBLE containing the current altitude in meters, based on sea level pressure.

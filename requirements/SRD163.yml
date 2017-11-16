@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 76b1b30b3b72c1ee0a5be2c8d3cbd99d
+text: |
+  If the element is configured as any kind of input, this function **shall** publish a BINARY variable of that name.

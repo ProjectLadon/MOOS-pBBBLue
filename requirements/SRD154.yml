@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.2.2
+links: []
+normative: true
+ref: ''
+reviewed: e7d716282e6fe17a1ff6c83c702e45b6
+text: |
+  If the LED block is configured, any attempt to configure ```LED_RED``` or ```LED_GRN``` **shall** cause pBBBlue to fail and exit during startup.

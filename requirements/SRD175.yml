@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.5.3
+links: []
+normative: true
+ref: ''
+reviewed: 13d4fed4ef7f28254312f529a124efcd
+text: |
+  If the variable is missing or is not of type DOUBLE, this PWM interface **shall** be disabled.

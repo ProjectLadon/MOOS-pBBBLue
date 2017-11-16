@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.7.3
+links: []
+normative: true
+ref: ''
+reviewed: ffeca0991e717ac6629b2e2f6ed629ba
+text: |
+  If ```dutyCycleBns``` is present, the named variable exists, is of type DOUBLE, and has a value between 0 and the PWM period in nanosecond, inclusive, then the on time of channel A of the corresponding interface shall be set to that value, in nanoseconds.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 74537fd63f8ccbbe2f3d0123cadab985
+text: |
+  If the value is ```OUTPUT```, this function **shall** set that GPIO pin to an output.

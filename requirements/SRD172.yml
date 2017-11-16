@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.5.0
+links: []
+normative: false
+ref: ''
+reviewed: e6f227d3fabdcf17d68fde5dd01a3842
+text: |
+  The ```frequency``` key **must** be present and **may** be either a fixed integer value or the name of a MOOS variable to of type DOUBLE.

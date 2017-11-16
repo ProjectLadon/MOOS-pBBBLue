@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.1
+links: []
+normative: true
+ref: ''
+reviewed: 63e667678568a093aed083846a9a938e
+text: |
+  The configuration JSON **must** consist of a JSON array with (optionally) an entry for each of three PWM interfaces.

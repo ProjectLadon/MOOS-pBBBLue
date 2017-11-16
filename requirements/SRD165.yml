@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.3
+links: []
+normative: true
+ref: ''
+reviewed: 21ed87592bdf451f0124ca5c7ca28670
+text: |
+  This function **shall** publish all inputs every tick.

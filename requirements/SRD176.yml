@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.6.0
+links: []
+normative: false
+ref: ''
+reviewed: e9383570bb39f40e98ce8235e27fb511
+text: |
+  Either the ```dutyCycleA``` or ```dutyCycleAns``` **must** be present.

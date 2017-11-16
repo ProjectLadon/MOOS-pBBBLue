@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 10.3.0
+links: []
+normative: false
+ref: ''
+reviewed: e7c19ff7852ed6fb34101edd21aa0c60
+text: |
+  The ```Barometer``` element **may** contain an ```filter``` key.

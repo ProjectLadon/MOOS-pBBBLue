@@ -269,15 +269,14 @@ There are also low pass input filters for the gyro and accelerometer, which can 
 * BBBL_IMU_GYRO (STRING) -- Angular rates in units of degree/s, packed according to BBBlue_IMU_tuple
 * BBBL_IMU_COMPASS (DOUBLE) -- Compass heading in degrees. Calculated with a simple tilt compensated compass algorithm. 
 
-### AppCast Report, Random Mode
-
 ### Published Variables, DMP Mode
 * BBBL_DMP_TBA (STRING) -- The Tait-Bryan angles, units of degrees, packed according to BBBlue_IMU_tuple
 * BBBL_DMP_QT (STRING) -- The normalized quaternion, packed according to BBBlue_IMU_quaternion
 * BBBL_DMP_HEADING (DOUBLE) -- Filtered heading in degrees
 * BBBL_DMP_HEADING_RAW (DOUBLE) -- Magnetometer heading in radians
 
-### AppCast Report, DMP Mode
+### AppCast Reports
+The AppCast reports contain all of the variables published in the current mode, but the JSON tuples are broken out into their components. 
 
 ## [Barometer](http://www.strawsondesign.com/#!manual-barometer)
 The barometer measures current atmospheric pressure. This can be used either for measuring the weather (if altitude is known approximately) or altitude, if the current sea level barometric pressure is known. The only parameters to configure are the oversampling rate and filter constant. Configuration of these properties is not required, but an empty Barometer parameter is required in order to activate the barometer. 
@@ -370,8 +369,8 @@ For each of the three PWM subsystems, there are five variables that can be confi
 							{"type": "integer"}
 						]
 					},
-					"dutyCycleA": {"type": "string", "minimum": 0.0, "maximum": 1.0},
-					"dutyCycleB": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+					"dutyCycleA": {"type": "string"},
+					"dutyCycleB": {"type": "string"},
 					"dutyCycleAns": {"type": "string"},
 					"dutyCycleBns": {"type": "string"}
 				},

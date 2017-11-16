@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.3
+links: []
+normative: true
+ref: ''
+reviewed: 6df06e93041a798f46142242e6cb0ee6
+text: |
+  An element **may** be null.

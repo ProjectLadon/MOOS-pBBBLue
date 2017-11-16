@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 26a0a2694d1fabbba56d0d2a431fa8dd
+text: |
+  If the element is configured as an output, this function **shall** subscribe to that variable.

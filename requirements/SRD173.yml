@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 12.1.5.1
+links: []
+normative: true
+ref: ''
+reviewed: edbab9b7645e3f5942ae46f4ec3cb359
+text: |
+  If the key is an integer, the frequency of that PWM interface **shall** be set to the given value.

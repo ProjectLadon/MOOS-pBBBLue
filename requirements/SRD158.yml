@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.1.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 45e9c7b59918935dab00afc54a025f83
+text: |
+  If the value is ```INPUT```, this function **shall** set that GPIO pin to a high-Z input.

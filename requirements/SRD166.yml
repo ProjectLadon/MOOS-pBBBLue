@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 11.4
+links: []
+normative: true
+ref: ''
+reviewed: 4a801818270528d156071b06d7a94dc4
+text: |
+  This function **shall** add its published variables to this module's AppCast.
