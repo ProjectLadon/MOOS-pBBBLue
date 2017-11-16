@@ -47,8 +47,6 @@
 		"ADC" : {
 			"type": "object",
 			"properties": {
-				"batteryVoltage": {"type": "string", "$comment": "Current control battery voltage"},
-				"jackVoltage":  {"type": "string", "$comment": "Current power input jack voltage"},
 				"rawChannels": {
 					"type": "array",
 					"items": {"oneOf": [null, {"type": "string"}]},

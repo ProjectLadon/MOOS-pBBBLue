@@ -105,7 +105,8 @@ Encoders may be set to a given value on startup. In the absence of a given value
 				"properties": {
 					"name": {"type": "string"},
 					"init": {"type": "number", "$comment": "initial value"}
-				}
+				},
+				"required":["name"]
 			}
 		]
 	},
