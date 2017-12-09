@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.2
+links: []
+normative: true
+ref: ''
+reviewed: 2ed90cbcf66871d13f5b052d9406dca8
+text: |
+  This class **shall** be a subclass of ```FunctionBlock```

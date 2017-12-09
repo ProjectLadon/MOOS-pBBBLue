@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.4.4
+links: []
+normative: true
+ref: ''
+reviewed: f251f5200533cdaea2c24617693013be
+text: |
+  Values between 50 and 100 **shall** be mapped to the range between ```center``` and ```max```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 040be6c2acbbf8710c50b9063f43089d
+text: |
+  If any of the elements are non-empty, this method **shall** call ```rc_enable_motors()```.

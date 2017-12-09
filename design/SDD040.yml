@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.1
+links: []
+normative: true
+ref: ''
+reviewed: e702d424d5179f84f92d5d7206b7f68c
+text: |
+  ```bool setFrequency (int f)``` **shall** set ```freq``` to the provided value and call ```rc_pwm_init()``` to change the frequency of the interface. It **shall** not change the duty cycle.

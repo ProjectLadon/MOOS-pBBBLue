@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.4.5
+links: []
+normative: true
+ref: ''
+reviewed: ab35bdfcb80531fccbc0531ed20ca4e0
+text: |
+  ```static const bool defaultInvert``` **shall** be set to ```false```.

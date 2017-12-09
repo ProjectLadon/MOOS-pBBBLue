@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.5
+links: []
+normative: true
+ref: ''
+reviewed: 4aa525618d8030f724eb9a458360719d
+text: |
+  The destructor for this class shall set the pinmuxes back to default.

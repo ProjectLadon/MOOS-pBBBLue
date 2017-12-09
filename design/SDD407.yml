@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 4.2
+links: []
+normative: true
+ref: ''
+reviewed: b51a78c7d9f5ade8680a797f96ad5b00
+text: |
+  If both ```conf``` and ```confFile``` are present, this function **shall** log an error and exit the program.

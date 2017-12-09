@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.4.0
+links: []
+normative: false
+ref: ''
+reviewed: 59c9836dac32941be60864828583ebdb
+text: |
+  ```bool configureBBBlue(rapidjson::Document conf)```

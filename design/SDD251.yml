@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.2.6
+links: []
+normative: true
+ref: ''
+reviewed: 0434c93975c60b1e46e5f6d2f5eb7332
+text: |
+  After iterating through the contained JSON array, this method **shall** iterate through ```servos``` calling each element's ```startThread()``` method.

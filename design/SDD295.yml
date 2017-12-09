@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.5
+links: []
+normative: true
+ref: ''
+reviewed: 231115578b9381a912e33892f94f5598
+text: |
+  ```bool subscribe()``` **shall** do nothing and return ```true```.

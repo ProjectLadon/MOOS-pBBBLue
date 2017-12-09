@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.2
+links: []
+normative: true
+ref: ''
+reviewed: cd0f0965b814091fef84ffab948e88d2
+text: |
+  ```bool configure(rapidjson::Document d)``` **shall** read the contents of the ```rawChannels``` and ```voltChannels``` elements into the corresponding members.

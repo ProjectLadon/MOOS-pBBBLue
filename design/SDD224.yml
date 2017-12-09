@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 7ecdeeeac63b3b330ac98ddea5f90f9d
+text: |
+  ```std::list<std::string> rawChannels``` **shall** store the names of the raw output variables.

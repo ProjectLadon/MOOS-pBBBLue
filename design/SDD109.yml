@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.4.3
+links: []
+normative: true
+ref: ''
+reviewed: da4d7a3cdd1bbd7971076ef5e50d468a
+text: |
+  ```static const long defaultMin``` **shall** be set to 1000

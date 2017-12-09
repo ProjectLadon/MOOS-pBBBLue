@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: bb7d3ab36a6a2b1f54ec14897fffe338
+text: |
+  If ```pause``` is not an empty string, this method **shall** read the value of the PAUSE button and publish it to the variable named in ```pause```.

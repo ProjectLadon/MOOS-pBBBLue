@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.5
+links: []
+normative: true
+ref: ''
+reviewed: b283e409aca3e10869931e464f2c4a6c
+text: |
+  ```bool subscribe()``` **shall** subscribe to the ```BBBL_BARO_SEA_LEVEL``` variable and return ```true```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.3
+links: []
+normative: true
+ref: ''
+reviewed: 7c48ccf9dfc38a6e5797576938ccfb81
+text: |
+  ```long getPeriod()``` **shall** return the value of ```period```.

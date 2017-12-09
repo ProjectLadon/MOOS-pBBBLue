@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: e382e2d4ea7332b1bd09993e20fa1a03
+text: |
+  ```std::string freqVar``` **shall** store the name of the variable that sets the frequency.

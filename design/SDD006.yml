@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.5
+links: []
+normative: true
+ref: ''
+reviewed: 2f7cfebccc7c32159c618da8a1382af9
+text: |
+  This software **shall** be compiled using cmake.

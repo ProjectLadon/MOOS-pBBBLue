@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 2eaef53eadaa3e34efeaf4d20db0557e
+text: |
+  ```GPIOmode getmode()``` **shall** return the value of ```mode```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.5.1
+links: []
+normative: true
+ref: ''
+reviewed: 6d0762ece0628d1df370dbef944b8e42
+text: |
+  The argument **shall** be interpreted as a fraction if ```isnsA``` equals ```false``` and as a number of nanoseconds otherwise.

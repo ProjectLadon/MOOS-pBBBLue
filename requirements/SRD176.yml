@@ -2,7 +2,7 @@ active: true
 derived: false
 level: 12.1.6.0
 links: []
-normative: false
+normative: true
 ref: ''
 reviewed: e9383570bb39f40e98ce8235e27fb511
 text: |

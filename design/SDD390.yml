@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.6
+links: []
+normative: true
+ref: ''
+reviewed: d4e60f97b7b309c7ba5bccf50666c040
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if and only if ```interfaces``` has at least one member.

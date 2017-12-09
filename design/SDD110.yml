@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.4.4
+links: []
+normative: true
+ref: ''
+reviewed: 34ae62ae923222cf365051e1838da54c
+text: |
+  ```static const long defaultCenter``` **shall** be set to 1500

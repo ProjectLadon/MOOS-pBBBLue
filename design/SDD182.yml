@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.1
+links: []
+normative: true
+ref: ''
+reviewed: 6d694fef95860f10904ce92ac9db1bdf
+text: |
+  This method **shall** parse ```val``` into a JSON object and validate it against schema/motor_input_schema.json. If it fails, this method **shall** return ```false```.

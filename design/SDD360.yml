@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 2ea9809aae0a683f245f660f4ede838d
+text: |
+  This method **shall** iterate over the members of the JSON array contained in the ```GPIO``` object.

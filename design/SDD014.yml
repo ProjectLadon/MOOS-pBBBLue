@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 455c50b328c0b219439aabf030e14eea
+text: |
+  This class defines the state of a single GPIO pin

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.6.2.5
+links: []
+normative: true
+ref: ''
+reviewed: caba988fa498cd22ce7f7296bae68362
+text: |
+  ```virtual bool isConfigured()``` **shall** return true if any part of the block is configured.

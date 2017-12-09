@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 2bfceb31ae6adb017319d0fac07910a3
+text: |
+  ```std::string REDname``` **shall** store the name of the MOOS variable that controls the red LED.

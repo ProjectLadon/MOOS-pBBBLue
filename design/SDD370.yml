@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.6
+links: []
+normative: true
+ref: ''
+reviewed: 222274bc1ec2e24e85a35b05c8814ae8
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if and only if ```pins``` has at least one member.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.2
+links: []
+normative: true
+ref: ''
+reviewed: e4dad1b4e1d495d7353fad869d621a1f
+text: |
+  This method **shall** increment the ```motor``` number by one, in order to transform the 0-3 of the list indices into the 1-4 of the motor numbers.

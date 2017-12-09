@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.6
+links: []
+normative: true
+ref: ''
+reviewed: 57c8cba1d1efb15aebdbe551dd3bd013
+text: |
+  ```const long max``` **shall** store the maximum length of the servo pulse in microseconds.

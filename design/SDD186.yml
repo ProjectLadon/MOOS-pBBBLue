@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.5
+links: []
+normative: true
+ref: ''
+reviewed: fa9f6972a3aa2e152687bfa736e9fb1b
+text: |
+  If it is a number and in range, this method **shall** pass it to ```rc_set_motor()``` and return the result.

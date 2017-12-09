@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.8
+links: []
+normative: true
+ref: ''
+reviewed: 5255f4e3608bc8420ec4051dc086581c
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if and only if ```servos``` has at least one member.

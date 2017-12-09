@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 3bccb232bb2b0c9fcec9c9c375c9b4e4
+text: |
+  This method **shall** call ```rc_initialize_barometer()``` with th values of the ```oversample``` and ```filter``` elements.

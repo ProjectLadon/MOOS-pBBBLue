@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.0
+links: []
+normative: false
+ref: ''
+reviewed: 7aeb52b74a7a6ddd989be145abdb3a33
+text: |
+  ```ServoChannel``` class

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 6315586e8db3b2f80766d7678b11a4f0
+text: |
+  ```std::list<std::string> motors``` **shall** store the names of the motor variables.

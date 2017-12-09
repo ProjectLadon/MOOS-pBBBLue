@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 5620cfc42c6b91e52e7f4d0564bf81db
+text: |
+  This method **shall** sample the accelerometer by calling ```rc_read_accel_data()``` and return ```false``` if it fails.

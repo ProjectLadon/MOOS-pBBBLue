@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 4.1
+links: []
+normative: true
+ref: ''
+reviewed: b83b5b3314a80febc4ff206de34d5849
+text: |
+  The ```OnStartup()``` method shall search the provided configuration for a ```conf``` or ```confFile``` entry and pass it to the appropriate function.

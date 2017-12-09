@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 2091361519cc762505cbf76050d882fe
+text: |
+  If ```mode``` is not an empty string, this method **shall** read the value of the MODE button and publish it to the variable named in ```mode```.

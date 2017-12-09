@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: c8c270a44e7253cec9495cbe9ab97f28
+text: |
+  This method **shall** pack the contents of ```data.fused_TaitBryan``` into a JSON string conforming to schema/imu_tuple_schema.json and publish it to ```BBBL_DMP_TBA```.

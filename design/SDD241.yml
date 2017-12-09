@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 97c4c3017e4ff0a4cb10166206bf9e70
+text: |
+  ```static ServoBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

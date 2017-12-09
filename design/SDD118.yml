@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.6
+links: []
+normative: true
+ref: ''
+reviewed: 5a6a2b91209c65fa9c14e91064370c3c
+text: |
+  ```void stopThread()``` **shall** set ```killThread``` to ```true```.

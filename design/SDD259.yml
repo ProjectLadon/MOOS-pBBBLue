@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.7
+links: []
+normative: true
+ref: ''
+reviewed: 8b2ad7d4bf2f33113b1e38fda7728992
+text: |
+  ```bool subscribe()``` **shall** iterate through the members of ```servos```, if any, subscribing to the variable names returned by calling ```getVar()``` on each one. It **shall** then return ```true```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.9
+links: []
+normative: true
+ref: ''
+reviewed: a6c2ff169725be148f3433416fa759fb
+text: |
+  ```const bool invert``` if this is ```true```, larger input value **shall** result in smaller values of ```current```.

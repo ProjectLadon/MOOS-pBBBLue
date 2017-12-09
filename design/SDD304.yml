@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.3.4
+links: []
+normative: true
+ref: ''
+reviewed: f6f7975afb68a0a89e63715e9935e6ec
+text: |
+  ```bool configured``` **shall** be set true if and only if this block has been configured.

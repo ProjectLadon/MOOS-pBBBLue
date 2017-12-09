@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 851d25bce77ba26edb24210d28f29b90
+text: |
+  ```freqVar``` **shall** be set to the given value and ```freq``` **shall** be set to 1000.

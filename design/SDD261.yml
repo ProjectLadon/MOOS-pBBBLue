@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.0
+links: []
+normative: false
+ref: ''
+reviewed: e51629d68cf9c24aafa41fa4a7f5babf
+text: |
+  ```IMURandomBlock``` class

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.1.4
+links: []
+normative: true
+ref: ''
+reviewed: eff5f411ba68c3cf105139bf27398469
+text: |
+  ```isnsA``` and ```isnsB``` **shall** be set to the given values.

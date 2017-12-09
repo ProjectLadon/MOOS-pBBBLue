@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.3
+links: []
+normative: true
+ref: ''
+reviewed: b909feaf8eccc4083715d5c33c5da2bb
+text: |
+  This method **shall** check that ```motor``` is between 1 and 4, inclusive. If it is not, this method **shall** return false.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.0
+links: []
+normative: false
+ref: ''
+reviewed: f538c993e9a7000cb0daf6699075755b
+text: |
+  ```PWMChannel``` class

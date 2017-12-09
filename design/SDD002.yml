@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.1
+links: []
+normative: true
+ref: ''
+reviewed: 40d62a5c0f4f70b1ecf8bcfb24ffc425
+text: |
+  This software **shall** be implemented as a MOOS Appcasting App as describe in the [MOOS-IvP wiki](http://oceanai.mit.edu/moos-ivp/pmwiki/pmwiki.php).

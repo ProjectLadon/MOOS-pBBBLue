@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.5
+links: []
+normative: true
+ref: ''
+reviewed: e14d3797290ea580390879f4e2f9e4bc
+text: |
+  ```bool subscribe()``` **shall** iterate through the members of ```interfaces``` and call the ```subscribe()``` method of each one in turn. It **shall** return the logical AND of the results.

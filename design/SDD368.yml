@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 6be5680d844b65c1eb24777044220ec8
+text: |
+  If the returned value is any input mode, this method **shall** call ```get()``` against that element and publish that value to the variable named by ```getVar()```.

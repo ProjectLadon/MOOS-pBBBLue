@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: c413f84366100a10dcccd619b6addb2a
+text: |
+  This method **shall** sample the gyros by calling ```rc_read_gyro_data()``` and return ```false``` if it fails.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 303eb0076db2ed1f799be90372ccc1eb
+text: |
+  This method **shall** consume a ```Button``` object as defined in ```schema/configuration_schema.json```.

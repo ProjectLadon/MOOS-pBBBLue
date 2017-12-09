@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 399749de92be4346c3671b6bfa84c440
+text: |
+  This method **shall** publish the battery voltage returned by ```rc_get_battery_voltage()``` to ```BBBL_BATTERY_VOLTAGE```.

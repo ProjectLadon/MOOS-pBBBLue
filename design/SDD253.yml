@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 89c8056517442d454a6ae5d05438094d
+text: |
+  If ```msg.GetKey()``` matches ```BBBL_SERVO_PWR``` and the value is a ```BINARY```, this method **shall** call either ```rc_enable_servo_power_rail()``` or ```rc_disable_servo_power_rail()``` depending on whether the value is ```true``` or ```false```. This method **shall** return the success or failure of the called function.

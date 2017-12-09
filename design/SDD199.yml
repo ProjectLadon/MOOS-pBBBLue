@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.3.5
+links: []
+normative: true
+ref: ''
+reviewed: 1da9e7308a35df197165180556bedf1a
+text: |
+  If ```msg.GetKey()``` is equal to ```BBBL_MOTORS1_FREQUENCY``` and the value is a DOUBLE, this method **shall** call ```rc_pwm_init()``` against PWM subsystem 2 with the given frequency value and return the result.

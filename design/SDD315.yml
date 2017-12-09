@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.8
+links: []
+normative: true
+ref: ''
+reviewed: f26e0be61c7defa64a27c70fac6b389e
+text: |
+  If an ```accelFilter``` entry is present, this method **shall** set ```conf.accel_dlpf``` to the given value.

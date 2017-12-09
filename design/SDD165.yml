@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: fbd5db2b6ee6dc8e8e45777531904e17
+text: |
+  JSON nulls **shall** be treated as empty strings.

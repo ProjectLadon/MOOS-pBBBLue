@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.1
+links: []
+normative: true
+ref: ''
+reviewed: b87ed1a74fbd2e3165cda90f4a212dc1
+text: |
+  ```static ServoBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

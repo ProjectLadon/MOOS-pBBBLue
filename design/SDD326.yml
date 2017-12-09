@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.4.3
+links: []
+normative: true
+ref: ''
+reviewed: 306232d08d93ab09d88afee65faa70d0
+text: |
+  This method **shall** publish the contents of ```data.compass_heading``` to ```BBBL_DMP_HEADING```.

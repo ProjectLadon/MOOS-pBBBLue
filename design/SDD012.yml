@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.2
+links: []
+normative: true
+ref: ''
+reviewed: 37596250cb5d5b8418a6e2494a4d0879
+text: |
+  ```enum class ServoMode``` **shall** have a member for each of the five possible servo modes: ```servo90```,  ```servo180```, ```servo360```, ```micros```, and ```ESC```.

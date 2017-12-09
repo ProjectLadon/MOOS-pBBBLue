@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.0
+links: []
+normative: false
+ref: ''
+reviewed: 71d07c623880a74d999dca45776b229f
+text: |
+  ```GPIOpin``` class

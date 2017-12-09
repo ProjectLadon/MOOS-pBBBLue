@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.6
+links: []
+normative: true
+ref: ''
+reviewed: 0ce76683e5470e1ceb4cb7f9de28ecd6
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if any member of ```motors``` is non-empty.

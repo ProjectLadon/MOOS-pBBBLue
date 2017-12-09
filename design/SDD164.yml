@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 930c34bf0da3a61cfadc94e886f5f1eb
+text: |
+  The ```mode``` and ```pause``` members **shall** be populated from the ```MODE``` and ```PAUSE``` elements of the configuration JSON, if they are present.

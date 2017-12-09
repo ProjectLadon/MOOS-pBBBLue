@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.6.2
+links: []
+normative: true
+ref: ''
+reviewed: ec0674d0ee46e166fa93cc14d4d183d1
+text: |
+  If ```isnsB``` is ```false```, this method **shall** check that the argument is between 0.0f and 1.0f and return false if it is not.

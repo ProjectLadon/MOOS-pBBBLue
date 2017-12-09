@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.3.0
+links: []
+normative: false
+ref: ''
+reviewed: 636a09e0d97dc54d64b85832c9be1b24
+text: |
+  ```bool procMail(CMOOSMsg &msg)```

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.7
+links: []
+normative: true
+ref: ''
+reviewed: daa245d7d855b3919711596833e62dc8
+text: |
+  If the incoming value is a a string and is equal to "BRAKE", this method **shall** call ```rc_set_motor_brake()``` and return the result.

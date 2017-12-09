@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.2.4
+links: []
+normative: true
+ref: ''
+reviewed: 3f1087b7452b533a045c427094b72882
+text: |
+  ```std::string varA``` **shall** store the name of the variable that sets the duty cycle of channel A.

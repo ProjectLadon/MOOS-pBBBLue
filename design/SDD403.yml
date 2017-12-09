@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.4.2
+links: []
+normative: true
+ref: ''
+reviewed: b3b01343535542485004f2ea9ebd9604
+text: |
+  For each configuration block that is present in the configuration JSON, this function **shall** add a pointer to the corresponding subclass of ```FunctionBlock``` and pass the configuration object to its ```configure()``` method.

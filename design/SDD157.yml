@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 888df8951899b57255fd555555560516
+text: |
+  ```static ButtonBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

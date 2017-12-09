@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.4
+links: []
+normative: true
+ref: ''
+reviewed: 5a1fe34549c72640b225670637f36d76
+text: |
+  If the value of the JSON is a number, it **must** be between -1.0f and 1.0f. If it is out of range, this method **shall** return ```false```.

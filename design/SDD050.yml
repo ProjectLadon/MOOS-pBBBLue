@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.7
+links: []
+normative: true
+ref: ''
+reviewed: 21cc076680f4c602dacd300f1bf4a3a5
+text: |
+  ```bool subscribe()``` **shall** subscribe to the variables named by ```varA```, ```varB```, and ```freqVar```, if they are non-empty.

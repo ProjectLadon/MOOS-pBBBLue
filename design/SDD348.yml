@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.4.3
+links: []
+normative: true
+ref: ''
+reviewed: 7eea2171e20d07a20d306ff80aecaac0
+text: |
+  This method **shall** publish the return value of ```rc_bmp_get_altitude_m()``` to ```BBBL_BARO_ALT```.

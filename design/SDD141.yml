@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.2.0
+links: []
+normative: false
+ref: ''
+reviewed: c062cef8e5091fb0da9dbfd5ea5478a7
+text: |
+  ```bool configure(rapidjson::Document d)```

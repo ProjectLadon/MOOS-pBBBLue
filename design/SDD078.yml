@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.11
+links: []
+normative: true
+ref: ''
+reviewed: ffcbee5d968cf886254a1a78381c14f4
+text: |
+  ```thread *servoThread``` **shall** store a pointer to the current thread.

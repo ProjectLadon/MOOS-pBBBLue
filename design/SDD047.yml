@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.6.0
+links: []
+normative: false
+ref: ''
+reviewed: b2963bc79a8146fd54daab62fa136b05
+text: |
+  ```bool setDutyB (float d)``` **shall** set the duty cycle of channel B on the configured interface.

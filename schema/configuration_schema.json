@@ -121,11 +121,6 @@
 					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
 					"$comment": "default is 92"
 				},
-				"compassFilter": {
-					"type": "string",
-					"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
-					"$comment": "default is OFF"
-				},
 				"orientation": {
 					"type": "string",
 					"enum": [
@@ -176,11 +171,8 @@
 							"GPIO3_20",
 							"GPIO3_17",
 							"GPIO3_2",
-							"GPIO3_1",
-							"LED_RED",
-							"LED_GRN"
-						],
-						"$comment": "Note that if you try to set the LEDs both here and in the LEDs section, pBBBLue will exit with an error"
+							"GPIO3_1"
+						]
 					},
 					"gpioVar": {"type": "string"},
 					"function": {
@@ -207,8 +199,8 @@
 									{"type": "number"}
 								]
 							},
-							"dutyCycleA": {"type": "string", "minimum": 0.0, "maximum": 1.0},
-							"dutyCycleB": {"type": "string", "minimum": 0.0, "maximum": 1.0},
+							"dutyCycleA": {"type": "string"},
+							"dutyCycleB": {"type": "string"},
 							"dutyCycleAns": {"type": "string"},
 							"dutyCycleBns": {"type": "string"}
 						},

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.5
+links: []
+normative: true
+ref: ''
+reviewed: b1efcb65b4fed42e41ded8926f74b7ca
+text: |
+  If a ```magnetometer``` entry is present and ```true```, this method **shall** set ```conf.enable_magnetometer``` to 1.

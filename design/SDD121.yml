@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.6.1
+links: []
+normative: true
+ref: ''
+reviewed: 7488432fae7189d12ac4fdf758bae11c
+text: |
+  ```ServoChannel(ServoMode action, int chan, std::chrono::duration period = defaultPeriod, long maxServo = defaultMax, long minServo = defaultMin, long center = defaultCenter, invert = defaultInvert)``` **shall** set the members of this class to the given values.

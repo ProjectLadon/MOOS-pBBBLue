@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 80e627305326a82e23fa19d8fac101b4
+text: |
+  ```double seaLevelPressure``` **shall** store the sea level pressure in Pascals for calculation of altitude. Default value **shall** be 101325.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.6.2.1
+links: []
+normative: true
+ref: ''
+reviewed: f37480cfd35594f40e89d60e2f16f7fc
+text: |
+  ```virtual bool configure(rapidjson::Document d)``` **shall** configure the class from an appropriate JSON object.

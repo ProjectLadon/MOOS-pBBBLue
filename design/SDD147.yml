@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 5d603902447c0d6f722c0021ce5bbf42
+text: |
+  If ```msg.GetKey()``` is not equal to either ```REDname``` or ```GRNname```, return ```false```.

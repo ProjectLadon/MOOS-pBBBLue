@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.1.1
+links: []
+normative: true
+ref: ''
+reviewed: 48d1a018f5a9035ef6e1ce9af4aca3cc
+text: |
+  This method **shall** take a servo angle in degrees.

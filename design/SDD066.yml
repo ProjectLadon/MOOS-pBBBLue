@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.1
+links: []
+normative: true
+ref: ''
+reviewed: d39a09dd4d22d53c0998b5b335af76d3
+text: |
+  This class **shall** store the configuration of a single servo channel.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 185fc6fc4ba6471e44a06248e4844386
+text: |
+  This method **shall** consume a ```Barometer``` object from the configuration JSON.

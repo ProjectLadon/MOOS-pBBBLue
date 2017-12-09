@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.3.2
+links: []
+normative: true
+ref: ''
+reviewed: cacf3889ab17c13c7cb7affa2f39a4a3
+text: |
+  If ```msg``` matches a subscribed variable, this method **shall** check whether it is BINARY and throw a ```std::invalid_argument``` exception if it is not.

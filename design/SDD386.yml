@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 8e1ac0abbfb224f915ec0b2e27cce542
+text: |
+  For any match found, this method **shall** check that the incoming type is ```DOUBLE```, pass it to the corresponding method, and return the result.

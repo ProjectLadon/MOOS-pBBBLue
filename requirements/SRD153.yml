@@ -4,6 +4,6 @@ level: 11.1.2.1
 links: []
 normative: true
 ref: ''
-reviewed: b81c4979e0a2f8fd8ec47ad7399c8e74
+reviewed: 01e8e8c134762eaff126cdc99e471a6a
 text: |
-  The value of this key **must** name one of the GPIO outputs, which are ```GPIO1_25```, ```GPIO1_17```, ```GPIO3_20```, ```GPIO3_17```, ```GPIO3_2```, ```GPIO3_1```, ```LED_RED```, and ```LED_GRN```
+  The value of this key **must** name one of the GPIO outputs, which are ```GPIO1_25```, ```GPIO1_17```, ```GPIO3_20```, ```GPIO3_17```, ```GPIO3_2```, and ```GPIO3_1```.

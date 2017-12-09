@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.6.2.3
+links: []
+normative: true
+ref: ''
+reviewed: e074a74cefcfab834b79586bea37dfbe
+text: |
+  ```virtual bool tick()``` **shall** execute periodic actions, such as data reads.

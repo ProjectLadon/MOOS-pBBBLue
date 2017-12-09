@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.4
+links: []
+normative: true
+ref: ''
+reviewed: f0cf06ae1cb26a14a2e7ca52a77968fb
+text: |
+  ```bool tick()``` **shall** do nothing and return true.

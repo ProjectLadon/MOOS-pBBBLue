@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 9d52a122efc36c72d5900fa127502db9
+text: |
+  ```static const long defaultMax``` **shall** be set to 2000

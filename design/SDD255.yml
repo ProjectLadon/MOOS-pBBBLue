@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 8849e18c634014616249d5178bb8a041
+text: |
+  For each call that returns ```true```, this method **shall** check that the value of the named variable is DOUBLE and then pass it to that member's ```setServo()``` method.

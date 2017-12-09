@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 02e237649939a043bb33e4c26dfa850a
+text: |
+  ```std::list<std::string> voltChannels``` **shall** store the names of the voltage scaled output variables.

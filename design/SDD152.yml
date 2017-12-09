@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.6
+links: []
+normative: true
+ref: ''
+reviewed: b86d545077c8593d57fc533b10ca93ef
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if either ```REDname``` or ```GRNname``` is non-empty.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 97f45ba179f14c2d4a83d0a8f8e21f80
+text: |
+  If ```msg.GetKey()``` is equal to ```BBBL_MOTORS_ACTIVE``` and the value is both BINARY and ```false```, call ```rc_disable_motors()``` and return ```true```. If it is BINARY and ```true```, this method **shall** call ```rc_enable_motors()```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.4.1
+links: []
+normative: true
+ref: ''
+reviewed: dcd2f7f0ffce803dca1d52bc40f255d3
+text: |
+  ```static EncodersBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

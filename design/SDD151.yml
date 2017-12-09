@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.5
+links: []
+normative: true
+ref: ''
+reviewed: bf64620479389ac5abdd046ccbddb681
+text: |
+  ```bool subscribe()``` **shall** subscribe the variables named in ```REDname``` and ```GRNname``` if they are not empty and return the result.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 5796428ec14c738e88b0cfa76cad96b6
+text: |
+  ```static const std::chronon::duration defaultPeriod``` **shall** be set to 20000 microseconds.

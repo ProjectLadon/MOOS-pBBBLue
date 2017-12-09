@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.2.4
+links: []
+normative: true
+ref: ''
+reviewed: 26678060792ba4568986cd38af58e7e4
+text: |
+  ```std::string var``` **shall** store the name of the attached variable.

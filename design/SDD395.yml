@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.2.0
+links: []
+normative: false
+ref: ''
+reviewed: 7b08fe95622eee079655f20a1357e7e2
+text: |
+  ```rapidjson::Document getConf(std::string conf)```

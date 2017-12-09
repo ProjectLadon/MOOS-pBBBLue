@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 436f2db5ffc9dc0e0c38825c8f0aa118
+text: |
+  ```GPIOmode mode``` **shall** store the current mode of the pin.

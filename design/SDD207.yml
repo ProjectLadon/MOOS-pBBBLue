@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 45e1dcfe97c7e4e9f3ebea3bea03cd84
+text: |
+  ```static EncodersBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

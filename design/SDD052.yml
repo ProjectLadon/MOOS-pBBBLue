@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.1.0
+links: []
+normative: false
+ref: ''
+reviewed: 5fcc0b8aece46172b4689118baac9335
+text: |
+  ```PWMChannel(int iface, float freq, std::string varA, std::string varB, bool isnsA = false, bool isnsB = false)```

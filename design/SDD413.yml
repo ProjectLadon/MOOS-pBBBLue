@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 7.1
+links: []
+normative: true
+ref: ''
+reviewed: 4b84a0e09e6aa91e7d774b68c6675a48
+text: |
+  The ```OnNewMail()``` method **shall** pass each incoming message to the ```tick()``` method of each item returned by ```getActive()```.

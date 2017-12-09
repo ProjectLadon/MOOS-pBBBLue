@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 1fa1868683c59591da2ae5fd9afa750f
+text: |
+  This method **shall** publish the return value of ```rc_bmp_get_temperature_c()``` to ```BBBL_BARO_TEMP```.

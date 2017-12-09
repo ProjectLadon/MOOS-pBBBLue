@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 4512cdef5250a891a061e83e20fecc77
+text: |
+  ```static IMUDMPBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

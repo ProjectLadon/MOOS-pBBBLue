@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.1.1
+links: []
+normative: true
+ref: ''
+reviewed: ed4974724ef07be982d0f1276e002578
+text: |
+  This constructor **shall** set ```iface``` to the given value and other members to their defaults.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.1.4
+links: []
+normative: true
+ref: ''
+reviewed: 9025fd2df3120a5af9dd9ede81ca65cd
+text: |
+  Values between 45 and 90 **shall** be mapped to the range between ```center``` and ```max```.

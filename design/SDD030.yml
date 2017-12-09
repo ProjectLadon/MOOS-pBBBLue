@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 4c080676543d7ebb99fa01e256763d8a
+text: |
+  This class defines the state of a single PWM interface and its two pins.

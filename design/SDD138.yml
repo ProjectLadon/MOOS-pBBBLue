@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.3.5
+links: []
+normative: true
+ref: ''
+reviewed: f3ecdd6e6de536910808f73a52f836b8
+text: |
+  ```bool GRNstate``` **shall** store the current state of the red LED.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.5
+links: []
+normative: true
+ref: ''
+reviewed: 191a27dc7d4a0c2b5f7fa790bc946a80
+text: |
+  ```bool setServoMicros(double s)``` **shall** take a pulse length in microseconds and write it directly to ```current```.

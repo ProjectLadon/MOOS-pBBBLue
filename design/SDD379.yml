@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 480aa6b1c92b5b74a933ecd5dbcf66fd
+text: |
+  ```static PWMBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

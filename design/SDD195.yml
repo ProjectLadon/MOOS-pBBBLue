@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 088995e1d107a781a4331b0462185106
+text: |
+  If all members of ```motors``` are empty strings, this method **shall** return ```false```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 974842d19595db7aa1986d12d5832a0b
+text: |
+  ```static ButtonBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

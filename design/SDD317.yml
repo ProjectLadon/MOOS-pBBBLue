@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.10
+links: []
+normative: true
+ref: ''
+reviewed: af00ee12d784f4fa3d61bbca080611fb
+text: |
+  If an ```orientation``` entry is present, this method **shall** set ```conf.orientation``` to the given value.

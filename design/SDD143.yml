@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 036e4e80304050a957da5658c21619d3
+text: |
+  The ```REDname``` and ```GRNname``` members **shall** be populated from the ```RED``` and ```GREEN``` elements of the configuration JSON, if they are present.

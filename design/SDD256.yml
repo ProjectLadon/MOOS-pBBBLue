@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.4
+links: []
+normative: true
+ref: ''
+reviewed: 7d106d7f06b8b0a4a643722e570d4ba8
+text: |
+  This method **shall** return the logical AND of all called ```setServo()``` methods.

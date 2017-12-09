@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 9be3cc3e846a7acd4bba3c4f5ca73dc4
+text: |
+  This method **shall** return ```false``` if the list returned by ```getActive()``` is not empty.

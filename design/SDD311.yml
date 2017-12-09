@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.4
+links: []
+normative: true
+ref: ''
+reviewed: 240a5294458d4fe97ebde49743e94337
+text: |
+  This method **shall** call ```rc_set_imu_config_to_defaults()``` to set the configuration to defaults. If this fails, this method **shall** return false.

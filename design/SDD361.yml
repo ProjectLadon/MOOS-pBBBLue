@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: c2d77f51fee9e7b8a479947863d70b4d
+text: |
+  For each entry in the array, this method **shall** construct and emplace an entry to ```pins```.

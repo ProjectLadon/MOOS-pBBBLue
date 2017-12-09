@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: a2b6cd02453f0a3da5a43a05b451c898
+text: |
+  This method **shall** publish the DC jack voltage returned by ```rc_get_dc_jack_voltage()``` to ```BBBL_JACK_VOLTAGE```.

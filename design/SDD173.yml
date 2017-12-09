@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.4.6
+links: []
+normative: true
+ref: ''
+reviewed: 132dfd885cb56844e51481a7d9d34183
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if either ```pause``` or ```mode``` is non-empty.

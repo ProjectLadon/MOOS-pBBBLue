@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 69a4ac69dec8affda6a6293e5852afa9
+text: |
+  ```std::string getVarB``` **shall** return ```varB```.

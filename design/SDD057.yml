@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.1.5
+links: []
+normative: true
+ref: ''
+reviewed: d61b07dda61ee8450a45ba2352682961
+text: |
+  If ```iface``` is 0, this constructor **shall** set the pinmux to enable the output pins.

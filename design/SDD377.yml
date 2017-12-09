@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 73ce0db0cbca17c1f6720a23d086754b
+text: |
+  ```std::list<PWMChannel> interfaces``` **shall** store a list of the configured PWM interfaces.

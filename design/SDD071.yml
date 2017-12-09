@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.4
+links: []
+normative: true
+ref: ''
+reviewed: 193ee294cf3756485400ae1719e30713
+text: |
+  ```const std::chrono::duration period``` **shall** store the duration of each repetition.

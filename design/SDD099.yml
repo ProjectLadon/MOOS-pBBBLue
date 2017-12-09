@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 522b9dd9fa3b218505e875a6bffadd03
+text: |
+  This method **shall** take a throttle setting per percent.

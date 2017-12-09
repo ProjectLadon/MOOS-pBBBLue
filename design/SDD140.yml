@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 4d493376ba156bd491bc55017ecc5c6d
+text: |
+  ```static LEDBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

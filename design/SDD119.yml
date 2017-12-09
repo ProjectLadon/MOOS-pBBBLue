@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.7
+links: []
+normative: true
+ref: ''
+reviewed: e9ebf257edaa259c68f5ff505418dcac
+text: |
+  ```bool matchVar(std::string v)``` **shall** return ```true``` if and only if ```v``` is equal to ```var```. This comparison **shall** be case insensitive.

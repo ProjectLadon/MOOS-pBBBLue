@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 5830a1dde9a9795c8d286f73e208070f
+text: |
+  ```static BaroBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.2.1
+links: []
+normative: true
+ref: ''
+reviewed: b8a5d8428f5fce187e7037f42072104d
+text: |
+  This function **shall** take the supplied configuration JSON string and attempts to parse it.

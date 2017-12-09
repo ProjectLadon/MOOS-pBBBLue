@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.5
+links: []
+normative: true
+ref: ''
+reviewed: 9ab508cbb98aa8495d096456d7884997
+text: |
+  This method **shall** calculate the compass bearing of the positive X axis with the tilt compensation algorithm described in http://www.cypress.com/file/130456/download and publish it to ```BBBL_IMU_COMPASS``` as a ```DOUBLE```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 155c74c8b70edc781cd8d73e86fcfa18
+text: |
+  This method **shall** check the value of the ```mode``` element in the configuration JSON and return ```false``` if it is not present and equal to ```Random```.

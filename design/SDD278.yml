@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.7
+links: []
+normative: true
+ref: ''
+reviewed: 3cfa4b0ebeb4368e18a55b8b6c002bef
+text: |
+  If a ```gyroRange``` entry is present, this method **shall** set ```conf.gyro_fsr``` to the given value.

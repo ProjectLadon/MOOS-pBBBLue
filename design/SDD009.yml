@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.8
+links: []
+normative: true
+ref: ''
+reviewed: 24bf7da59a8654d9a52daf7f5a2066eb
+text: |
+  The cmake list **shall** generate a target that compiles and runs the tests called ```test```.

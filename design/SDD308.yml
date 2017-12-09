@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 019d2ae5bd345fc024ee9a8ec5a8d8a4
+text: |
+  This method **shall** check if ```IMURandomBlock``` has been configured, and return ```false``` if it has.

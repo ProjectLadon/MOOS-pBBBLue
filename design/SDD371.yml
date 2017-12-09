@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.5
+links: []
+normative: true
+ref: ''
+reviewed: 6e5a581f2bb42645af73613d5d36486e
+text: |
+  This class **shall** have an explicit destructor that destroys all members of ```pins```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.1
+links: []
+normative: true
+ref: ''
+reviewed: fe0b810e501c79eb270d1d48e81bd6dd
+text: |
+  ```const ServoMode mode``` **shall** store the mode of this servo channel.

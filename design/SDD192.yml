@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.2.1
+links: []
+normative: true
+ref: ''
+reviewed: c670da85b7ad42cbf4a22cd081cac6a0
+text: |
+  This method **shall** consume a ```Motor``` object from the configuration JSON and populate ```motors``` with its contents.

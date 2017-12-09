@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.0
+links: []
+normative: false
+ref: ''
+reviewed: 0f06a8efc1b9cbebf9e8121777b14029
+text: |
+  ```LEDBlock``` class

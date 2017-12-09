@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 6cb815f16b6e420fb47e09dbdbed317f
+text: |
+  ```const std::string var``` **shall** store the name of the variable that controls this channel.

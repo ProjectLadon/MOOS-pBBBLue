@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 4b1e1bba56ab4513fabc23be80a8dd98
+text: |
+  If the mode is ```GPIOmode::OUTPUT``` and the value of ```msg.GetKey()``` is equal to ```getVar()```, this method **shall** check that the incoming value is a BINARY and, if so, pass it to ```set()```.

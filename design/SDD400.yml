@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 8846003bc07a76e0b0e73559b10030d4
+text: |
+  This function **shall** pass the JSON read from the file to ```getConf()``` and return the result.

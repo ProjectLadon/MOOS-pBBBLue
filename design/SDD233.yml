@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.4.3
+links: []
+normative: true
+ref: ''
+reviewed: ee7dd7b480edc81eadd0687c84e9f5cd
+text: |
+  For each member of ```rawChannels``` that is not empty, this method **shall** publish the result of calling ```rc_adc_raw()``` against that channel.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.3
+links: []
+normative: true
+ref: ''
+reviewed: e46a02e8f7b1bca8de8b91798bc3722a
+text: |
+  This method **shall** sample the magnetometer by calling ```rc_read_mag_data()``` and return ```false``` if it fails.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: dfbd5aeb9e752abd4b5ba5cc76af137d
+text: |
+  This method **shall** consume an ```IMU``` object from the configuration JSON.

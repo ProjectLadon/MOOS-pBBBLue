@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 6b2133002e7c6439b1b3dc743a5c857f
+text: |
+  It **shall** iterate over the contained JSON array.

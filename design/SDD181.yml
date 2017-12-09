@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.0
+links: []
+normative: false
+ref: ''
+reviewed: 88486dc9fe266ed06031db809d2dc053
+text: |
+  ```bool setMotor(int motor, std::string val)```

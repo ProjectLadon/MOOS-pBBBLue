@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.5
+links: []
+normative: true
+ref: ''
+reviewed: 37ee8177bff10f93a25c37cc36b6b211
+text: |
+  ```bool subscribe()``` **shall** subscribe to each non-empty string in ```motors```, as well as ```BBBL_MOTORS_ACTIVE```, ```BBBL_MOTORS0_FREQUENCY```, and ```BBBL_MOTORS0_FREQUENCY```. It **shall** then return the logical and of the results.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.3
+links: []
+normative: true
+ref: ''
+reviewed: 2d65757da1fbdc53e02b74ae5be3a32b
+text: |
+  ```bool procMail(CMOOSMsg &msg)``` **shall** do nothing and return ```false```.

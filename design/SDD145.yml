@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.2.4
+links: []
+normative: true
+ref: ''
+reviewed: ea3ccc28856c76938374f5e3714ebd80
+text: |
+  This method **shall** always return true.

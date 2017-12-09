@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 6017f0b2648792977c294c95a37d68e1
+text: |
+  Values between 0 and 90 **shall** be mapped to the range between ```min``` and ```center```.

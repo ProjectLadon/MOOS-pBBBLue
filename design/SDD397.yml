@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.2.2
+links: []
+normative: true
+ref: ''
+reviewed: f27668c1732e3638b8f43b118283b379
+text: |
+  This function **shall** throw a ```std::invalid_argument``` exception if the supplied JSON does not conform to schema/configuration_schema.json.

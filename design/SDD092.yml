@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.3.0
+links: []
+normative: false
+ref: ''
+reviewed: 85a058443bddf1ba3cfb97d10614fd89
+text: |
+  ```bool setServo360(double s)```

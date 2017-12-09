@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.2.4
+links: []
+normative: true
+ref: ''
+reviewed: fe2df7ea25b2ce8a282f3b44a3d79c22
+text: |
+  The elements **shall** be written to the constructor parameters with matching names.

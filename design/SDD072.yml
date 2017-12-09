@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.5
+links: []
+normative: true
+ref: ''
+reviewed: 00940a620873b7b1cf2ea9fc6dee417c
+text: |
+  ```const long min``` **shall** store the minimum length of the servo pulse in microseconds.

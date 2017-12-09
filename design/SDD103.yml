@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.4.5
+links: []
+normative: true
+ref: ''
+reviewed: 496a50bf099fb7ff84428d82b280f509
+text: |
+  If ```invert``` is ```true```, the direction of action **shall** be reversed.

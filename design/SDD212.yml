@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 4d755bdc6f294d489c5fed8321dd5f89
+text: |
+  This method **shall** consume an ```Encoders``` object from the configuration JSON and populate the ```encoders``` list with its contents.

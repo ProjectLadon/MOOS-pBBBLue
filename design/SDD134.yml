@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 91d11d52c75c63794a9213c1f7275d18
+text: |
+  ```static LEDBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

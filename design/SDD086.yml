@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.2.0
+links: []
+normative: false
+ref: ''
+reviewed: f2db74ad7dc8390acd2f934e82a8f217
+text: |
+  ```bool setServo180(double s)```

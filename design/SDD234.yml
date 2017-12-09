@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.4.4
+links: []
+normative: true
+ref: ''
+reviewed: 1ac89a5d2c33ce975155b267af8b129e
+text: |
+  For each member of ```voltChannels``` that is not empty, this method **shall** publish the result of calling ```rc_adc_volt()``` against that channel.

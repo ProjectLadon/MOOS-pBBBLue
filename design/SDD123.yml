@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.6.1
+links: []
+normative: true
+ref: ''
+reviewed: 9e482af03ab71bbcb3f3f9b448ce7880
+text: |
+  This class **shall** be a virtual base class.

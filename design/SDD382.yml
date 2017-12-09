@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 87e92babfad01a4e8d602b62da6feeb3
+text: |
+  If ```MotorsBlock::isConfigured()``` returns ```true``` and any elements other than the first (0) are present and non-null, this method **shall** throw a ```std::invalid_argument``` exception.

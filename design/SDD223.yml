@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 185f939fc98cf5209e8323a65447bc88
+text: |
+  ```static ADCBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

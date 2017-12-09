@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: b1d42cbfc2a82dacbfbf7780a068b900
+text: |
+  ```varA``` and ```varB``` **shall** be set to the given values.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: b2f71e68b67dddcd34e98ccbc17e6380
+text: |
+  ```int freq``` **shall** store the frequency, measured in Hz and **shall** default to 1000.

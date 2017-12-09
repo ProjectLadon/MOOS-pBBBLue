@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 208ea92f917c9bb8761801d4d1ae5058
+text: |
+  This method **shall** check if ```IMUDMPBlock``` has been configured, and return ```false``` if it has.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 420192d9b453025254fde5de12ea5d15
+text: |
+  For each non-null element, this method **shall** construct a ```ServoChannel``` object and emplace it at the end of the ```servos``` list.

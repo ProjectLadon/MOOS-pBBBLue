@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.1
+links: []
+normative: true
+ref: ''
+reviewed: be6e1bb5c9e6a3f06a88322bdb14978c
+text: |
+  ```static GPIOblock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

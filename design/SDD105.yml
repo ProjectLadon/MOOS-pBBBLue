@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.6
+links: []
+normative: true
+ref: ''
+reviewed: 5c0ce6cd179386fd9cea44b1ae0684cf
+text: |
+  ```void pulse()``` **shall** send one servo pulse of ```current``` microseconds every ```period``` until ```killThread``` is ```true```. This is intended to be the execution

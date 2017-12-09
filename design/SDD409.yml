@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 5.1
+links: []
+normative: true
+ref: ''
+reviewed: 81e702ad4d87459e9f98c580636725bb
+text: |
+  The ```OnConnectToServer()``` method **shall** call ```getActive()``` to get the active list and iterate through it, calling the ```subscribe()``` method for each item.

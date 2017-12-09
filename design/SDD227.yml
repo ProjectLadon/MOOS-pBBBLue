@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.11.4.1
+links: []
+normative: true
+ref: ''
+reviewed: a3e91aa3d0e517efcea57a6ec16c03e0
+text: |
+  ```static ADCBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

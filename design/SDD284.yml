@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.0
+links: []
+normative: false
+ref: ''
+reviewed: 3054fa6df8ed427bb8b99581e74e1f81
+text: |
+  ```bool tick()```

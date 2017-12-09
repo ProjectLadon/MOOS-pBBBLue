@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 25a82760888dfdac9cda39e8f6a06741
+text: |
+  If this call succeeds, this method **shall** set ```configured``` to ```true```.

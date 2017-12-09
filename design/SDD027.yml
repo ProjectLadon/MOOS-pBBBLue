@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 0780df74ebd6ad7e7cc679adf3b43422
+text: |
+  ```GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false)``` **shall** set up the named pin with the named mode. If it is an output, it **shall** set it to the provided state.

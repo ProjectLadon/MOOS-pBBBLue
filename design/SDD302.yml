@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 6ea285269c5cd420d7ec5c5cd321bec2
+text: |
+  ```rc_imu_data_t data``` **shall** store the IMU data

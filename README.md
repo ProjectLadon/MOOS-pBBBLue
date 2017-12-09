@@ -194,7 +194,7 @@ The Beaglebone Blue has eight servo/ESC outputs powered by the PRU. They are con
 ## [IMU](http://www.strawsondesign.com/#!manual-imu)
 The IMU has two modes -- Random and DMP. 
 
-In Random mode, the accelerometer, gyroscopes, magnetometer, and temperature can all be read at any time. Additionally, the pBBBlue process calculates the tilt-compensated compass heading of the X axis in random mode. Optionally, the *compassFilter* property may be used to add a low pass filter to this value -- the numbers correspond to the cutoff frequency.
+In Random mode, the accelerometer, gyroscopes, magnetometer, and temperature can all be read at any time. Additionally, the pBBBlue process calculates the tilt-compensated compass heading of the X axis in random mode. 
 
 In DMP mode, the sensor fusion algorithms in the IMU run at a fixed rate (set by *dmpSampleRate*) and generate both a normalized quaternion output and a set of Tait-Bryan (Euler) angles. The heading (yaw) axis of the Tait-Bryan output converges to the raw compass heading on a time constant set by *dmpCompassTimeConstant*. Minimum value is 0.1.
 
@@ -231,11 +231,6 @@ There are also low pass input filters for the gyro and accelerometer, which can 
 			"type": "string",
 			"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
 			"$comment": "default is 92"
-		},
-		"compassFilter": {
-			"type": "string",
-			"enum": ["OFF", "184", "92", "41", "20", "10", "5"],
-			"$comment": "default is OFF"
 		},
 		"orientation": {
 			"type": "string",
@@ -328,11 +323,8 @@ The configuration JSON is defined as follows:
 					"GPIO3_20",
 					"GPIO3_17",
 					"GPIO3_2",
-					"GPIO3_1",
-					"LED_RED",
-					"LED_GRN"
-				],
-				"$comment": "Note that if you try to set the LEDs both here and in the LEDs section, pBBBLue will exit with an error"
+					"GPIO3_1"
+				]
 			},
 			"gpioVar": {"type": "string"},
 			"function": {
@@ -348,7 +340,7 @@ The configuration JSON is defined as follows:
 ```
 
 ## [PWM](http://www.strawsondesign.com/#!manual-pwm)
-There are three PWM interfaces (0, 1, and 2) each with two channels, A & B. Channels 0 and 1 are dedicated to the motor drivers; if you attempt to both configure both the motor drivers and the PWM interface for one of these two channels, you will get an error and pBBBLue will exit during the startup phase. 
+There are three PWM interfaces (0, 1, and 2) each with two channels, A & B. Channels 1 and 2 are dedicated to the motor drivers; if you attempt to both configure both the motor drivers and the PWM interface for one of these two channels, you will get an error and pBBBLue will exit during the startup phase. 
 
 For each of the three PWM subsystems, there are five variables that can be configured.
 * frequency -- this can be either a fixed numeric value or the name of a DOUBLE variable to subscribe to.

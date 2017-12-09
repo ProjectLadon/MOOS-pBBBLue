@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 614b95ea488a6f55a6abcd4f8260a5ae
+text: |
+  ```static IMURandomBlock* instance()``` **shall** return ```s_instance```, and instantiate it if it has not yet been instantiated (i.e. lazy instantiation).

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 703316b59732c282e2cbae4463b90eab
+text: |
+  This function **shall** throw a ```std::filesystem::filesystem_error``` exception if the argument is a filename and the file cannot be found or cannot be read.

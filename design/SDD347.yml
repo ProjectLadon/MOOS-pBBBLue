@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 937b6b303e5cbf4a5f9f5cb887faf7a9
+text: |
+  This method **shall** publish the return value of ```rc_bmp_get_pressure_pa()``` to ```BBBL_BARO_PRES```.

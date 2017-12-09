@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.0
+links: []
+normative: false
+ref: ''
+reviewed: 88660e537bf0adffba0d39ebfd3177e1
+text: |
+  ```GPIOblock``` class

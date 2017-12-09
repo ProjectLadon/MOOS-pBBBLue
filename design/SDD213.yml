@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.4.2.2
+links: []
+normative: true
+ref: ''
+reviewed: e1d5a7122aa7a12495ba182841a8c9d8
+text: |
+  For each configured channel, this method **shall** either set the initial value to zero or to the value provided in the attached ```init``` element of the configuration JSON.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.7
+links: []
+normative: true
+ref: ''
+reviewed: b4c27c8ac23cb9639891eda1cef8acd0
+text: |
+  This method **shall** pack the accelerometer data into a JSON string as described in schema/imu_tuple_schema.json and publish it to the variable ```BBBL_IMU_ACCEL```.

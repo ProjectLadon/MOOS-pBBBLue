@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.6
+links: []
+normative: true
+ref: ''
+reviewed: a81e2155c64ebf0c21712760d5038abf
+text: |
+  ```bool isConfigured()``` **shall** return the value of ```configured````.

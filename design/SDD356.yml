@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 9680a17e8cce8189fe75fa2a3b674bb3
+text: |
+  ```std::list<GPIOpin> pins``` **shall** store a list of the configured pins.

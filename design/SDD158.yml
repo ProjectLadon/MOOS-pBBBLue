@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 90c9ac0b40b19a2f692aef4bc2316056
+text: |
+  ```std::string pause``` **shall** store the name of the variable the PAUSE button **shall** be published to.

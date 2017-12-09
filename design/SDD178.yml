@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 860b6fa3c945421bd2e7b01f99ee61fe
+text: |
+  ```static MotorsBlock* s_instance``` **shall** store a pointer to the only instance of this sub-class.

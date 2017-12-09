@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.1
+links: []
+normative: true
+ref: ''
+reviewed: fd7db31b396c8f18125e4906ee5d0451
+text: |
+  ```ServoMode getMode()``` **shall** return the value of ```mode```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.4.0
+links: []
+normative: false
+ref: ''
+reviewed: c28205ce71f1dad01a3b987d8a2360d2
+text: |
+  ```bool setServoESC(double s)```

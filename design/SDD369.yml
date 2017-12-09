@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.5
+links: []
+normative: true
+ref: ''
+reviewed: 3eb1388862c4d506d9bcfe47b86fdbe7
+text: |
+  ```bool subscribe()``` **shall** iterate through ```pins``` calling ```subscribe``` on each object in turn, and returning the logical OR of all results.

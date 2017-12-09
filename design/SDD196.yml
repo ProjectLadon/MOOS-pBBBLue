@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.5.3.2
+links: []
+normative: true
+ref: ''
+reviewed: d4b92803b66ff5f073930ed866dce14f
+text: |
+  If ```msg.GetKey()``` matches one of the non-empty members of ```motors```, this method **shall** pass the value and the matching index to ```setMotor()```, then return the result.

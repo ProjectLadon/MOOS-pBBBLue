@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.4.2
+links: []
+normative: true
+ref: ''
+reviewed: 8244ded8b4f30a088ce0522d9f389415
+text: |
+  This method **shall** pack the contents of ```data.fused_quat``` into a JSON string conforming to schema/imu_quaternion_schema.json and publish it to ```BBBL_DMP_QT```.

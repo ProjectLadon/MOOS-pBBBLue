@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 4a6666441fba1dcb7571fa815beb5bec
+text: |
+  ```rc_imu_config_t conf``` **shall** store the IMU configuration

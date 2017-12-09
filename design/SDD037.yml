@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.2.6
+links: []
+normative: true
+ref: ''
+reviewed: 809708ee1017dfc3b4f9eb0743d970ba
+text: |
+  ```bool isnsA``` **shall** be ```true``` if channel A expects a nanosecond value.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.10
+links: []
+normative: true
+ref: ''
+reviewed: 1170fd4d408ea35d91676fb681f6bb96
+text: |
+  ```bool killThread``` **shall** trigger the shutdown of ```servoThread``` when it is ```true```.

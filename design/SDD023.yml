@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 8f5f87c47d21b9e37a9d2d0161e27cdb
+text: |
+  ```void set(bool n)``` **shall** set the ```state``` equal to ```n``` if and only if ```state = GPIOmode::OUTPUT```. Otherwise, it **shall** do nothing.

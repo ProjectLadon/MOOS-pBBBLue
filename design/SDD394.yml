@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.1
+links: []
+normative: true
+ref: ''
+reviewed: db36cadd4178485756b8cfed90223c21
+text: |
+  If the argument is ```true```, it **shall** clear its internal state and return a pointer to an empty list. This is provided to aid in unit testing and **must not** be used for any production purpose.

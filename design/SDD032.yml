@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 9e5b24bf18d637042f3f21fe13fe0fb8
+text: |
+  ```int iface``` **shall** store the number of the interface this points to.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.7
+links: []
+normative: true
+ref: ''
+reviewed: bde92b1c83978935b120c1c6bef84670
+text: |
+  ```const long center``` **shall** store the length of the servo pulse in microseconds at the center position.

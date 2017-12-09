@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 8b7540fa48ff3516401df49be210d089
+text: |
+  This method **shall** pass ```msg.GetKey()``` to each member of ```servos```'s ```matchVar()``` method.

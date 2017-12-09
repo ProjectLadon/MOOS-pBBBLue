@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.2
+links: []
+normative: true
+ref: ''
+reviewed: 16a053ecfe806a2a6f17205f773cd035
+text: |
+  This software **shall** use [rapidjson](http://www.rapidjson.org) as the JSON parse/unparse library.

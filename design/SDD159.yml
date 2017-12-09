@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.8.3.3
+links: []
+normative: true
+ref: ''
+reviewed: 4a586e13807fadc2f3907764ebf7786b
+text: |
+  ```std::string mode``` **shall** store the name of the variable the MODE button **shall** be published to.

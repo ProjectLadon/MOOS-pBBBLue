@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.1.2
+links: []
+normative: true
+ref: ''
+reviewed: 143236ed22530be6a53be442d2918db2
+text: |
+  Values outside the range of 0-90 **shall** be bounded to that range.

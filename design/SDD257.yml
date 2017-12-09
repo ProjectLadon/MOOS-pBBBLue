@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.3.5
+links: []
+normative: true
+ref: ''
+reviewed: aad14a0635cba9ea4c4d29342d708c85
+text: |
+  If there is no match to ```msg.GetKey()```, this method **shall** return ```false```.

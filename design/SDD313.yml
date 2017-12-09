@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.6
+links: []
+normative: true
+ref: ''
+reviewed: e374805dc8498419854d6221fd73a1fc
+text: |
+  If an ```accelRange``` entry is present, this method **shall** set ```conf.accel_fsr``` to the given value.

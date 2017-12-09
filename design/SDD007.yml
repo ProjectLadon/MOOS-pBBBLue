@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.6
+links: []
+normative: true
+ref: ''
+reviewed: e6c7143c54733a5b184e8e91d0c7b6d0
+text: |
+  The cmake list **shall** generate a MOOS executable target.

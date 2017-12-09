@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 6bd7b1a3d59e3f809801e7a6e581b9e2
+text: |
+  ```std::string getVar()``` **shall** return the value of ```var```.

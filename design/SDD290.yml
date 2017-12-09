@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.6
+links: []
+normative: true
+ref: ''
+reviewed: cfbe52616707bcf4111043bb0456ded3
+text: |
+  This method **shall** publish the temperature to ```BBBL_IMU_TEMP``` as a ```DOUBLE```.

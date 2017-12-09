@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 1.4
+links: []
+normative: true
+ref: ''
+reviewed: d8e59e0cc6a84f12c1e6f0eb85cee17c
+text: |
+  Unit tests **shall** be written using the gtest suite.

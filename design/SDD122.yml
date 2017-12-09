@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.6.0
+links: []
+normative: false
+ref: ''
+reviewed: 6fd79ca0d720e7548c36aeec491495aa
+text: |
+  ```FunctionBlock``` virtual base class

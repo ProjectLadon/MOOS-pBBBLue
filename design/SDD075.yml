@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.8
+links: []
+normative: true
+ref: ''
+reviewed: 9d7c66935cbd9449db11749222401c26
+text: |
+  ```long current``` **shall** store the current length of the servo pulse in microseconds.

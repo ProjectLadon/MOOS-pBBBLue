@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.5
+links: []
+normative: true
+ref: ''
+reviewed: 1d7ee8f4375862c806911aab964a7f88
+text: |
+  The destructor for this class shall set the pinmux back to default if ```iface``` is 0.

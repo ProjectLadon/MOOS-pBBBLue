@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.8
+links: []
+normative: true
+ref: ''
+reviewed: e298289494599f9e9ee9d7118ea9ea7f
+text: |
+  This method **shall** pack the gyro data into a JSON string as described in schema/imu_tuple_schema.json and publish it to the variable ```BBBL_IMU_GYRO```.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.3.2
+links: []
+normative: true
+ref: ''
+reviewed: 258dee32162e04e7f1ac66596016ccc4
+text: |
+  ```std:list<ServoChannel> servos``` **shall** store the servo channels specified by the configuration JSON.

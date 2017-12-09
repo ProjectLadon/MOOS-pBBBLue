@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 6.1
+links: []
+normative: true
+ref: ''
+reviewed: 2180c814803dfacf23c5cf489ee66413
+text: |
+  The ```OnNewMail()``` method **shall** pass each incoming message to the ```procMail()``` method of each item returned by ```getActive()```.

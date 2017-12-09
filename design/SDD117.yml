@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.5
+links: []
+normative: true
+ref: ''
+reviewed: 7f3c241d2f593a9bdd0e7daf0943e269
+text: |
+  ```void startThread()``` **shall** set ```killThread``` to ```false```, spawn a new thread with the ```pulse()``` method, and store a pointer to it in ```servoThread```.

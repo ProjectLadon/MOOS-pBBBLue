@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.0
+links: []
+normative: false
+ref: ''
+reviewed: b1396487e26513bfdb1e03cb36e5ce7d
+text: |
+  ```IMUDMPBlock``` class

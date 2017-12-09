@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.3.3.4
+links: []
+normative: true
+ref: ''
+reviewed: 06d1477d2c39023641fa681580e5da4e
+text: |
+  Values between 180 and 360 **shall** be mapped to the range between ```center``` and ```max```.

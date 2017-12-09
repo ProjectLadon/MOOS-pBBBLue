@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 3301c74ed5b6f8f5b0e5abf4f3db3a4d
+text: |
+  This method **shall** check the value of the ```mode``` element in the configuration JSON and return ```false``` if it is not present and equal to ```DMP```.

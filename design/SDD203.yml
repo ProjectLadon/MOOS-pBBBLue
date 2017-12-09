@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.0
+links: []
+normative: false
+ref: ''
+reviewed: 53ad3ccaf63e1647ff79d81f70f0b4cf
+text: |
+  ```EncodersBlock``` class

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.4.3
+links: []
+normative: true
+ref: ''
+reviewed: 84e066c91ea78987fac16592bab6bb6b
+text: |
+  This method **shall** return the logical and of the return values of the ```configure()``` methods called.

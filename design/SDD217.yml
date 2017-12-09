@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.4.6
+links: []
+normative: true
+ref: ''
+reviewed: 44ef2f35e7c3d7a5280a6ec4d52b19c4
+text: |
+  ```bool isConfigured()``` **shall** return ```true``` if and only if ```encoders``` has at least one non-empty string.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.4.4
+links: []
+normative: true
+ref: ''
+reviewed: bd77df776b30e57f6811b7ec2e1704c5
+text: |
+  ```bool tick()``` **shall** read the corresponding encoder for each member of ```encoders``` that is not empty and publish the resulting value on the variable named by that element.

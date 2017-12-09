@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.2.10
+links: []
+normative: true
+ref: ''
+reviewed: 10e94cd35e4a58fe18ef0699ab4cae9f
+text: |
+  This method **shall** configure the IMU by calling ```rc_initialize_imu()``` and returning **false** if it fails.

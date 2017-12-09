@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.3.4
+links: []
+normative: true
+ref: ''
+reviewed: 6d552165521372db6c056b39db7d27a6
+text: |
+  ```std::string getFreqVar``` **shall** return ```freqVar```

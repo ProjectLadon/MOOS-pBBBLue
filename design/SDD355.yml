@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.3.1
+links: []
+normative: true
+ref: ''
+reviewed: ff2d0d6bc2a4e4d3dffd1e660a9accef
+text: |
+  ```static GPIOblock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

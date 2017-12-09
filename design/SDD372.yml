@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.0
+links: []
+normative: false
+ref: ''
+reviewed: c73a4ba0ce5025db9069b7e93a3c8919
+text: |
+  ```PWMBlock``` class

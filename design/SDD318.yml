@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.11
+links: []
+normative: true
+ref: ''
+reviewed: 241ce9aacb292630e2adcc39279eb19a
+text: |
+  If a ```dmpSampleRate``` entry is present, this method **shall** set ```conf.dmp_sample_rate``` to the given value.

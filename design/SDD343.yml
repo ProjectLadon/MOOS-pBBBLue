@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.2.4
+links: []
+normative: true
+ref: ''
+reviewed: 57507b5472fd9fe3fb13b1417cca0dbf
+text: |
+  This method **shall** return the value of ```configured```.

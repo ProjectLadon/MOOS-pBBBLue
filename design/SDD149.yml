@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.3.3
+links: []
+normative: true
+ref: ''
+reviewed: d15d56427a80efde9496ea4a0d4c65c5
+text: |
+  This method **shall** set the corresponding state variable equal to the incoming value and call ```rc_set_led()``` against the corresponding LED, returning the result.

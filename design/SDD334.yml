@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 5b129f0a64ceeff075b67257524ea0dc
+text: |
+  ```static BaroBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

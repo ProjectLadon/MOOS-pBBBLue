@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.9
+links: []
+normative: true
+ref: ''
+reviewed: d4a58162edfe1bb58aeb70a2ae6e7249
+text: |
+  If a ```gyroFilter``` entry is present, this method **shall** set ```conf.gyro_dlpf``` to the given value.

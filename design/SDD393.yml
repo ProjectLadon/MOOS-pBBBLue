@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 3.1.0
+links: []
+normative: false
+ref: ''
+reviewed: 20956fb57ad1f00bc23adc125490da56
+text: |
+  ```std::list<FunctionBlock*>* getActive(bool reset = false)``` **shall** return a pointer to a list of those blocks that are active and configured.

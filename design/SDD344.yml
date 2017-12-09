@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.15.4.3
+links: []
+normative: true
+ref: ''
+reviewed: 100ef842fe428e197b2679044fbfbb21
+text: |
+  ```bool procMail(CMOOSMsg &msg)``` **shall** check if the incoming ```msg.GetKey()``` is equal to ```BBBL_BARO_SEA_LEVEL```. If it is and the type is ```DOUBLE```, it shall assign that value to ```seaLevelPressure``` and return ```true```. Otherwise, it **shall** return ```false```.

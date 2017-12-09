@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.3.4
+links: []
+normative: true
+ref: ''
+reviewed: a0d2af4f50ea69e19cc5a13db26f5ff0
+text: |
+  ```bool get()``` **shall** poll the GPIO pin, set ```value``` to the result, and return it.

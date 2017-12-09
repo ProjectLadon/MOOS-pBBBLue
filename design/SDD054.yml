@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.4.4.1.2
+links: []
+normative: true
+ref: ''
+reviewed: 092e020cc10960d5778469f8f9fcde8f
+text: |
+  ```freq``` **shall** be set to the given value and ```freqVar``` **shall** be set to the empty string.

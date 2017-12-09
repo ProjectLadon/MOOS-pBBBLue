@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.10.3.2
+links: []
+normative: true
+ref: ''
+reviewed: a454c9caa698e6d8e46870c5e980ffa7
+text: |
+  ```std::list<std::string> encoders``` **shall** store the names of the encoder variables.

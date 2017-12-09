@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.3.5
+links: []
+normative: true
+ref: ''
+reviewed: 5efa6c79dfd8eaac7be0de812a90779b
+text: |
+  ```bool subscribe()``` This method **shall** return ```true``` if and only if ```mode``` is ```GPIOmode::OUTPUT```.

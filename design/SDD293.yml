@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.9
+links: []
+normative: true
+ref: ''
+reviewed: c463ed4c8ed050e9dda902572b143fb1
+text: |
+  This method **shall** pack the magnetometer data into a JSON string as described in schema/imu_tuple_schema.json and publish it to the variable ```BBBL_IMU_MAG```.

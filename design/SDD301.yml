@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.3.1
+links: []
+normative: true
+ref: ''
+reviewed: 5be2b226adc0f1314a7fb11e434da772
+text: |
+  ```static IMUDMPBlock* s_instance``` **shall** store a pointer to the only instance of each sub-class.

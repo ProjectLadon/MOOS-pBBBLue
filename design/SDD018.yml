@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.2.3
+links: []
+normative: true
+ref: ''
+reviewed: 0d4b946493dc2ae11685ece4792f065b
+text: |
+  ```int pin``` **shall** store the pin number.

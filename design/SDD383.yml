@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.2.3
+links: []
+normative: true
+ref: ''
+reviewed: f5cda1c500393b2347e47007702a1d4a
+text: |
+  For each element of the configuration JSON array, this method **shall** construct and emplace a ```PWMChannel``` object on the end of the ```interfaces``` list.

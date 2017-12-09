@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.7.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 232939805575e90e89185cee3712a9f1
+text: |
+  This method **shall** consume an ```LED``` object as defined in ```schema/configuration_schema.json```.

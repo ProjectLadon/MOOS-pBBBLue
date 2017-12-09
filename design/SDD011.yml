@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.1
+links: []
+normative: true
+ref: ''
+reviewed: 2df3de59b28f1aa54cb7e8107cced0f5
+text: |
+  ```enum class GPIOmode``` **shall** have a member for each of the four possible input modes: ```OUTPUT```, ```INPUT```, ```INPUT_PU```, and ```INPUT_PD```.

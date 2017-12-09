@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.3.2.2
+links: []
+normative: true
+ref: ''
+reviewed: 298ea1d16ec0aee7a50cfb52cae3edef
+text: |
+  ```bool state``` **shall** store the current value of the pin.

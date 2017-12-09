@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.12.4.2.5
+links: []
+normative: true
+ref: ''
+reviewed: ab0c3753e3cf4e113a634c179b6d38c5
+text: |
+  The channel number of any emplaced ```ServoChannel``` objects **shall** be their JSON array index.

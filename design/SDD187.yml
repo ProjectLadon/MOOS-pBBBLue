@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.9.4.1.6
+links: []
+normative: true
+ref: ''
+reviewed: 625275c5ae16eeee4b9deca780d90f3c
+text: |
+  If the incoming value is a a string and is equal to "FREE", this method **shall** call ```rc_set_motor_free_spin()``` and return the result.

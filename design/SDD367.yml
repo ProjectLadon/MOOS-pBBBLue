@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.16.4.4.1
+links: []
+normative: true
+ref: ''
+reviewed: 20b3b40f7121ced53b8a70abbdf04e58
+text: |
+  On each tick, this method **shall** iterate through each element of the ```pins``` list calling ```getMode()``` for each one.

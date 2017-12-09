@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.13.4.4.4
+links: []
+normative: true
+ref: ''
+reviewed: 953228019e4062d94b2f69871d7d8064
+text: |
+  This method **shall** sample the temperature by calling ```rc_read_temp_data()``` and return ```false``` if it fails.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.2.2
+links: []
+normative: true
+ref: ''
+reviewed: b6897e48b1aebb105dd96b0162a7514d
+text: |
+  ```const int channel``` **shall** store the number of this channel.

@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.17.4.2.1
+links: []
+normative: true
+ref: ''
+reviewed: 8808a2eff6234775bd0f700e9edbf3ba
+text: |
+  This method **shall** consume a ```PWM``` object from the configuration JSON.

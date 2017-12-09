@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.14.4.2.12
+links: []
+normative: true
+ref: ''
+reviewed: 04ad7579e945e1d2cd12fcdc60efb845
+text: |
+  If a ```dmpCompassTimeConstant``` entry is present, this method **shall** set ```conf.compass_time_constant``` to the given value.

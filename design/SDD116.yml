@@ -1,0 +1,9 @@
+active: true
+derived: false
+level: 2.5.5.4
+links: []
+normative: true
+ref: ''
+reviewed: 684bcd5d3913ffe0b710073b0ca65562
+text: |
+  ```bool setServo(double s)`` **shall** call the appropriate private method based on the value of ```mode``` to set the value of ```current```.
