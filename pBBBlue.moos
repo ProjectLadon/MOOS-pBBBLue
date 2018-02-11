@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pBBBlue config block
+
+ProcessConfig = pBBBlue
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
