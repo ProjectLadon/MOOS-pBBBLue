@@ -9,53 +9,28 @@
 #include "MBUtils.h"
 #include "ACTable.h"
 #include "BBBlue.h"
+#include "BBBlue_FunctionBlock.hpp"
 
 using namespace std;
 
 //---------------------------------------------------------
-// Constructor
-
-BBBlue::BBBlue()
-{
-}
-
-//---------------------------------------------------------
-// Destructor
-
-BBBlue::~BBBlue()
-{
-}
-
-//---------------------------------------------------------
 // Procedure: OnNewMail
 
-bool BBBlue::OnNewMail(MOOSMSG_LIST &NewMail)
-{
-  AppCastingMOOSApp::OnNewMail(NewMail);
+bool BBBlue::OnNewMail(MOOSMSG_LIST &NewMail) {
+    AppCastingMOOSApp::OnNewMail(NewMail);
 
-  MOOSMSG_LIST::iterator p;
-  for(p=NewMail.begin(); p!=NewMail.end(); p++) {
-    CMOOSMsg &msg = *p;
-    string key    = msg.GetKey();
+    for(auto &msg : NewMail) {
+        string key    = msg.GetKey();
+        bool handled = false;
+        for (auto &b: FunctionBlock::getBlockMap) {
+            handled |= b.second->procMail(msg);
+        }
 
-#if 0 // Keep these around just for template
-    string comm  = msg.GetCommunity();
-    double dval  = msg.GetDouble();
-    string sval  = msg.GetString(); 
-    string msrc  = msg.GetSource();
-    double mtime = msg.GetTime();
-    bool   mdbl  = msg.IsDouble();
-    bool   mstr  = msg.IsString();
-#endif
-
-     if(key == "FOO") 
-       cout << "great!";
-
-     else if(key != "APPCAST_REQ") // handled by AppCastingMOOSApp
-       reportRunWarning("Unhandled Mail: " + key);
-   }
-	
-   return(true);
+        else if(!handled || (key != "APPCAST_REQ"))  { // handled by AppCastingMOOSApp
+            reportRunWarning("Unhandled Mail: " + key);
+        }
+    }
+    return(true);
 }
 
 //---------------------------------------------------------
@@ -71,10 +46,11 @@ bool BBBlue::OnConnectToServer()
 // Procedure: Iterate()
 //            happens AppTick times per second
 
-bool BBBlue::Iterate()
-{
+bool BBBlue::Iterate() {
   AppCastingMOOSApp::Iterate();
-  // Do your thing here!
+  for (auto &b: FunctionBlock::getBlockMap()) {
+      b.second->tick(this);
+  }
   AppCastingMOOSApp::PostReport();
   return(true);
 }
@@ -83,67 +59,57 @@ bool BBBlue::Iterate()
 // Procedure: OnStartUp()
 //            happens before connection is open
 
-bool BBBlue::OnStartUp()
-{
-  AppCastingMOOSApp::OnStartUp();
+bool BBBlue::OnStartUp() {
+    AppCastingMOOSApp::OnStartUp();
 
-  STRING_LIST sParams;
-  m_MissionReader.EnableVerbatimQuoting(false);
-  if(!m_MissionReader.GetConfiguration(GetAppName(), sParams))
-    reportConfigWarning("No config block found for " + GetAppName());
-
-  STRING_LIST::iterator p;
-  for(p=sParams.begin(); p!=sParams.end(); p++) {
-    string orig  = *p;
-    string line  = *p;
-    string param = toupper(biteStringX(line, '='));
-    string value = line;
-
-    bool handled = false;
-    if(param == "FOO") {
-      handled = true;
-    }
-    else if(param == "BAR") {
-      handled = true;
+    STRING_LIST sParams;
+    m_MissionReader.EnableVerbatimQuoting(false);
+    if(!m_MissionReader.GetConfiguration(GetAppName(), sParams)) {
+        reportConfigWarning("No config block found for " + GetAppName());
     }
 
-    if(!handled)
-      reportUnhandledConfigWarning(orig);
+    for(auto &p: sParams) {
+        string orig  = p;
+        string line  = p;
+        string param = toupper(biteStringX(line, '='));
+        string value = line;
 
-  }
-  
-  registerVariables();	
-  return(true);
+        bool handled = false;
+        if(param == "conf") {
+            handled = ConfBlock::configureBlocks(parseConf(value));
+        }
+        else if(param == "confFile") {
+            handled = ConfBlock::configureBlocks(loadConfFile(value));
+        }
+
+        if(!handled) reportUnhandledConfigWarning(orig);
+    }
+
+    registerVariables();
+    return(true);
 }
 
 //---------------------------------------------------------
 // Procedure: registerVariables
 
-void BBBlue::registerVariables()
-{
-  AppCastingMOOSApp::RegisterVariables();
-  // Register("FOOBAR", 0);
+void BBBlue::registerVariables() {
+    for (auto &b: FunctionBlock::getBlockMap) {
+        b.second->subscribe(this);
+    }
+    AppCastingMOOSApp::RegisterVariables();
 }
-
 
 //------------------------------------------------------------
 // Procedure: buildReport()
 
-bool BBBlue::buildReport() 
-{
+bool BBBlue::buildReport() {
   m_msgs << "============================================ \n";
-  m_msgs << "File:                                        \n";
+  m_msgs << "Beaglebone Blue                              \n";
   m_msgs << "============================================ \n";
 
-  ACTable actab(4);
-  actab << "Alpha | Bravo | Charlie | Delta";
-  actab.addHeaderLines();
-  actab << "one" << "two" << "three" << "four";
-  m_msgs << actab.getFormattedString();
+  for (auto &b: ConfBlock::getBlockMap()) {
+      m_msgs << (b.second->buildReport()).getFormattedString();
+  }
 
   return(true);
 }
-
-
-
-

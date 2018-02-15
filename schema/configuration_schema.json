@@ -23,7 +23,7 @@
 			"minItems":0,
 			"maxItems":4,
 			"uniqueItems": true,
-			"$comment": "Note that the motor channel numbers are determined by the array index" 
+			"$comment": "Note that the motor channel numbers are determined by the array index"
 		},
 		"Encoders": {
 			"type": "array",
@@ -80,8 +80,8 @@
 								"$comment": "ESC designates an electronic speed control which accepts inputs from 0.0 to 100.0 (percent throttle)"
 							},
 							"period": {"type": "integer", "$comment": "Period in microseconds, default to 20000 (50 Hz)"},
-							"minServo": {"type": "number", "$comment" : "Minimum bound on comand; smaller commands will be set to this value"},
-							"maxServo": {"type": "number", "$comment" : "Maximum bound on comand; larger commands will be set to this value"},
+							"minServo": {"type": "number", "$comment" : "Minimum bound on command in microseconds; smaller commands will be set to this value. Defaults to 1000"},
+							"maxServo": {"type": "number", "$comment" : "Maximum bound on command in microseconds; larger commands will be set to this value. Defaults to 2000"},
 							"center": {"type": "integer", "$comment": "Location of center position, in microseconds. Defaults to 1500"},
 							"invert": {"type": "boolean", "$comment": "Reverses the direction of travel if true"}
 						},
@@ -97,17 +97,17 @@
 			"properties" : {
 				"mode": {"type": "string", "enum": ["Random", "DMP"]},
 				"magnetometer": {
-					"type": "boolean", 
+					"type": "boolean",
 					"$comment": "If this is true, magnetometer is on",
 					"$comment": "default is false"
 				},
 				"accelRange": {
-					"type": "string", 
+					"type": "string",
 					"enum": ["2G", "4G", "8G", "16G"],
 					"$comment": "default is 4G"
 				},
 				"gyroRange": {
-					"type": "string", 
+					"type": "string",
 					"enum": ["250DPS", "500DPS", "1000DPS", "2000DPS"],
 					"$comment": "default is 1000DPS"
 				},
@@ -124,8 +124,8 @@
 				"orientation": {
 					"type": "string",
 					"enum": [
-						"Z_UP", "Z_DN", 
-						"X_UP", "X_DN", 
+						"Z_UP", "Z_DN",
+						"X_UP", "X_DN",
 						"Y_UP", "Y_DN",
 						"X_FWD", "X_BACK"
 					],
