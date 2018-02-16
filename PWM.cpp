@@ -93,25 +93,85 @@ bool PWMChannel::subscribe(BBBlue *b) {
     if (varB != "") result &= b->registerVar(varB);
 }
 
-PWMBlock::PWMBlock* instance() {
+PWMBlock* PWMBlock::instance() {
     if (!s_instance) s_instance = new PWMBlock();
     return s_instance;
 }
 
-bool PWMBlock::configure(rapidjson::Value &v);
+bool PWMBlock::configure(rapidjson::Value &v) {
+    if (v.IsArray()) {
+        ctr = 0;
+        for (auto &a: v.GetArray()) {
+            if (ctr > 2) break;
+            if (a.IsObject()) {
+                string varA; string varB;
+                bool Ans = false; Bns = false;
+                if (a.HasMember("dutyCycleA")) {
+                    varA = a["dutyCycleA"].GetString();
+                } else if (a.HasMember("dutyCycleAns")) {
+                    varA = a["dutyCycleAns"].GetString();
+                    Ans = true;
+                }
+                if (a.HasMember("dutyCycleB")) {
+                    varB = a["dutyCycleB"].GetString();
+                } else if (a.HasMember("dutyCycleBns")) {
+                    varB = a["dutyCycleBns"].GetString();
+                    Bns = true;
+                }
+                if (a["frequency"].IsString()) {
+                    servos.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetString(), varA, varB, Ans, Bns)));
+                    configured = true;
+                } else if (a["frequency"].IsNumber()) {
+                    servos.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetDouble(), varA, varB, Ans, Bns)));
+                    configured = true;
+                } else {
+                    servos.push_back(unique_ptr<PWMChannel>(nullptr));
+                }
+            } else {
+                servos.push_back(unique_ptr<PWMChannel>(nullptr));
+            }
+            ctr++;
+        }
+    }
+    return configured;
+}
 
 bool PWMBlock::procMail(CMOOSMsg &msg) {
         result = false;
-        for (auto &s: servos) result |= s->procMail(msg);
+        for (auto &s: interfaces) result |= s->procMail(msg);
         return result;
 }
 
 bool PWMBlock::subscribe(BBBlue *b) {
     result = true;
-    for (auto &s: servos) result &= s->subscribe(b);
+    for (auto &s: interfaces) result &= s->subscribe(b);
     return result;
 }
 
-ACTable PWMBlock::buildReport();
+ACTable PWMBlock::buildReport() {
+    int ctr = 0;
+    ACTable actab(interfaces.size());
+    if (!configured) return actab;
+    for (auto &p: interfaces) {
+        if (p) {
+            if (p->varA != "") {
+                string hdr = "PWM " + to_string(ctr) + "-A";
+                actab << hdr;
+            }
+            if (p->varB != "") {
+                string hdr = "PWM " + to_string(ctr) + "-B";
+                actab << hdr;
+            }
+        }
+    }
+    actab.addHeaderLines();
+    for (auto &p: interfaces) {
+        if (p) {
+            if (p->varA != "") actab << to_string(p->getA());
+            if (p->varB != "") actab << to_string(p->getB());
+        }
+    }
+    return actab;
+}
 
 PWMBlock* PWMBlock::s_instance = nullptr;

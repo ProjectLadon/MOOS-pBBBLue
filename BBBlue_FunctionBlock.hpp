@@ -230,11 +230,12 @@ class GPIOBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured() {return configured;};
         ACTable buildReport();
-        ~GPIOBlock();
+        ~GPIOBlock() {};
     private:
-        GPIOBlock();
+        GPIOBlock() {};
         static GPIOBlock* s_instance;
-        std::vector<GPIOpin> pins
+        bool configured = false;
+        std::vector<unique_ptr<GPIOpin>> pins
 };
 
 class PWMBlock : public FunctionBlock {
@@ -251,6 +252,7 @@ class PWMBlock : public FunctionBlock {
         PWMBlock() {};
         static PWMBlock* s_instance;
         std::vector<unique_ptr<PWMChannel>> interfaces;
+        bool configured = false;
 };
 
 

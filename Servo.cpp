@@ -127,7 +127,7 @@ ServoMode ServoChannel::getAction(std::string act) {
     } else return ServoMode::None;
 }
 
-static ServoBlock* ServoBlock::instance() {
+ServoBlock* ServoBlock::instance() {
     if (!s_instance) s_instance = new ServoBlock();
     return s_instance;
 }

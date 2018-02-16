@@ -38,6 +38,7 @@ class ServoChannel {
         const std::string &getVar() {return var;};
         const std::chrono:duration &getPeriod() {return period};
         const double &getMicros() {return micros;};
+        bool subscribe(BBBlue *b) {return b->registerVar(var);};
         bool setServo(double s);
         void startThread();
         void stopThread() {killThread = true;};

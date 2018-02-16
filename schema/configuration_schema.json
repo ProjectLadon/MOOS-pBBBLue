@@ -177,7 +177,7 @@
 					"gpioVar": {"type": "string"},
 					"function": {
 						"type": "string",
-						"enum": ["OUTPUT", "INPUT", "INPUT_PU", "INPUT_PD"]
+						"enum": ["OUTPUT", "INPUT"]
 					}
 				},
 				"required": ["gpioName", "gpioVar", "function"]
