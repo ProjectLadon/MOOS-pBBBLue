@@ -33,9 +33,9 @@ class FunctionBlock {
 class ConfBlock {
     public:
         const static map<std::string, FunctionBlock*> &getBlockMap () {return blocks;};
-        static rapidjson::Document parseConf(std::string conf);
-        static rapidjson::Document loadConfFile(std::string confFile);
-        static bool configureBlocks (rapidjson::Document conf);
+        static rapidjson::Document &parseConf(std::string conf);
+        static rapidjson::Document &loadConfFile(std::string confFile);
+        static bool configureBlocks (rapidjson::Document &conf);
     private:
         ConfBlock() {};
         ~ConfBlock() {};
@@ -51,9 +51,9 @@ class LEDBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured();
         ACTable buildReport();
-        ~LEDBlock();
+        ~LEDBlock() {};
     private:
-        LEDBlock();
+        LEDBlock() {};
         static LEDBlock* s_instance;
         std::string REDname;
         std::string GRNname;
@@ -66,11 +66,11 @@ class ButtonBlock : public FunctionBlock {
         bool procMail(CMOOSMsg &msg) {return false;};
         bool tick(BBBlue *b);
         bool subscribe(BBBlue *b) {return true;};
-        bool isConfigured();
+        bool isConfigured() {return ((pause != "") || (mode != ""));};
         ACTable buildReport();
-        ~ButtonBlock();
+        ~ButtonBlock() {};
     private:
-        ButtonBlock();
+        ButtonBlock() {};
         static ButtonBlock* s_instance;
         std::string pause;
         std::string mode;
@@ -83,14 +83,21 @@ class MotorBlock : public FunctionBlock {
         bool procMail(CMOOSMsg &msg);
         bool tick(BBBlue *b) {return true;};
         bool subscribe(BBBlue *b);
-        bool isConfigured();
+        bool isConfigured() {return configured;};
         ACTable buildReport();
         ~MotorBlock();
     private:
         MotorBlock();
         static MotorBlock* s_instance;
         std::vector<std::string> motors;
-        bool setMotor(int motor, std::string val)
+        std::vector<bool> isfree(4);
+        std::vector<bool> isbrake(4);
+        std::vector<double> throttle(4);
+        bool enabled;
+        bool setMotor(int motor, std::string val);
+        bool configured = false;
+        rapidjson::SchemaDocument *sd;
+        rapidjson::SchemaValidator *validator;
 };
 
 class EncodersBlock : public FunctionBlock {
@@ -118,33 +125,12 @@ class ADCBlock : public FunctionBlock {
         bool subscribe(BBBlue *b) {return true;};
         bool isConfigured();
         ACTable buildReport();
-        ~ADCBlock();
+        ~ADCBlock() {};
     private:
-        ADCBlock();
+        ADCBlock() {};
         static ADCBlock* s_instance;
         std::vector<std::string> rawChannels;
         std::vector<std::string> voltChannels;
-        std::vector<double> rawValues;
-        std::vector<double> voltValues;
-        double batVolt;
-        double jackVolt;
-};
-
-class MotorBlock : public FunctionBlock {
-    public:
-        static MotorBlock* instance();
-        bool configure(rapidjson::Value &v);
-        bool procMail(CMOOSMsg &msg);
-        bool tick(BBBlue *b) {return true;};
-        bool subscribe(BBBlue *b);
-        bool isConfigured();
-        ACTable buildReport();
-        ~MotorBlock();
-    private:
-        MotorBlock();
-        static MotorBlock* s_instance;
-        std::vector<std::string> motors;
-        bool setMotor(int motor, std::string val)
 };
 
 class ServoBlock : public FunctionBlock {
@@ -156,9 +142,9 @@ class ServoBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured();
         ACTable buildReport();
-        ~ServoBlock() {};
+        ~ServoBlock() {rc_disable_servo_power_rail();};
     private:
-        ServoBlock();
+        ServoBlock() {rc_enable_servo_power_rail();};
         static ServoBlock* s_instance;
         std::vector<std::unique_ptr<ServoChannel>> servos;
 };
@@ -174,10 +160,11 @@ class IMURandomBlock : public FunctionBlock {
         ACTable buildReport();
         ~IMURandomBlock();
     private:
-        IMURandomBlock();
+        IMURandomBlock() {};
         static IMURandomBlock* s_instance;
         rc_imu_data_t data;
         rc_imu_config_t conf;
+        double heading;
         double temp;
         bool configured = false;
 
@@ -194,7 +181,7 @@ class IMURDMPlock : public FunctionBlock {
         ACTable buildReport();
         ~IMUDMPBlock();
     private:
-        IMUDMPBlock();
+        IMUDMPBlock() {};
         static IMUDMPBlock* s_instance;
         rc_imu_data_t data;
         rc_imu_config_t conf;
@@ -211,9 +198,9 @@ class BaroBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured() {return configured;};
         ACTable buildReport();
-        ~BaroBlock();
+        ~BaroBlock() {rc_power_off_barometer();};
     private:
-        BaroBlock();
+        BaroBlock() {};
         static BaroBlock* s_instance;
         double temp;
         double pressure;

@@ -36,8 +36,7 @@ bool BBBlue::OnNewMail(MOOSMSG_LIST &NewMail) {
 //---------------------------------------------------------
 // Procedure: OnConnectToServer
 
-bool BBBlue::OnConnectToServer()
-{
+bool BBBlue::OnConnectToServer() {
    registerVariables();
    return(true);
 }
@@ -76,10 +75,10 @@ bool BBBlue::OnStartUp() {
 
         bool handled = false;
         if(param == "conf") {
-            handled = ConfBlock::configureBlocks(parseConf(value));
+            handled = ConfBlock::configureBlocks(ConfBlock::parseConf(value));
         }
         else if(param == "confFile") {
-            handled = ConfBlock::configureBlocks(loadConfFile(value));
+            handled = ConfBlock::configureBlocks(ConfBlock::loadConfFile(value));
         }
 
         if(!handled) reportUnhandledConfigWarning(orig);
@@ -108,6 +107,9 @@ bool BBBlue::buildReport() {
   m_msgs << "============================================ \n";
 
   for (auto &b: ConfBlock::getBlockMap()) {
+      m_msgs << "++++++++++++++++++\n";
+      m_msgs << b.first;
+      m_msgs << "++++++++++++++++++\n";
       m_msgs << (b.second->buildReport()).getFormattedString();
   }
 

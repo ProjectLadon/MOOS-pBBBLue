@@ -51,7 +51,7 @@
 					"type": "array",
 					"items": {"oneOf": [null, {"type": "string"}]},
 					"minItems":0,
-					"maxItems":8
+					"maxItems":7
 				},
 				"voltChannels": {
 					"type": "array",

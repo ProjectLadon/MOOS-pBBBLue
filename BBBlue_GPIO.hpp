@@ -23,6 +23,7 @@ class GPIOpin {
         const GPIOmode &getMode() {return mode;};
         const std::string &getVar() {return var;};
         const int &getPin() {return pin;};
+        const bool &getState() {return state;};
         bool procMail(CMOOSMsg &msg);
         bool tick(BBBlue *b);
         bool subscribe(BBBlue *b);

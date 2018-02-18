@@ -30,6 +30,13 @@ SET(SRC
   BBBlue.cpp
   BBBlue_Info.cpp
   main.cpp
+  GPIO.cpp
+  Outputs.cpp
+  PWM.cpp
+  Servo.cpp
+  IMU.cpp
+  Inputs.cpp
+  Configuration.cpp
   "${JSON_HEADER_FILES}"
 )
 
