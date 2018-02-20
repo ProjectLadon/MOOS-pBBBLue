@@ -19,7 +19,7 @@ enum class GPIOmode { OUTPUT, INPUT };
 
 class GPIOpin {
     public:
-        GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false)
+        GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false);
         const GPIOmode &getMode() {return mode;};
         const std::string &getVar() {return var;};
         const int &getPin() {return pin;};
@@ -27,15 +27,15 @@ class GPIOpin {
         bool procMail(CMOOSMsg &msg);
         bool tick(BBBlue *b);
         bool subscribe(BBBlue *b);
-        void set(bool n) {if (mode == GPIOmode::OUTPUT) state = n};
+        void set(bool n) {if (mode == GPIOmode::OUTPUT) state = n;};
         bool get() {return state;}
         ~GPIOpin() {};
-        static int GPIO1_25 = (32 + 25);
-        static int GPIO1_17 = (32 + 17);
-        static int GPIO3_20 = ((32 * 3) + 20);
-        static int GPIO3_17 = ((32 * 3) + 17);
-        static int GPIO3_2 = ((32 * 3) + 2);
-        static int GPIO3_1 = ((32 * 3) + 1);
+        const static int GPIO1_25 = (32 + 25);
+        const static int GPIO1_17 = (32 + 17);
+        const static int GPIO3_20 = ((32 * 3) + 20);
+        const static int GPIO3_17 = ((32 * 3) + 17);
+        const static int GPIO3_2 = ((32 * 3) + 2);
+        const static int GPIO3_1 = ((32 * 3) + 1);
 
     private:
         GPIOmode mode;
@@ -45,3 +45,5 @@ class GPIOpin {
 };
 
 }
+
+#endif

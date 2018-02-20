@@ -8,10 +8,19 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 #include "rapidjson/rapidjson.h"
+#include "rapidjson/stringbuffer.h"
 #include "rapidjson/document.h"
+#include "rapidjson/schema.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/error/en.h"
 #include "BBBlue_Servo.hpp"
+#include "BBBlue_GPIO.hpp"
+#include "BBBlue_PWM.hpp"
 #include "roboticscape.h"
+#include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
+#include "ACTable.h"
 
 #ifndef FUNCTION_BLOCK_H
 #define FUNCTION_BLOCK_H
@@ -32,15 +41,15 @@ class FunctionBlock {
 
 class ConfBlock {
     public:
-        const static map<std::string, FunctionBlock*> &getBlockMap () {return blocks;};
+        const static std::map<std::string, FunctionBlock*> &getBlockMap () {return blocks;};
         static rapidjson::Document &parseConf(std::string conf);
         static rapidjson::Document &loadConfFile(std::string confFile);
         static bool configureBlocks (rapidjson::Document &conf);
     private:
         ConfBlock() {};
         ~ConfBlock() {};
-        static map<std::string, FunctionBlock*> blocks;
-}
+        static std::map<std::string, FunctionBlock*> blocks;
+};
 
 class LEDBlock : public FunctionBlock {
     public:
@@ -57,7 +66,7 @@ class LEDBlock : public FunctionBlock {
         static LEDBlock* s_instance;
         std::string REDname;
         std::string GRNname;
-}
+};
 
 class ButtonBlock : public FunctionBlock {
     public:
@@ -74,7 +83,7 @@ class ButtonBlock : public FunctionBlock {
         static ButtonBlock* s_instance;
         std::string pause;
         std::string mode;
-}
+};
 
 class MotorBlock : public FunctionBlock {
     public:
@@ -90,9 +99,9 @@ class MotorBlock : public FunctionBlock {
         MotorBlock();
         static MotorBlock* s_instance;
         std::vector<std::string> motors;
-        std::vector<bool> isfree(4);
-        std::vector<bool> isbrake(4);
-        std::vector<double> throttle(4);
+        std::vector<bool> isfree;
+        std::vector<bool> isbrake;
+        std::vector<double> throttle;
         bool enabled;
         bool setMotor(int motor, std::string val);
         bool configured = false;
@@ -109,9 +118,9 @@ class EncodersBlock : public FunctionBlock {
         bool subscribe(BBBlue *b) {return true;};
         bool isConfigured();
         ACTable buildReport();
-        ~EncodersBlock();
+        ~EncodersBlock() {};
     private:
-        EncodersBlock();
+        EncodersBlock() {};
         static EncodersBlock* s_instance;
         std::vector<std::string> encoders;
 };
@@ -170,7 +179,7 @@ class IMURandomBlock : public FunctionBlock {
 
 };
 
-class IMURDMPlock : public FunctionBlock {
+class IMUDMPBlock : public FunctionBlock {
     public:
         static IMUDMPBlock* instance();
         bool configure(rapidjson::Value &v);
@@ -222,7 +231,7 @@ class GPIOBlock : public FunctionBlock {
         GPIOBlock() {};
         static GPIOBlock* s_instance;
         bool configured = false;
-        std::vector<unique_ptr<GPIOpin>> pins
+        std::vector<std::unique_ptr<GPIOpin>> pins;
 };
 
 class PWMBlock : public FunctionBlock {
@@ -238,9 +247,11 @@ class PWMBlock : public FunctionBlock {
     private:
         PWMBlock() {};
         static PWMBlock* s_instance;
-        std::vector<unique_ptr<PWMChannel>> interfaces;
+        std::vector<std::unique_ptr<PWMChannel>> interfaces;
         bool configured = false;
 };
 
 
 }
+
+#endif

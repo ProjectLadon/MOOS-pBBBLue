@@ -8,8 +8,11 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include "BBBlue.h"
 #include "BBBlue_GPIO.hpp"
 #include "BBBlue_FunctionBlock.hpp"
+#include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
+#include "moosbool.h"
 
 extern "C" {
     #include "roboticscape.h"
@@ -18,9 +21,9 @@ using namespace std;
 using namespace rapidjson;
 using namespace BBBL;
 
-GPIOpin::GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false) : pin(pin), var(var), state(state), mode(mode) {
+GPIOpin::GPIOpin(int pin, GPIOmode mode, std::string var, bool state) : pin(pin), var(var), state(state), mode(mode) {
         rc_gpio_export(pin);
-        if (GPIOmode::OUTPUT) {
+        if (GPIOmode::OUTPUT == mode) {
             rc_gpio_set_dir(pin, OUTPUT_PIN);
         } else {
             rc_gpio_set_dir(pin, INPUT_PIN);
@@ -29,25 +32,12 @@ GPIOpin::GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false) : 
 
 bool GPIOpin::procMail(CMOOSMsg &msg) {
     if (msg.GetKey() == var) {
-        if (msg.IsBinary()) {
-            if (msg.GetBinaryData(data)) {
-                unsigned char *data = msg.GetBinaryData();
-                set(data[0]);
-                return true;
-            }
-        } else if (msg.IsString()) {
-            string val = toupper(msg.GetString());
-            if (("ON" == val) || ("TRUE" == val) || ("T" == val)) {
-                set(true);
-            } else set(false);
-            return true;
-        } else if (msg.IsDouble()) {
-            double val = msg.GetDouble();
-            if (val > 0.5) {
-                set(true);
-            } else set(false);
-            return true;
-        } else return false;
+        if (moosbool::instance()->isTrue(msg)) {
+            set(true);
+        } else {
+            set(false);
+        }
+        return true;
     }
     return false;
 }
@@ -56,13 +46,10 @@ bool GPIOpin::tick(BBBlue *b) {
     if (mode == GPIOmode::OUTPUT) {
         return rc_gpio_set_value(pin, state);
     } else {
-        int ret, result;
-        result = rc_gpio_get_value(pin, &ret);
-        state = ret;
+        state = rc_gpio_get_value(pin);
         uint8_t val = 0;
         if (state) val = 0xff;
         b->notify(var, val);
-        return result;
     }
     return true;
 }
@@ -73,7 +60,7 @@ bool GPIOpin::subscribe(BBBlue *b) {
     } else return false;
 }
 
-static GPIOBlock* GPIOBlock::instance() {
+GPIOBlock* GPIOBlock::instance() {
     if (!s_instance) s_instance = new GPIOBlock();
     return s_instance;
 }
@@ -136,12 +123,12 @@ ACTable GPIOBlock::buildReport() {
     ACTable actab(pins.size());
     if (!configured) return actab;
     for (auto &p: pins) {
-        string hdr = "GPIO" + to_string(g.getPin())
+        string hdr = "GPIO" + to_string(p->getPin());
         actab << hdr;
     }
     actab.addHeaderLines();
     for (auto &p: pins) {
-        string hdr = to_string(g.getState());
+        string hdr = to_string(p->getState());
         actab << hdr;
     }
     return actab;
