@@ -26,19 +26,19 @@ using namespace std;
 using namespace rapidjson;
 using namespace BBBL;
 
-rapidjson::Document ConfBlock::parseConf(std::string conf) {
+rapidjson::Document &ConfBlock::parseConf(std::string conf) {
     Document confSchema;
-    if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json), configuration_schema_json_len)).HasParseError()) {
-        cerr << "JSON parse error " << GetParseError_En(d.GetParseError());
-        cerr << " in configuration schema at offset " << d.GetErrorOffset() << endl;
+    if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json, configuration_schema_json_len)).HasParseError()) {
+        cerr << "JSON parse error " << GetParseError_En(confSchema.GetParseError());
+        cerr << " in configuration schema at offset " << confSchema.GetErrorOffset() << endl;
         std::abort();
     }
     SchemaDocument confSchemaDoc(confSchema);
     SchemaValidator validator(confSchemaDoc);
     Document configuration;
-    if (configuration.Parse(conf).HasParseError()) {
-        cerr << "JSON parse error " << GetParseError_En(d.GetParseError());
-        cerr << " in configuration JSON at offset " << d.GetErrorOffset() << endl;
+    if (configuration.Parse(conf.c_str()).HasParseError()) {
+        cerr << "JSON parse error " << GetParseError_En(configuration.GetParseError());
+        cerr << " in configuration JSON at offset " << configuration.GetErrorOffset() << endl;
         std::abort();
     }
     if (!configuration.Accept(validator)) {
@@ -54,13 +54,14 @@ rapidjson::Document ConfBlock::parseConf(std::string conf) {
     return configuration;
 }
 
-rapidjson::Document ConfBlock::loadConfFile(std::string confFile) {
+rapidjson::Document &ConfBlock::loadConfFile(std::string confFile) {
     ifstream infile;
     infile.open(confFile);
+    rapidjson::Document d;
     // Make sure the file opened correctly
     if (!infile.is_open()) {
         cerr << "Failed to open configuration file " << confFile << endl;
-        return false;
+        return d;
     }
     // Vacuum up the conf file
     string json;
@@ -71,7 +72,7 @@ rapidjson::Document ConfBlock::loadConfFile(std::string confFile) {
     return parseConf(json);
 }
 
-bool ConfBlock::configureBlocks (rapidjson::Document conf) {
+bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
     bool result = true;
     if (!conf.IsObject()) return false;
     if (conf.HasMember("LED") && conf["LED"].IsObject()) {
@@ -96,15 +97,15 @@ bool ConfBlock::configureBlocks (rapidjson::Document conf) {
     }
     if (conf.HasMember("Servos") && conf["Servos"].IsObject()) {
         result &= ServoBlock::instance()->configure(conf["Servos"]);
-        blocks.insert(pair<stIMUring, FunctionBlock*>("Servos", ServoBlock::instance()));
+        blocks.insert(pair<string, FunctionBlock*>("Servos", ServoBlock::instance()));
     }
     if (conf.HasMember("IMU") && conf["IMU"].IsObject()) {
         if (conf["IMU"].HasMember("mode") && (conf["IMU"]["mode"].GetString() == "Random")) {
             result &= IMURandomBlock::instance()->configure(conf["IMU"]);
             blocks.insert(pair<string, FunctionBlock*>("IMU", IMURandomBlock::instance()));
         } else if (conf["IMU"].HasMember("mode") && (conf["IMU"]["mode"].GetString() == "DMP")) {
-            result &= IMURDMPlock::instance()->configure(conf["IMU"]);
-            blocks.insert(pair<string, FunctionBlock*>("IMU", IMURDMPlock::instance()));
+            result &= IMUDMPBlock::instance()->configure(conf["IMU"]);
+            blocks.insert(pair<string, FunctionBlock*>("IMU", IMUDMPBlock::instance()));
         } else result &= false;
     }
     if (conf.HasMember("Barometer") && conf["Barometer"].IsObject()) {
@@ -117,7 +118,9 @@ bool ConfBlock::configureBlocks (rapidjson::Document conf) {
     }
     if (conf.HasMember("PWM") && conf["PWM"].IsObject()) {
         result &= PWMBlock::instance()->configure(conf["PWM"]);
-        blocks.insert(pair<string, FunctionBlock*>("PWM", PWMBlock::instance()));Button
+        blocks.insert(pair<string, FunctionBlock*>("PWM", PWMBlock::instance()));
     }
     return result;
 }
+
+std::map<std::string, FunctionBlock*> ConfBlock::blocks;

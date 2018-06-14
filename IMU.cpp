@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <cmath>
 #include "BBBlue_FunctionBlock.hpp"
+#include "BBBlue.h"
 #include "rapidjson/rapidjson.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/document.h"
@@ -83,9 +84,9 @@ bool IMURandomBlock::tick(BBBlue *b) {
     string accdat = "{\"x\":" + to_string(data.accel[0]) +
                         ",\"y\":" + to_string(data.accel[1]) +
                         ",\"z\":" + to_string(data.accel[2]) + "}";
-    string gyrodat = "{\"x\":" + to_string(data.gyrio[0]) +
-                        ",\"y\":" + to_string(data.gyrio[1]) +
-                        ",\"z\":" + to_string(data.gyrio[2]) + "}";
+    string gyrodat = "{\"x\":" + to_string(data.gyro[0]) +
+                        ",\"y\":" + to_string(data.gyro[1]) +
+                        ",\"z\":" + to_string(data.gyro[2]) + "}";
     string magdat = "{\"x\":" + to_string(data.mag[0]) +
                         ",\"y\":" + to_string(data.mag[1]) +
                         ",\"z\":" + to_string(data.mag[2]) + "}";
@@ -209,29 +210,32 @@ bool getGyroDLPF (std::string a, rc_imu_config_t &c) {
 }
 
 bool getAccelFSR (std::string a, rc_imu_config_t &c) {
-    if ("2G" == a) {c.accel_fsr = AFS_2G; return true;}
-    if ("4G" == a) {c.accel_fsr = AFS_4G; return true;}
-    if ("8G" == a) {c.accel_fsr = AFS_8G; return true;}
-    if ("16G" == a) {c.accel_fsr = AFS_16G; return true;}
+    if ("2G" == a) {c.accel_fsr = A_FSR_2G; return true;}
+    if ("4G" == a) {c.accel_fsr = A_FSR_4G; return true;}
+    if ("8G" == a) {c.accel_fsr = A_FSR_8G; return true;}
+    if ("16G" == a) {c.accel_fsr = A_FSR_16G; return true;}
     return false;
 }
 
 bool getGyroFSR (std::string a, rc_imu_config_t &c) {
-    if ("250DPS" == a) {c.gyro_fsr = GFS_250; return true;}
-    if ("500DPS" == a) {c.gyro_fsr = GFS_500; return true;}
-    if ("1000DPS" == a) {c.gyro_fsr = GFS_1000; return true;}
-    if ("2000DPS" == a) {c.gyro_fsr = GFS_2000; return true;}
+    if ("250DPS" == a) {c.gyro_fsr = G_FSR_250DPS; return true;}
+    if ("500DPS" == a) {c.gyro_fsr = G_FSR_500DPS; return true;}
+    if ("1000DPS" == a) {c.gyro_fsr = G_FSR_1000DPS; return true;}
+    if ("2000DPS" == a) {c.gyro_fsr = G_FSR_2000DPS; return true;}
     return false;
 }
 
 bool getOrientation (std::string a, rc_imu_config_t &c) {
     if ("Z_UP"   == a) {c.orientation = ORIENTATION_Z_UP; return true;}
-    if ("Z_DN"   == a) {c.orientation = ORIENTATION_Z_DN; return true;}
+    if ("Z_DN"   == a) {c.orientation = ORIENTATION_Z_DOWN; return true;}
 	if ("X_UP"   == a) {c.orientation = ORIENTATION_X_UP; return true;}
-    if ("X_DN"   == a) {c.orientation = ORIENTATION_X_DN; return true;}
+    if ("X_DN"   == a) {c.orientation = ORIENTATION_X_DOWN; return true;}
 	if ("Y_UP"   == a) {c.orientation = ORIENTATION_Y_UP; return true;}
-    if ("Y_DN"   == a) {c.orientation = ORIENTATION_Y_DN; return true;}
-	if ("X_FWD"  == a) {c.orientation = ORIENTATION_X_FWD; return true;}
+    if ("Y_DN"   == a) {c.orientation = ORIENTATION_Y_DOWN; return true;}
+	if ("X_FWD"  == a) {c.orientation = ORIENTATION_X_FORWARD; return true;}
     if ("X_BACK" == a) {c.orientation = ORIENTATION_X_BACK; return true;}
     return false;
 }
+
+IMURandomBlock* IMURandomBlock::s_instance;
+IMUDMPBlock* IMUDMPBlock::s_instance;

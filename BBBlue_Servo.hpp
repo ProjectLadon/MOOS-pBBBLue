@@ -13,6 +13,8 @@
 #ifndef BBBLUE_SERVO_H
 #define BBBLUE_SERVO_H
 
+class BBBlue;   // Forward declaration for sanity
+
 namespace BBBL {
 
 enum class ServoMode { servo90, servo180, servo360, micros, ESC, None };
@@ -20,7 +22,7 @@ enum class ServoMode { servo90, servo180, servo360, micros, ESC, None };
 class ServoChannel {
     public:
         // constants
-        static const std::chrono::duration defaultPeriod;
+        static const std::chrono::microseconds defaultPeriod;
         static const long defaultMax;
         static const long defaultMin;
         static const long defaultCenter;
@@ -28,17 +30,17 @@ class ServoChannel {
 
         ServoChannel(ServoMode action,
                     int chan,
-                    std::chrono::duration _period = defaultPeriod,
                     std::string variable,
+                    std::chrono::microseconds _period = defaultPeriod,
                     long maxServo = defaultMax,
                     long minServo = defaultMin,
                     long center = defaultCenter,
-                    invert = defaultInvert);
+                    bool invert = defaultInvert);
         const ServoMode &getMode() {return mode;};
         const std::string &getVar() {return var;};
-        const std::chrono:duration &getPeriod() {return period};
+        const std::chrono::microseconds &getPeriod() {return period;};
         const double &getMicros() {return micros;};
-        bool subscribe(BBBlue *b) {return b->registerVar(var);};
+        bool subscribe(BBBlue *b);
         bool setServo(double s);
         void startThread();
         void stopThread() {killThread = true;};
@@ -53,13 +55,13 @@ class ServoChannel {
         bool setServoESC(double s);
         bool servoMap(double s, double inmax, double incenter, double inmin);
         bool setServoMicros(double s);
-        void threadRunner();
+        void threadrunner();
         void pulse();
 
         ServoMode mode;
         int channel;
         std::string var;
-        std::chrono::duration period;
+        std::chrono::microseconds period;
         double micros;
         long min;
         long max;
@@ -70,3 +72,5 @@ class ServoChannel {
 };
 
 }
+
+#endif

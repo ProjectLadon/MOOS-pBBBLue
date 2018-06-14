@@ -8,6 +8,10 @@
 #include <string>
 #include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
 
+extern "C" {
+    #include "roboticscape.h"
+}
+
 #ifndef BBBLUE_PWM_H
 #define BBBLUE_PWM_H
 
@@ -40,7 +44,9 @@ class PWMChannel {
         double A;
         double B;
         bool isnsA;
-        bool isnsB
+        bool isnsB;
 };
 
 }
+
+#endif

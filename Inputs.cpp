@@ -13,6 +13,7 @@
 #include <memory>
 #include <cstdlib>
 #include <cmath>
+#include "BBBlue.h"
 #include "BBBlue_FunctionBlock.hpp"
 #include "rapidjson/rapidjson.h"
 #include "rapidjson/stringbuffer.h"
@@ -29,7 +30,7 @@ using namespace std;
 using namespace rapidjson;
 using namespace BBBL;
 
-ButtonBlock::ButtonBlock* instance() {
+ButtonBlock* ButtonBlock::instance() {
     if (!s_instance) s_instance = new ButtonBlock();
     return s_instance;
 }
@@ -63,7 +64,7 @@ ACTable ButtonBlock::buildReport() {
     return actab;
 }
 
-ADCBlock::ADCBlock* instance() {
+ADCBlock* ADCBlock::instance() {
     if (!s_instance) s_instance = new ADCBlock();
     return s_instance;
 }
@@ -83,7 +84,7 @@ bool ADCBlock::configure(rapidjson::Value &v) {
             } else {rawChannels.push_back("");}
         }
     }
-    return isConfigured;
+    return isConfigured();
 }
 
 bool ADCBlock::tick(BBBlue *b) {
@@ -96,8 +97,8 @@ bool ADCBlock::tick(BBBlue *b) {
         if (c != "") b->notify(c, rc_adc_volt(ch));
         ch++;
     }
-    b->notify("BBBL_BATTERY_VOLTAGE", rc_get_battery_voltage());
-    b->notify("BBBL_JACK_VOLTAGE", rc_get_dc_jack_voltage());
+    b->notify("BBBL_BATTERY_VOLTAGE", rc_battery_voltage());
+    b->notify("BBBL_JACK_VOLTAGE", rc_dc_jack_voltage());
 }
 
 bool ADCBlock::isConfigured() {
@@ -114,21 +115,21 @@ ACTable ADCBlock::buildReport() {
     actab << to_string(rc_adc_volt(1));
     actab << to_string(rc_adc_volt(2));
     actab << to_string(rc_adc_volt(3));
-    actab << to_string(rc_get_dc_jack_voltage());
-    actab << to_string(rc_get_battery_voltage());
-    actab << to_string(rc_raw_volt(0));
-    actab << to_string(rc_raw_volt(1));
-    actab << to_string(rc_raw_volt(2));
-    actab << to_string(rc_raw_volt(3));
+    actab << to_string(rc_dc_jack_voltage());
+    actab << to_string(rc_battery_voltage());
+    actab << to_string(rc_adc_raw(0));
+    actab << to_string(rc_adc_raw(1));
+    actab << to_string(rc_adc_raw(2));
+    actab << to_string(rc_adc_raw(3));
     return actab;
 }
 
-BaroBlock::BaroBlock* instance() {
+BaroBlock* BaroBlock::instance() {
     if (!s_instance) s_instance = new BaroBlock();
     return s_instance;
 }
 
-bool configure(rapidjson::Value &v) {
+bool BaroBlock::configure(rapidjson::Value &v) {
     rc_bmp_oversample_t oversample = BMP_OVERSAMPLE_1;
     rc_bmp_filter_t filter = BMP_FILTER_OFF;
     if (v.HasMember("oversample") && v["oversample"].IsInt()) {
@@ -185,7 +186,7 @@ bool configure(rapidjson::Value &v) {
     return false;
 }
 
-bool procMail(CMOOSMsg &msg) {
+bool BaroBlock::procMail(CMOOSMsg &msg) {
     if ((msg.GetKey() == "BBBL_BARO_SEA_LEVEL") && msg.IsDouble()) {
         seaLevelPressure = msg.GetDouble();
         return true;
@@ -193,25 +194,75 @@ bool procMail(CMOOSMsg &msg) {
     return false;
 }
 
-bool tick(BBBlue *b) {
-    b->notify("BBBL_BARO_TEMP", rc_bmp_get_temperature_c());
+bool BaroBlock::tick(BBBlue *b) {
+    b->notify("BBBL_BARO_TEMP", rc_bmp_get_temperature());
     b->notify("BBBL_BARO_PRES", rc_bmp_get_pressure_pa());
     b->notify("BBBL_BARO_ALT", rc_bmp_get_altitude_m());
     return true;
 }
 
-bool subscribe(BBBlue *b) {
+bool BaroBlock::subscribe(BBBlue *b) {
     b->registerVar("BBBL_BARO_SEA_LEVEL");
     return true;
 }
 
-ACTable buildReport() {
+ACTable BaroBlock::buildReport() {
     ACTable actab(4);
-    actab.addHeaderLines();
     actab << "SeaLevel (Pa)|Ambient (Pa)|Altitude (m)|Temp (C)";
+    actab.addHeaderLines();
     actab << to_string(seaLevelPressure);
     actab << to_string(rc_bmp_get_pressure_pa());
     actab << to_string(rc_bmp_get_altitude_m());
-    actab << to_string(rc_bmp_get_temperature_c());
+    actab << to_string(rc_bmp_get_temperature());
 
 }
+
+EncodersBlock* EncodersBlock::instance() {
+    if (!s_instance) s_instance = new EncodersBlock();
+    return s_instance;
+}
+
+bool EncodersBlock::configure(rapidjson::Value &v) {
+    if (v.IsArray()) {
+        int cnt = 1;
+        for (auto &e : v.GetArray()) {
+            if (e.IsString()) {
+                encoders.push_back(e.GetString());
+            } else if (e.IsObject()) {
+                encoders.push_back(e["name"].GetString());
+                if (e.HasMember("init")) rc_set_encoder_pos(cnt, e["init"].GetInt());
+            } else encoders.push_back("");
+            cnt++;
+        }
+        return isConfigured();
+    }
+    return false;
+}
+
+bool EncodersBlock::tick(BBBlue *b) {
+    int cnt = 1;
+    for (auto &e: encoders) {
+        if (e != "") {
+            b->notify(e, rc_get_encoder_pos(cnt));
+        }
+        cnt++;
+    }
+    return true;
+}
+
+bool EncodersBlock::isConfigured() {
+    for (auto &s: encoders) if (s != "") return true;
+    return false;
+}
+
+ACTable EncodersBlock::buildReport() {
+    ACTable actab(4);
+    actab << "E1|E2|E3|E4";
+    for (int i = 1; i < 5; i++) actab << to_string(rc_get_encoder_pos(i));
+    return actab;
+}
+
+EncodersBlock* EncodersBlock::s_instance;
+ButtonBlock* ButtonBlock::s_instance;
+ADCBlock* ADCBlock::s_instance;
+BaroBlock* BaroBlock::s_instance;

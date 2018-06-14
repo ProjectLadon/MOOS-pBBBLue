@@ -8,6 +8,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include "BBBlue.h"
 #include "BBBlue_PWM.hpp"
 #include "BBBlue_FunctionBlock.hpp"
 
@@ -20,7 +21,7 @@ using namespace BBBL;
 
 PWMChannel::PWMChannel(int iface, int freq,
                         std::string varA, std::string varB,
-                        bool isnsA = false, bool isnsB = false) :
+                        bool isnsA, bool isnsB) :
                         freq(freq), varA(varA), varB(varB),
                         isnsA(isnsA), isnsB(isnsB)
                         {
@@ -30,7 +31,7 @@ PWMChannel::PWMChannel(int iface, int freq,
 
 PWMChannel::PWMChannel(int iface, std::string freqVar,
                         std::string varA, std::string varB,
-                        bool isnsA = false, bool isnsB = false) :
+                        bool isnsA, bool isnsB) :
                         freqVar(freqVar), varA(varA), varB(varB),
                         isnsA(isnsA), isnsB(isnsB), freq(1000)
                         {
@@ -64,7 +65,7 @@ bool PWMChannel::setDutyA (double d) {
         return !(rc_pwm_set_duty_ns(iface, 'A', d));
     } else {
         if (d > 1.0f) d = 1.0f;
-        if (d < 0.0f) d = 0.0f
+        if (d < 0.0f) d = 0.0f;
         A = d;
         return !(rc_pwm_set_duty(iface, 'A', d));
     }
@@ -79,7 +80,7 @@ bool PWMChannel::setDutyB (double d)  {
         return !(rc_pwm_set_duty_ns(iface, 'B', d));
     } else {
         if (d > 1.0f) d = 1.0f;
-        if (d < 0.0f) d = 0.0f
+        if (d < 0.0f) d = 0.0f;
         B = d;
         return !(rc_pwm_set_duty(iface, 'B', d));
     }
@@ -87,10 +88,11 @@ bool PWMChannel::setDutyB (double d)  {
 }
 
 bool PWMChannel::subscribe(BBBlue *b) {
-    result = true;
+    bool result = true;
     if (freqVar != "") result &= b->registerVar(freqVar);
     if (varA != "") result &= b->registerVar(varA);
     if (varB != "") result &= b->registerVar(varB);
+    return result;
 }
 
 PWMBlock* PWMBlock::instance() {
@@ -100,12 +102,12 @@ PWMBlock* PWMBlock::instance() {
 
 bool PWMBlock::configure(rapidjson::Value &v) {
     if (v.IsArray()) {
-        ctr = 0;
+        int ctr = 0;
         for (auto &a: v.GetArray()) {
             if (ctr > 2) break;
             if (a.IsObject()) {
                 string varA; string varB;
-                bool Ans = false; Bns = false;
+                bool Ans = false; bool Bns = false;
                 if (a.HasMember("dutyCycleA")) {
                     varA = a["dutyCycleA"].GetString();
                 } else if (a.HasMember("dutyCycleAns")) {
@@ -119,16 +121,16 @@ bool PWMBlock::configure(rapidjson::Value &v) {
                     Bns = true;
                 }
                 if (a["frequency"].IsString()) {
-                    servos.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetString(), varA, varB, Ans, Bns)));
+                    interfaces.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetString(), varA, varB, Ans, Bns)));
                     configured = true;
                 } else if (a["frequency"].IsNumber()) {
-                    servos.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetDouble(), varA, varB, Ans, Bns)));
+                    interfaces.push_back(unique_ptr<PWMChannel>(new PWMChannel(ctr, a["frequency"].GetDouble(), varA, varB, Ans, Bns)));
                     configured = true;
                 } else {
-                    servos.push_back(unique_ptr<PWMChannel>(nullptr));
+                    interfaces.push_back(unique_ptr<PWMChannel>(nullptr));
                 }
             } else {
-                servos.push_back(unique_ptr<PWMChannel>(nullptr));
+                interfaces.push_back(unique_ptr<PWMChannel>(nullptr));
             }
             ctr++;
         }
@@ -137,13 +139,13 @@ bool PWMBlock::configure(rapidjson::Value &v) {
 }
 
 bool PWMBlock::procMail(CMOOSMsg &msg) {
-        result = false;
+        bool result = false;
         for (auto &s: interfaces) result |= s->procMail(msg);
         return result;
 }
 
 bool PWMBlock::subscribe(BBBlue *b) {
-    result = true;
+    bool result = true;
     for (auto &s: interfaces) result &= s->subscribe(b);
     return result;
 }
@@ -154,11 +156,11 @@ ACTable PWMBlock::buildReport() {
     if (!configured) return actab;
     for (auto &p: interfaces) {
         if (p) {
-            if (p->varA != "") {
+            if (p->getVarA() != "") {
                 string hdr = "PWM " + to_string(ctr) + "-A";
                 actab << hdr;
             }
-            if (p->varB != "") {
+            if (p->getVarB() != "") {
                 string hdr = "PWM " + to_string(ctr) + "-B";
                 actab << hdr;
             }
@@ -167,8 +169,8 @@ ACTable PWMBlock::buildReport() {
     actab.addHeaderLines();
     for (auto &p: interfaces) {
         if (p) {
-            if (p->varA != "") actab << to_string(p->getA());
-            if (p->varB != "") actab << to_string(p->getB());
+            if (p->getVarA() != "") actab << to_string(p->getA());
+            if (p->getVarB() != "") actab << to_string(p->getB());
         }
     }
     return actab;

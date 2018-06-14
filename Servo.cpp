@@ -10,6 +10,7 @@
 #include <chrono>
 #include "BBBlue_Servo.hpp"
 #include "BBBlue_FunctionBlock.hpp"
+#include "BBBlue.h"
 
 extern "C" {
     #include "roboticscape.h"
@@ -20,12 +21,12 @@ using namespace BBBL;
 
 ServoChannel::ServoChannel(ServoMode action,
                             int chan,
-                            std::chrono::duration _period = defaultPeriod,
                             std::string variable,
-                            long maxServo = defaultMax,
-                            long minServo = defaultMin,
-                            long center = defaultCenter,
-                            invert = defaultInvert) :
+                            std::chrono::microseconds _period,
+                            long maxServo,
+                            long minServo,
+                            long center,
+                            bool invert) :
                             mode(action),
                             channel(chan),
                             period(_period),
@@ -35,6 +36,10 @@ ServoChannel::ServoChannel(ServoMode action,
                             center(center),
                             invert(invert) {
     startThread();
+}
+
+bool ServoChannel::subscribe(BBBlue *b) {
+    return b->registerVar(var);
 }
 
 bool ServoChannel::setServo(double s) {
@@ -55,12 +60,13 @@ bool ServoChannel::setServo(double s) {
             return setServoMicros(s);
             break;
         default:
+            break;
     }
 }
 
 void ServoChannel::startThread() {
     killThread = false;
-    servoThread = new std::thread(threadRunner);
+    servoThread = new std::thread((std::bind(&ServoChannel::threadrunner, this)));
     servoThread->detach();
 }
 
@@ -100,7 +106,7 @@ bool ServoChannel::setServoMicros(double s) {
     return true;
 }
 
-void ServoChannel::threadRunner() {
+void ServoChannel::threadrunner() {
     while (!killThread) {
         auto endtime = std::chrono::system_clock::now() + period;
         pulse();
@@ -138,7 +144,7 @@ bool ServoBlock::configure(rapidjson::Value &v) {
         if (s.IsNull()) {
             servos.push_back(std::unique_ptr<ServoChannel>(nullptr));
         } else {
-            std::chrono::duration period = ServoChannel::defaultPeriod;
+            std::chrono::microseconds period = ServoChannel::defaultPeriod;
             long min = ServoChannel::defaultMin;
             long max = ServoChannel::defaultMax;
             long center = ServoChannel::defaultCenter;
@@ -150,7 +156,7 @@ bool ServoBlock::configure(rapidjson::Value &v) {
             if (s.HasMember("maxServo")) max = s["maxServo"].GetInt();
             if (s.HasMember("center")) center = s["center"].GetInt();
             if (s.HasMember("invert")) invert = s["invert"].GetBool();
-            servos.push_back(std::unique_ptr<ServoChannel>(new ServoChannel(act, chanctr, period, var, max, min, center, invert)));
+            servos.push_back(std::unique_ptr<ServoChannel>(new ServoChannel(act, chanctr, var, period, max, min, center, invert)));
         }
         chanctr++;
     }
@@ -193,3 +199,8 @@ ACTable ServoBlock::buildReport() {
 }
 
 ServoBlock* ServoBlock::s_instance = nullptr;
+const std::chrono::microseconds ServoChannel::defaultPeriod = 20ms;
+const long ServoChannel::defaultMax = 2000;
+const long ServoChannel::defaultMin = 1000;
+const long ServoChannel::defaultCenter = 1500;
+const bool ServoChannel::defaultInvert = false;

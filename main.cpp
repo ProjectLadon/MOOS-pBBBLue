@@ -11,6 +11,10 @@
 #include "BBBlue.h"
 #include "BBBlue_Info.h"
 
+extern "C" {
+    #include "roboticscape.h"
+}
+
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -35,7 +39,7 @@ int main(int argc, char *argv[])
     else if(i==2)
       run_command = argi;
   }
-  
+
   if(mission_file == "")
     showHelpAndExit();
 
@@ -46,7 +50,8 @@ int main(int argc, char *argv[])
   BBBlue BBBlue;
 
   BBBlue.Run(run_command.c_str(), mission_file.c_str());
-  
+
+  rc_cleanup();
+
   return(0);
 }
-

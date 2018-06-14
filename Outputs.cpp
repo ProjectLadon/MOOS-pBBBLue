@@ -13,6 +13,7 @@
 #include <memory>
 #include <cstdlib>
 #include "BBBlue_FunctionBlock.hpp"
+#include "BBBlue.h"
 #include "moosbool.h"
 #include "schema/motor_input_schema.h"
 #include "rapidjson/rapidjson.h"
@@ -43,6 +44,7 @@ bool LEDBlock::configure(rapidjson::Value &v) {
 
 bool LEDBlock::procMail(CMOOSMsg &msg) {
     string key = msg.GetKey();
+    rc_led_t led;
     if ((key != "") && (key == GRNname)) {
         led = GREEN;
     } else if ((key != "") && (key == REDname)) {
@@ -84,14 +86,17 @@ MotorBlock* MotorBlock::instance() {
 
 MotorBlock::MotorBlock () {
     rc_disable_motors();
-    rapidjson Document d;
+    rapidjson::Document d;
     if (d.Parse(reinterpret_cast<char*>(motor_input_schema_json), motor_input_schema_json_len).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(d.GetParseError());
         cerr << " in motor message schema at offset " << d.GetErrorOffset() << endl;
         std::abort();
     }
     sd = new SchemaDocument(d);
-    validator = new SchemaValidator(sd);
+    validator = new SchemaValidator(*sd);
+    isfree.resize(4);
+    isbrake.resize(4);
+    throttle.resize(4);
 }
 
 MotorBlock::~MotorBlock () {
@@ -127,7 +132,7 @@ bool MotorBlock::procMail(CMOOSMsg &msg) {
             enabled = true;
         } else {
             rc_disable_motors();
-            disabled = true;
+            enabled = false;
         }
         return true;
     } else if (msg.IsDouble() && (key == "BBBL_MOTORS0_FREQUENCY")) {
@@ -151,9 +156,9 @@ ACTable MotorBlock::buildReport() {
     ACTable actab(5);
     actab << "Enabled|Motor 1|Motor 2|Motor 3|Motor 4";
     for (int i = 0; i < 4; i++) {
-        if (isBrake[i]) {
+        if (isbrake[i]) {
             actab << "BRAKE";
-        } else if (isFree[i]) {
+        } else if (isfree[i]) {
             actab << "FREE";
         } else actab << to_string(throttle[i]);
     }
@@ -162,7 +167,7 @@ ACTable MotorBlock::buildReport() {
 
 bool MotorBlock::setMotor(int motor, std::string val) {
     rapidjson::Document d;
-    if (d.Parse(val).HasParseError()) {
+    if (d.Parse(val.c_str()).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(d.GetParseError());
         cerr << " in incoming motor message at offset " << d.GetErrorOffset() << endl;
         return false;
@@ -178,23 +183,23 @@ bool MotorBlock::setMotor(int motor, std::string val) {
     if (d.IsDouble()) {
         if (rc_set_motor(motor, d.GetDouble())) return false;   // rc_set_motor() returns non-zero on failure
         throttle[(motor - 1)] = d.GetDouble();
-        isFree[(motor - 1)] = false;
-        isBrake[(motor - 1)] = false;
+        isfree[(motor - 1)] = false;
+        isbrake[(motor - 1)] = false;
         return true;
     } else if (d.IsString()) {
         if (d.GetString() == "FREE") {
             if (rc_set_motor_free_spin(motor)) return false; // rc_set_motor_free_spin() returns non-zero on failure
-            isFree[(motor - 1)] = true;
-            isBrake[(motor - 1)] = false;
+            isfree[(motor - 1)] = true;
+            isbrake[(motor - 1)] = false;
         } else if (d.GetString() == "BRAKE") {
             if(rc_set_motor_brake(motor)) return false; // rc_set_motor_brake() returns non-zero on failure
-            isFree[(motor - 1)] = false;
-            isBrake[(motor - 1)] = true;
+            isfree[(motor - 1)] = false;
+            isbrake[(motor - 1)] = true;
         } else return false;
         return true;
     }
     return false;
 }
 
-LEDBlock* LEDBlock::s_instance = nullptr
-MotorBlock* MotorBlock::s_instance = nullptr
+LEDBlock* LEDBlock::s_instance = nullptr;
+MotorBlock* MotorBlock::s_instance = nullptr;

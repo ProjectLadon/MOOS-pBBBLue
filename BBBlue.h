@@ -8,6 +8,7 @@
 #ifndef BBBlue_HEADER
 #define BBBlue_HEADER
 
+#include <vector>
 #include "MOOS/libMOOS/Thirdparty/AppCasting/AppCastingMOOSApp.h"
 
 class BBBlue : public AppCastingMOOSApp {

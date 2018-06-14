@@ -10,11 +10,17 @@ SET(XXD
 
 # List of schema files
 set(JSON_SCHEMA_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/schema/mixer_schema.json)
+${CMAKE_CURRENT_SOURCE_DIR}/schema/configuration_schema.json
+${CMAKE_CURRENT_SOURCE_DIR}/schema/imu_quaternion_schema.json
+${CMAKE_CURRENT_SOURCE_DIR}/schema/imu_tuple_schema.json
+${CMAKE_CURRENT_SOURCE_DIR}/schema/motor_input_schema.json)
 
 # List of schema files
 set(JSON_HEADER_FILES
-${CMAKE_CURRENT_SOURCE_DIR}/schema/mixer_schema.h)
+${CMAKE_CURRENT_SOURCE_DIR}/schema/configuration_schema.h
+${CMAKE_CURRENT_SOURCE_DIR}/schema/imu_quaternion_schema.h
+${CMAKE_CURRENT_SOURCE_DIR}/schema/imu_tuple_schema.h
+${CMAKE_CURRENT_SOURCE_DIR}/schema/motor_input_schema.h)
 
 FOREACH(LOOP_SCHEMA ${JSON_SCHEMA_FILES})
 	get_filename_component(LOOP_DIR ${LOOP_SCHEMA} DIRECTORY)
@@ -47,4 +53,5 @@ TARGET_LINK_LIBRARIES(pBBBlue
    apputil
    mbutil
    m
+   roboticscape
    pthread)

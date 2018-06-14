@@ -6,12 +6,18 @@
 /************************************************************/
 
 #include <iterator>
+#include <cstdlib>
 #include "MBUtils.h"
 #include "ACTable.h"
 #include "BBBlue.h"
 #include "BBBlue_FunctionBlock.hpp"
 
+extern "C" {
+    #include "roboticscape.h"
+}
+
 using namespace std;
+using namespace BBBL;
 
 //---------------------------------------------------------
 // Procedure: OnNewMail
@@ -22,11 +28,11 @@ bool BBBlue::OnNewMail(MOOSMSG_LIST &NewMail) {
     for(auto &msg : NewMail) {
         string key    = msg.GetKey();
         bool handled = false;
-        for (auto &b: FunctionBlock::getBlockMap) {
+        for (auto &b: ConfBlock::getBlockMap()) {
             handled |= b.second->procMail(msg);
         }
 
-        else if(!handled || (key != "APPCAST_REQ"))  { // handled by AppCastingMOOSApp
+        if(!handled || (key != "APPCAST_REQ"))  { // handled by AppCastingMOOSApp
             reportRunWarning("Unhandled Mail: " + key);
         }
     }
@@ -47,7 +53,7 @@ bool BBBlue::OnConnectToServer() {
 
 bool BBBlue::Iterate() {
   AppCastingMOOSApp::Iterate();
-  for (auto &b: FunctionBlock::getBlockMap()) {
+  for (auto &b: ConfBlock::getBlockMap()) {
       b.second->tick(this);
   }
   AppCastingMOOSApp::PostReport();
@@ -60,6 +66,11 @@ bool BBBlue::Iterate() {
 
 bool BBBlue::OnStartUp() {
     AppCastingMOOSApp::OnStartUp();
+
+    if (rc_initialize()) {
+        std::cerr << "Failed to initialize Beaglebone Blue hardware" << endl;
+        std::abort();
+    }
 
     STRING_LIST sParams;
     m_MissionReader.EnableVerbatimQuoting(false);
@@ -92,7 +103,7 @@ bool BBBlue::OnStartUp() {
 // Procedure: registerVariables
 
 void BBBlue::registerVariables() {
-    for (auto &b: FunctionBlock::getBlockMap) {
+    for (auto &b: ConfBlock::getBlockMap()) {
         b.second->subscribe(this);
     }
     AppCastingMOOSApp::RegisterVariables();
