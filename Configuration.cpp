@@ -66,7 +66,7 @@ rapidjson::Document ConfBlock::loadConfFile(std::string confFile) {
     string json;
     infile.seekg(0, ios::end);
     json.reserve(infile.tellg());
-    confFile.seekg(0, ios::beg);
+    infile.seekg(0, ios::beg);
     json.assign((istreambuf_iterator<char>(infile)), istreambuf_iterator<char>());
     return parseConf(json);
 }
