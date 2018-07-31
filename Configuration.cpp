@@ -35,7 +35,6 @@ rapidjson::Document &ConfBlock::parseConf(std::string conf) {
     }
     SchemaDocument confSchemaDoc(confSchema);
     SchemaValidator validator(confSchemaDoc);
-    Document configuration;
     if (configuration.Parse(conf.c_str()).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(configuration.GetParseError());
         cerr << " in configuration JSON at offset " << configuration.GetErrorOffset() << endl;
@@ -57,11 +56,10 @@ rapidjson::Document &ConfBlock::parseConf(std::string conf) {
 rapidjson::Document &ConfBlock::loadConfFile(std::string confFile) {
     ifstream infile;
     infile.open(confFile);
-    rapidjson::Document d;
     // Make sure the file opened correctly
     if (!infile.is_open()) {
         cerr << "Failed to open configuration file " << confFile << endl;
-        return d;
+        return configuration;
     }
     // Vacuum up the conf file
     string json;
@@ -124,3 +122,4 @@ bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
 }
 
 std::map<std::string, FunctionBlock*> ConfBlock::blocks;
+rapidjson::Document ConfBlock::configuration;

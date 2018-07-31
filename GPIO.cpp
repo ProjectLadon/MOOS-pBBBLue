@@ -21,12 +21,11 @@ using namespace std;
 using namespace rapidjson;
 using namespace BBBL;
 
-GPIOpin::GPIOpin(int pin, GPIOmode mode, std::string var, bool state) : pin(pin), var(var), state(state), mode(mode) {
-        rc_gpio_export(pin);
+GPIOpin::GPIOpin(pindef pin, GPIOmode mode, std::string var, bool state) : pin(pin), var(var), state(state), mode(mode) {
         if (GPIOmode::OUTPUT == mode) {
-            rc_gpio_set_dir(pin, OUTPUT_PIN);
+            rc_gpio_init(pin.port, pin.pin, GPIOHANDLE_REQUEST_OUTPUT);
         } else {
-            rc_gpio_set_dir(pin, INPUT_PIN);
+            rc_gpio_init(pin.port, pin.pin, GPIOHANDLE_REQUEST_INPUT);
         }
 }
 
@@ -44,9 +43,9 @@ bool GPIOpin::procMail(CMOOSMsg &msg) {
 
 bool GPIOpin::tick(BBBlue *b) {
     if (mode == GPIOmode::OUTPUT) {
-        return rc_gpio_set_value(pin, state);
+        return rc_gpio_set_value(pin.port, pin.pin, state);
     } else {
-        state = rc_gpio_get_value(pin);
+        state = rc_gpio_get_value(pin.port, pin.pin);
         uint8_t val = 0;
         if (state) val = 0xff;
         b->notify(var, val);
@@ -123,7 +122,7 @@ ACTable GPIOBlock::buildReport() {
     ACTable actab(pins.size());
     if (!configured) return actab;
     for (auto &p: pins) {
-        string hdr = "GPIO" + to_string(p->getPin());
+        string hdr = "GPIO" + to_string(p->getPin().port) + "_" +  to_string(p->getPin().pin) ;
         actab << hdr;
     }
     actab.addHeaderLines();
@@ -135,3 +134,9 @@ ACTable GPIOBlock::buildReport() {
 }
 
 GPIOBlock* GPIOBlock::s_instance = nullptr;
+const pindef GPIOpin::GPIO1_25 = {1, 25};
+const pindef GPIOpin::GPIO1_17 = {1, 17};
+const pindef GPIOpin::GPIO3_20 = {3, 20};
+const pindef GPIOpin::GPIO3_17 = {3, 17};
+const pindef GPIOpin::GPIO3_2  = {3, 2};
+const pindef GPIOpin::GPIO3_1  = {3, 1};

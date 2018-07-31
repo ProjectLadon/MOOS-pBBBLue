@@ -30,11 +30,11 @@ using namespace std;
 using namespace rapidjson;
 using namespace BBBL;
 
-bool getAccelDLPF (std::string a, rc_imu_config_t &c);
-bool getGyroDLPF (std::string a, rc_imu_config_t &c);
-bool getAccelFSR (std::string a, rc_imu_config_t &c);
-bool getGyroFSR (std::string a, rc_imu_config_t &c);
-bool getOrientation (std::string a, rc_imu_config_t &c);
+bool getAccelDLPF (std::string a, rc_mpu_config_t &c);
+bool getGyroDLPF (std::string a, rc_mpu_config_t &c);
+bool getAccelFSR (std::string a, rc_mpu_config_t &c);
+bool getGyroFSR (std::string a, rc_mpu_config_t &c);
+bool getOrientation (std::string a, rc_mpu_config_t &c);
 
 IMURandomBlock* IMURandomBlock::instance() {
     if (!s_instance) s_instance = new IMURandomBlock();
@@ -46,7 +46,7 @@ bool IMURandomBlock::configure(rapidjson::Value &v) {
     if (!v.HasMember("mode") || !v["mode"].IsString() ||
         (v["mode"].GetString() != "Random")) return false;
     configured = true;
-    rc_set_imu_config_to_defaults(&conf);
+    rc_mpu_set_config_to_default(&conf);
     if (v.HasMember("magnetometer") && v["magnetometer"].IsBool() &&
         v["magnetometer"].GetBool()) {
             conf.enable_magnetometer = 1;
@@ -59,13 +59,13 @@ bool IMURandomBlock::configure(rapidjson::Value &v) {
         configured &= getAccelDLPF(v["accelFilter"].GetString(), conf);
     if (v.HasMember("gyroFilter") && v["gyroFilter"].IsString())
         configured &= getGyroDLPF(v["gyroFilter"].GetString(), conf);
-    if (configured && rc_initialize_imu(&data, conf)) configured = false;    // Checks if initilization failed
+    if (configured && rc_mpu_initialize(&data, conf)) configured = false;    // Checks if initilization failed
     return configured;
 }
 
 bool IMURandomBlock::tick(BBBlue *b) {
-    if (rc_read_accel_data(&data) || rc_read_gyro_data(&data) ||
-        rc_read_mag_data(&data) || rc_read_imu_temp(&data)) return false;
+    if (rc_mpu_read_accel(&data) || rc_mpu_read_gyro(&data) ||
+        rc_mpu_read_mag(&data) || rc_mpu_read_temp(&data)) return false;
 
     // magnetic heading code derived from http://www.cypress.com/file/130456/download
     double Atotal = sqrt(data.accel[0]*data.accel[0] +
@@ -116,7 +116,7 @@ ACTable IMURandomBlock::buildReport() {
 }
 
 IMURandomBlock::~IMURandomBlock() {
-    rc_power_off_imu();
+    rc_mpu_power_off();
 }
 
 IMUDMPBlock* IMUDMPBlock::instance() {
@@ -147,7 +147,7 @@ bool IMUDMPBlock::configure(rapidjson::Value &v) {
         conf.dmp_sample_rate = v["dmpSampleRate"].GetInt();
     if (v.HasMember("dmpCompassTimeConstant") && v["dmpCompassTimeConstant"].IsFloat())
         conf.compass_time_constant = v["dmpCompassTimeConstant"].GetFloat();
-    if (configured && rc_initialize_imu_dmp(&data, conf)) configured = false;    // Checks if initilization failed
+    if (configured && rc_mpu_initialize_dmp(&data, conf)) configured = false;    // Checks if initilization failed
     return configured;
 }
 
@@ -184,10 +184,10 @@ ACTable IMUDMPBlock::buildReport() {
 }
 
 IMUDMPBlock::~IMUDMPBlock() {
-    rc_power_off_imu();
+    rc_mpu_power_off();
 }
 
-bool getAccelDLPF (std::string a, rc_imu_config_t &c) {
+bool getAccelDLPF (std::string a, rc_mpu_config_t &c) {
     if ("OFF" == a) {c.accel_dlpf = ACCEL_DLPF_OFF; return true;}
     if ("184" == a) {c.accel_dlpf = ACCEL_DLPF_184; return true;}
     if ("92" == a) {c.accel_dlpf = ACCEL_DLPF_92; return true;}
@@ -198,7 +198,7 @@ bool getAccelDLPF (std::string a, rc_imu_config_t &c) {
     return false;
 }
 
-bool getGyroDLPF (std::string a, rc_imu_config_t &c) {
+bool getGyroDLPF (std::string a, rc_mpu_config_t &c) {
     if ("OFF" == a) {c.gyro_dlpf = GYRO_DLPF_OFF; return true;}
     if ("184" == a) {c.gyro_dlpf = GYRO_DLPF_184; return true;}
     if ("92" == a) {c.gyro_dlpf = GYRO_DLPF_92; return true;}
@@ -209,31 +209,31 @@ bool getGyroDLPF (std::string a, rc_imu_config_t &c) {
     return false;
 }
 
-bool getAccelFSR (std::string a, rc_imu_config_t &c) {
-    if ("2G" == a) {c.accel_fsr = A_FSR_2G; return true;}
-    if ("4G" == a) {c.accel_fsr = A_FSR_4G; return true;}
-    if ("8G" == a) {c.accel_fsr = A_FSR_8G; return true;}
-    if ("16G" == a) {c.accel_fsr = A_FSR_16G; return true;}
+bool getAccelFSR (std::string a, rc_mpu_config_t &c) {
+    if ("2G" == a) {c.accel_fsr = ACCEL_FSR_2G; return true;}
+    if ("4G" == a) {c.accel_fsr = ACCEL_FSR_4G; return true;}
+    if ("8G" == a) {c.accel_fsr = ACCEL_FSR_8G; return true;}
+    if ("16G" == a) {c.accel_fsr = ACCEL_FSR_16G; return true;}
     return false;
 }
 
-bool getGyroFSR (std::string a, rc_imu_config_t &c) {
-    if ("250DPS" == a) {c.gyro_fsr = G_FSR_250DPS; return true;}
-    if ("500DPS" == a) {c.gyro_fsr = G_FSR_500DPS; return true;}
-    if ("1000DPS" == a) {c.gyro_fsr = G_FSR_1000DPS; return true;}
-    if ("2000DPS" == a) {c.gyro_fsr = G_FSR_2000DPS; return true;}
+bool getGyroFSR (std::string a, rc_mpu_config_t &c) {
+    if ("250DPS" == a) {c.gyro_fsr = GYRO_FSR_250DPS; return true;}
+    if ("500DPS" == a) {c.gyro_fsr = GYRO_FSR_500DPS; return true;}
+    if ("1000DPS" == a) {c.gyro_fsr = GYRO_FSR_1000DPS; return true;}
+    if ("2000DPS" == a) {c.gyro_fsr = GYRO_FSR_2000DPS; return true;}
     return false;
 }
 
-bool getOrientation (std::string a, rc_imu_config_t &c) {
-    if ("Z_UP"   == a) {c.orientation = ORIENTATION_Z_UP; return true;}
-    if ("Z_DN"   == a) {c.orientation = ORIENTATION_Z_DOWN; return true;}
-	if ("X_UP"   == a) {c.orientation = ORIENTATION_X_UP; return true;}
-    if ("X_DN"   == a) {c.orientation = ORIENTATION_X_DOWN; return true;}
-	if ("Y_UP"   == a) {c.orientation = ORIENTATION_Y_UP; return true;}
-    if ("Y_DN"   == a) {c.orientation = ORIENTATION_Y_DOWN; return true;}
-	if ("X_FWD"  == a) {c.orientation = ORIENTATION_X_FORWARD; return true;}
-    if ("X_BACK" == a) {c.orientation = ORIENTATION_X_BACK; return true;}
+bool getOrientation (std::string a, rc_mpu_config_t &c) {
+    if ("Z_UP"   == a) {c.orient = ORIENTATION_Z_UP; return true;}
+    if ("Z_DN"   == a) {c.orient = ORIENTATION_Z_DOWN; return true;}
+	if ("X_UP"   == a) {c.orient = ORIENTATION_X_UP; return true;}
+    if ("X_DN"   == a) {c.orient = ORIENTATION_X_DOWN; return true;}
+	if ("Y_UP"   == a) {c.orient = ORIENTATION_Y_UP; return true;}
+    if ("Y_DN"   == a) {c.orient = ORIENTATION_Y_DOWN; return true;}
+	if ("X_FWD"  == a) {c.orient = ORIENTATION_X_FORWARD; return true;}
+    if ("X_BACK" == a) {c.orient = ORIENTATION_X_BACK; return true;}
     return false;
 }
 

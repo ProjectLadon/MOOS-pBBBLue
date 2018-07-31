@@ -48,6 +48,7 @@ class ConfBlock {
     private:
         ConfBlock() {};
         ~ConfBlock() {};
+        static rapidjson::Document configuration;
         static std::map<std::string, FunctionBlock*> blocks;
 };
 
@@ -151,9 +152,9 @@ class ServoBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured();
         ACTable buildReport();
-        ~ServoBlock() {rc_disable_servo_power_rail();};
+        ~ServoBlock() {rc_servo_power_rail_en(0);};
     private:
-        ServoBlock() {rc_enable_servo_power_rail();};
+        ServoBlock() {rc_servo_power_rail_en(-1);};
         static ServoBlock* s_instance;
         std::vector<std::unique_ptr<ServoChannel>> servos;
 };
@@ -171,8 +172,8 @@ class IMURandomBlock : public FunctionBlock {
     private:
         IMURandomBlock() {};
         static IMURandomBlock* s_instance;
-        rc_imu_data_t data;
-        rc_imu_config_t conf;
+        rc_mpu_data_t data;
+        rc_mpu_config_t conf;
         double heading;
         double temp;
         bool configured = false;
@@ -192,8 +193,8 @@ class IMUDMPBlock : public FunctionBlock {
     private:
         IMUDMPBlock() {};
         static IMUDMPBlock* s_instance;
-        rc_imu_data_t data;
-        rc_imu_config_t conf;
+        rc_mpu_data_t data;
+        rc_mpu_config_t conf;
         double temp;
         bool configured = false;
 };
@@ -207,7 +208,7 @@ class BaroBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured() {return configured;};
         ACTable buildReport();
-        ~BaroBlock() {rc_power_off_barometer();};
+        ~BaroBlock() {rc_bmp_power_off();};
     private:
         BaroBlock() {};
         static BaroBlock* s_instance;

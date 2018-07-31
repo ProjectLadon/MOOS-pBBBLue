@@ -46,17 +46,17 @@ bool LEDBlock::procMail(CMOOSMsg &msg) {
     string key = msg.GetKey();
     rc_led_t led;
     if ((key != "") && (key == GRNname)) {
-        led = GREEN;
+        led = RC_LED_GREEN;
     } else if ((key != "") && (key == REDname)) {
-        led = RED;
+        led = RC_LED_RED;
     } else return false;
 
     // Check the incoming message... return false if the rc_set_led() call fails
     if (moosbool::instance()->isTrue(msg)) {
-        if (rc_set_led(led, 1)) return false;
+        if (rc_led_set(led, 1)) return false;
         return true;
     } else {
-        if (rc_set_led(led, 0)) return false;
+        if (rc_led_set(led, 0)) return false;
         return true;
     }
     return false;
@@ -74,8 +74,8 @@ ACTable LEDBlock::buildReport() {
     ACTable actab(2);
     actab << "Green | Red";
     actab.addHeaderLines();
-    actab << rc_get_led(GREEN);
-    actab << rc_get_led(RED);
+    actab << rc_led_get(RC_LED_GREEN);
+    actab << rc_led_get(RC_LED_RED);
     return actab;
 }
 
@@ -85,7 +85,7 @@ MotorBlock* MotorBlock::instance() {
 }
 
 MotorBlock::MotorBlock () {
-    rc_disable_motors();
+    rc_motor_cleanup();
     rapidjson::Document d;
     if (d.Parse(reinterpret_cast<char*>(motor_input_schema_json), motor_input_schema_json_len).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(d.GetParseError());
@@ -100,6 +100,7 @@ MotorBlock::MotorBlock () {
 }
 
 MotorBlock::~MotorBlock () {
+    rc_motor_cleanup();
     delete sd;
     delete validator;
 }
@@ -113,7 +114,7 @@ bool MotorBlock::configure(rapidjson::Value &v) {
             motors.push_back("");
         }
     }
-    if (configured) {rc_enable_motors();}
+    if (configured) {rc_motor_init();}
     return configured;
 }
 
@@ -128,10 +129,10 @@ bool MotorBlock::procMail(CMOOSMsg &msg) {
     }
     if (key == "BBBL_MOTORS_ACTIVE") {
         if (moosbool::instance()->isTrue(msg)) {
-            rc_enable_motors();
+            rc_motor_init();
             enabled = true;
         } else {
-            rc_disable_motors();
+            rc_motor_cleanup();
             enabled = false;
         }
         return true;
@@ -181,18 +182,18 @@ bool MotorBlock::setMotor(int motor, std::string val) {
         return false;
     }
     if (d.IsDouble()) {
-        if (rc_set_motor(motor, d.GetDouble())) return false;   // rc_set_motor() returns non-zero on failure
+        if (rc_motor_set(motor, d.GetDouble())) return false;   // rc_set_motor() returns non-zero on failure
         throttle[(motor - 1)] = d.GetDouble();
         isfree[(motor - 1)] = false;
         isbrake[(motor - 1)] = false;
         return true;
     } else if (d.IsString()) {
         if (d.GetString() == "FREE") {
-            if (rc_set_motor_free_spin(motor)) return false; // rc_set_motor_free_spin() returns non-zero on failure
+            if (rc_motor_free_spin(motor)) return false; // rc_set_motor_free_spin() returns non-zero on failure
             isfree[(motor - 1)] = true;
             isbrake[(motor - 1)] = false;
         } else if (d.GetString() == "BRAKE") {
-            if(rc_set_motor_brake(motor)) return false; // rc_set_motor_brake() returns non-zero on failure
+            if(rc_motor_brake(motor)) return false; // rc_set_motor_brake() returns non-zero on failure
             isfree[(motor - 1)] = false;
             isbrake[(motor - 1)] = true;
         } else return false;

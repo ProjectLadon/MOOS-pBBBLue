@@ -17,12 +17,17 @@ namespace BBBL {
 
 enum class GPIOmode { OUTPUT, INPUT };
 
+struct pindef {
+    uint8_t port;
+    uint8_t pin;
+};
+
 class GPIOpin {
     public:
-        GPIOpin(int pin, GPIOmode mode, std::string var, bool state = false);
+        GPIOpin(pindef pin, GPIOmode mode, std::string var, bool state = false);
         const GPIOmode &getMode() {return mode;};
         const std::string &getVar() {return var;};
-        const int &getPin() {return pin;};
+        const pindef &getPin() {return pin;};
         const bool &getState() {return state;};
         bool procMail(CMOOSMsg &msg);
         bool tick(BBBlue *b);
@@ -30,17 +35,17 @@ class GPIOpin {
         void set(bool n) {if (mode == GPIOmode::OUTPUT) state = n;};
         bool get() {return state;}
         ~GPIOpin() {};
-        const static int GPIO1_25 = (32 + 25);
-        const static int GPIO1_17 = (32 + 17);
-        const static int GPIO3_20 = ((32 * 3) + 20);
-        const static int GPIO3_17 = ((32 * 3) + 17);
-        const static int GPIO3_2 = ((32 * 3) + 2);
-        const static int GPIO3_1 = ((32 * 3) + 1);
+        const static pindef GPIO1_25;
+        const static pindef GPIO1_17;
+        const static pindef GPIO3_20;
+        const static pindef GPIO3_17;
+        const static pindef GPIO3_2;
+        const static pindef GPIO3_1;
 
     private:
         GPIOmode mode;
         bool state;
-        int pin;
+        pindef pin;
         std::string var;
 };
 

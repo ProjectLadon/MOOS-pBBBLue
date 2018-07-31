@@ -43,12 +43,12 @@ bool ButtonBlock::configure(rapidjson::Value &v) {
 
 bool ButtonBlock::tick(BBBlue *b) {
     if (pause != "") {
-        if (rc_get_pause_button() == PRESSED) {
+        if (rc_button_get_state(RC_BTN_PIN_PAUSE) == RC_BTN_STATE_PRESSED) {
             b->notify(pause, 1);
         } else b->notify(pause, 0);
     }
     if (mode != "") {
-        if (rc_get_mode_button() == PRESSED) {
+        if (rc_button_get_state(RC_BTN_PIN_MODE) == RC_BTN_STATE_PRESSED) {
             b->notify(mode, 1);
         } else b->notify(mode, 0);
     }
@@ -59,8 +59,8 @@ ACTable ButtonBlock::buildReport() {
     ACTable actab(2);
     actab << "Mode | Pause";
     actab.addHeaderLines();
-    actab << rc_get_mode_button();
-    actab << rc_get_pause_button();
+    actab << rc_button_get_state(RC_BTN_PIN_MODE);
+    actab << rc_button_get_state(RC_BTN_PIN_PAUSE);
     return actab;
 }
 
@@ -84,21 +84,22 @@ bool ADCBlock::configure(rapidjson::Value &v) {
             } else {rawChannels.push_back("");}
         }
     }
-    return isConfigured();
+    if (isConfigured()) return rc_adc_init();
+    return false;
 }
 
 bool ADCBlock::tick(BBBlue *b) {
     int ch = 0;
     for (auto &c: rawChannels) {
-        if (c != "") b->notify(c, rc_adc_raw(ch));
+        if (c != "") b->notify(c, rc_adc_read_raw(ch));
         ch++;
     }
     for (auto &c: voltChannels) {
-        if (c != "") b->notify(c, rc_adc_volt(ch));
+        if (c != "") b->notify(c, rc_adc_read_volt(ch));
         ch++;
     }
-    b->notify("BBBL_BATTERY_VOLTAGE", rc_battery_voltage());
-    b->notify("BBBL_JACK_VOLTAGE", rc_dc_jack_voltage());
+    b->notify("BBBL_BATTERY_VOLTAGE", rc_adc_batt());
+    b->notify("BBBL_JACK_VOLTAGE", rc_adc_dc_jack());
 }
 
 bool ADCBlock::isConfigured() {
@@ -111,16 +112,16 @@ ACTable ADCBlock::buildReport() {
     ACTable actab(6);
     actab << "CH0|CH1|CH2|CH3|Jack|Battery";
     actab.addHeaderLines();
-    actab << to_string(rc_adc_volt(0));
-    actab << to_string(rc_adc_volt(1));
-    actab << to_string(rc_adc_volt(2));
-    actab << to_string(rc_adc_volt(3));
-    actab << to_string(rc_dc_jack_voltage());
-    actab << to_string(rc_battery_voltage());
-    actab << to_string(rc_adc_raw(0));
-    actab << to_string(rc_adc_raw(1));
-    actab << to_string(rc_adc_raw(2));
-    actab << to_string(rc_adc_raw(3));
+    actab << to_string(rc_adc_read_volt(0));
+    actab << to_string(rc_adc_read_volt(1));
+    actab << to_string(rc_adc_read_volt(2));
+    actab << to_string(rc_adc_read_volt(3));
+    actab << to_string(rc_adc_dc_jack());
+    actab << to_string(rc_adc_batt());
+    actab << to_string(rc_adc_read_raw(0));
+    actab << to_string(rc_adc_read_raw(1));
+    actab << to_string(rc_adc_read_raw(2));
+    actab << to_string(rc_adc_read_raw(3));
     return actab;
 }
 
@@ -177,7 +178,7 @@ bool BaroBlock::configure(rapidjson::Value &v) {
         configured = true;
     }
     if (configured) {
-        if (rc_initialize_barometer(oversample, filter)) {
+        if (rc_bmp_init(oversample, filter)) {
             configured = false;
             return false;
         }
@@ -195,9 +196,11 @@ bool BaroBlock::procMail(CMOOSMsg &msg) {
 }
 
 bool BaroBlock::tick(BBBlue *b) {
-    b->notify("BBBL_BARO_TEMP", rc_bmp_get_temperature());
-    b->notify("BBBL_BARO_PRES", rc_bmp_get_pressure_pa());
-    b->notify("BBBL_BARO_ALT", rc_bmp_get_altitude_m());
+    rc_bmp_data_t data;
+    if (!rc_bmp_read(&data)) return false;
+    b->notify("BBBL_BARO_TEMP", data.temp_c);
+    b->notify("BBBL_BARO_PRES", data.pressure_pa);
+    b->notify("BBBL_BARO_ALT", data.alt_m);
     return true;
 }
 
@@ -207,14 +210,16 @@ bool BaroBlock::subscribe(BBBlue *b) {
 }
 
 ACTable BaroBlock::buildReport() {
+    rc_bmp_data_t data;
     ACTable actab(4);
     actab << "SeaLevel (Pa)|Ambient (Pa)|Altitude (m)|Temp (C)";
+    if (!rc_bmp_read(&data)) return actab;
     actab.addHeaderLines();
     actab << to_string(seaLevelPressure);
-    actab << to_string(rc_bmp_get_pressure_pa());
-    actab << to_string(rc_bmp_get_altitude_m());
-    actab << to_string(rc_bmp_get_temperature());
-
+    actab << to_string(data.pressure_pa);
+    actab << to_string(data.alt_m);
+    actab << to_string(data.temp_c);
+    return actab;
 }
 
 EncodersBlock* EncodersBlock::instance() {
@@ -230,7 +235,7 @@ bool EncodersBlock::configure(rapidjson::Value &v) {
                 encoders.push_back(e.GetString());
             } else if (e.IsObject()) {
                 encoders.push_back(e["name"].GetString());
-                if (e.HasMember("init")) rc_set_encoder_pos(cnt, e["init"].GetInt());
+                if (e.HasMember("init")) rc_encoder_write(cnt, e["init"].GetInt());
             } else encoders.push_back("");
             cnt++;
         }
@@ -243,7 +248,7 @@ bool EncodersBlock::tick(BBBlue *b) {
     int cnt = 1;
     for (auto &e: encoders) {
         if (e != "") {
-            b->notify(e, rc_get_encoder_pos(cnt));
+            b->notify(e, rc_encoder_read(cnt));
         }
         cnt++;
     }
@@ -258,7 +263,7 @@ bool EncodersBlock::isConfigured() {
 ACTable EncodersBlock::buildReport() {
     ACTable actab(4);
     actab << "E1|E2|E3|E4";
-    for (int i = 1; i < 5; i++) actab << to_string(rc_get_encoder_pos(i));
+    for (int i = 1; i < 5; i++) actab << to_string(rc_encoder_read(i));
     return actab;
 }
 

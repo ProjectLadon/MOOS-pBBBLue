@@ -116,7 +116,7 @@ void ServoChannel::threadrunner() {
 }
 
 void ServoChannel::pulse() {
-    rc_send_servo_pulse_us(channel, micros);
+    rc_servo_send_pulse_us(channel, micros);
 }
 
 ServoMode ServoChannel::getAction(std::string act) {

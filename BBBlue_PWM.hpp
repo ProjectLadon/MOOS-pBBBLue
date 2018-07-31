@@ -33,7 +33,7 @@ class PWMChannel {
         bool setDutyA (double d);
         bool setDutyB (double d);
         bool subscribe(BBBlue *b);
-        ~PWMChannel() {rc_pwm_close(iface);};
+        ~PWMChannel() {rc_pwm_cleanup(iface);};
     private:
         int iface;
         int period;
