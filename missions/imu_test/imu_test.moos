@@ -1,0 +1,37 @@
+//------------------------------------
+// NAME: Pierce Nichols, Ladon Project
+// FILE: imu_test.moos
+//------------------------------------
+
+ServerHost	= localhost
+ServerPort 	= 9000
+Community	= basic_rc
+MOOSTimeWarp 	= 1
+
+//------------------------------------
+// Antler Configuration block
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches = 200
+
+	Run = MOOSDB	@ NewConsole = false
+	Run = uXMS		@ NewConsole = false
+    Run = pBBBlue   @ NewConsole = false
+}
+
+//-------------------------------------
+// uXMS Configuration block
+ProcessConfig = uXMS
+{
+	var = SBUS_Ch1_SCALED, SBUS_Ch4_SCALED, mizzen_cmd, foresail_cmd
+	var = GPSD_mode, GPSD_latitude, GPSD_longitude, GPSD_speed, GPSD_track
+}
+
+//-------------------------------------
+// pBBBlue Configuration block
+ProcessConfig = pBBBlue
+{
+    AppTick   = 10
+    CommsTick = 10
+    conf = {"IMU":{"mode":"DMP", "magnetometer":true, "dmpSampleRate":10}}
+}
