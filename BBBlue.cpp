@@ -79,20 +79,28 @@ bool BBBlue::OnStartUp() {
     }
 
     for(auto &p: sParams) {
+        cerr << "Parameter line: " << p << endl;
         string orig  = p;
         string line  = p;
         string param = toupper(biteStringX(line, '='));
         string value = line;
 
+        cerr << "Parameter is: " << param << endl;
+        cerr << "Value is: " << value << endl;
+
         bool handled = false;
-        if(param == "conf") {
+        if(param == "CONF") {
+            std::cerr << "Processing conf parameter" << endl;
             handled = ConfBlock::configureBlocks(ConfBlock::parseConf(value));
         }
-        else if(param == "confFile") {
+        else if(param == "CONFFILE") {
             handled = ConfBlock::configureBlocks(ConfBlock::loadConfFile(value));
         }
 
-        if(!handled) reportUnhandledConfigWarning(orig);
+        if(!handled) {
+            reportUnhandledConfigWarning(orig);
+            // exit(-1);
+        }
     }
 
     registerVariables();

@@ -1,0 +1,36 @@
+//------------------------------------
+// NAME: Pierce Nichols, Ladon Project
+// FILE: imu_test.moos
+//------------------------------------
+
+ServerHost	= localhost
+ServerPort 	= 9000
+Community	= imu_test
+MOOSTimeWarp 	= 1
+
+//------------------------------------
+// Antler Configuration block
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches = 200
+
+	Run = MOOSDB	@ NewConsole = false
+	Run = uXMS		@ NewConsole = true
+    Run = pBBBlue   @ NewConsole = true
+}
+
+//-------------------------------------
+// uXMS Configuration block
+ProcessConfig = uXMS
+{
+	var = BBBL_DMP_HEADING, BBBL_IMU_TEMP, BBBL_DMP_HEADING_RAW, BBBL_DMP_TBA, BBBL_DMP_QT
+}
+
+//-------------------------------------
+// pBBBlue Configuration block
+ProcessConfig = pBBBlue
+{
+    AppTick   = 10
+    CommsTick = 10
+    conf = {"IMU":{"mode":"DMP", "magnetometer":true, "dmpSampleRate":200, "orientation": "Z_UP", "dmpCompassTimeConstant":5.0}}
+}

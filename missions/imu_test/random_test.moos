@@ -5,7 +5,7 @@
 
 ServerHost	= localhost
 ServerPort 	= 9000
-Community	= basic_rc
+Community	= imu_test
 MOOSTimeWarp 	= 1
 
 //------------------------------------
@@ -15,16 +15,15 @@ ProcessConfig = ANTLER
 	MSBetweenLaunches = 200
 
 	Run = MOOSDB	@ NewConsole = false
-	Run = uXMS		@ NewConsole = false
-    Run = pBBBlue   @ NewConsole = false
+	Run = uXMS		@ NewConsole = true
+    Run = pBBBlue   @ NewConsole = true
 }
 
 //-------------------------------------
 // uXMS Configuration block
 ProcessConfig = uXMS
 {
-	var = SBUS_Ch1_SCALED, SBUS_Ch4_SCALED, mizzen_cmd, foresail_cmd
-	var = GPSD_mode, GPSD_latitude, GPSD_longitude, GPSD_speed, GPSD_track
+	var = BBBL_IMU_COMPASS, BBBL_IMU_TEMP, BBBL_IMU_ACCEL, BBBL_IMU_GYRO, BBBL_IMU_MAG
 }
 
 //-------------------------------------
@@ -33,5 +32,5 @@ ProcessConfig = pBBBlue
 {
     AppTick   = 10
     CommsTick = 10
-    conf = {"IMU":{"mode":"DMP", "magnetometer":true, "dmpSampleRate":10}}
+    conf = {"IMU":{"mode":"Random", "magnetometer":true}}
 }

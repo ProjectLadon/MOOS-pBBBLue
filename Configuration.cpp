@@ -28,7 +28,8 @@ using namespace BBBL;
 
 rapidjson::Document &ConfBlock::parseConf(std::string conf) {
     Document confSchema;
-    if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json, configuration_schema_json_len)).HasParseError()) {
+    //if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json, configuration_schema_json_len)).HasParseError()) {
+    if (confSchema.Parse((char*)configuration_schema_json).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(confSchema.GetParseError());
         cerr << " in configuration schema at offset " << confSchema.GetErrorOffset() << endl;
         std::abort();
@@ -98,13 +99,20 @@ bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
         blocks.insert(pair<string, FunctionBlock*>("Servos", ServoBlock::instance()));
     }
     if (conf.HasMember("IMU") && conf["IMU"].IsObject()) {
-        if (conf["IMU"].HasMember("mode") && (conf["IMU"]["mode"].GetString() == "Random")) {
+        cerr << "Found IMU Block!" << endl;
+        if (conf["IMU"].HasMember("mode") && (string(conf["IMU"]["mode"].GetString()) == "Random")) {
+            cerr << "Found Random IMU Block!" << endl;
             result &= IMURandomBlock::instance()->configure(conf["IMU"]);
             blocks.insert(pair<string, FunctionBlock*>("IMU", IMURandomBlock::instance()));
-        } else if (conf["IMU"].HasMember("mode") && (conf["IMU"]["mode"].GetString() == "DMP")) {
+        } else if (conf["IMU"].HasMember("mode") && (string(conf["IMU"]["mode"].GetString()) == "DMP")) {
+            cerr << "Found DMP IMU Block!" << endl;
             result &= IMUDMPBlock::instance()->configure(conf["IMU"]);
             blocks.insert(pair<string, FunctionBlock*>("IMU", IMUDMPBlock::instance()));
-        } else result &= false;
+        } else {
+            cerr << "Did not find valid IMU block!" << endl;
+            if (conf["IMU"].HasMember("mode")) cerr << "\tMode is: " << conf["IMU"]["mode"].GetString() << endl;
+            result &= false;
+        }
     }
     if (conf.HasMember("Barometer") && conf["Barometer"].IsObject()) {
         result &= BaroBlock::instance()->configure(conf["Barometer"]);

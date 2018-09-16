@@ -44,7 +44,7 @@ IMURandomBlock* IMURandomBlock::instance() {
 bool IMURandomBlock::configure(rapidjson::Value &v) {
     if (IMUDMPBlock::instance()->isConfigured()) return false;
     if (!v.HasMember("mode") || !v["mode"].IsString() ||
-        (v["mode"].GetString() != "Random")) return false;
+        (string(v["mode"].GetString()) != "Random")) return false;
     configured = true;
     rc_mpu_set_config_to_default(&conf);
     if (v.HasMember("magnetometer") && v["magnetometer"].IsBool() &&
@@ -108,10 +108,12 @@ ACTable IMURandomBlock::buildReport() {
     for (int i = 0; i < 3; i++) actab << to_string(data.gyro[i]);
     actab << "Mag";
     for (int i = 0; i < 3; i++) actab << to_string(data.mag[i]);
-    actab << "Heading";
+    actab << "Heading (deg)";
     actab << to_string(heading);
+    actab << " " << " " << " ";
     actab << "Temp";
     actab << to_string(data.temp);
+    actab << " " << " " << " ";
     return actab;
 }
 
@@ -127,8 +129,9 @@ IMUDMPBlock* IMUDMPBlock::instance() {
 bool IMUDMPBlock::configure(rapidjson::Value &v) {
     if (IMURandomBlock::instance()->isConfigured()) return false;
     if (!v.HasMember("mode") || !v["mode"].IsString() ||
-        (v["mode"].GetString() != "DMP")) return false;
+        (string(v["mode"].GetString()) != "DMP")) return false;
     configured = true;
+    rc_mpu_set_config_to_default(&conf);
     if (v.HasMember("magnetometer") && v["magnetometer"].IsBool() &&
         v["magnetometer"].GetBool()) {
             conf.enable_magnetometer = 1;
@@ -159,8 +162,8 @@ bool IMUDMPBlock::tick(BBBlue *b) {
                         ",\"x2\":" + to_string(data.fused_quat[1]) +
                         ",\"x3\":" + to_string(data.fused_quat[2]) +
                         ",\"x4\":" + to_string(data.fused_quat[3]) + "}";
-    b->notify("BBBL_DMP_HEADING", data.compass_heading);
-    b->notify("BBBL_DMP_HEADING_RAW", data.compass_heading_raw);
+    b->notify("BBBL_DMP_HEADING", (data.compass_heading*180/M_PI)); // output in degrees
+    b->notify("BBBL_DMP_HEADING_RAW", data.compass_heading_raw);    // output in radians
     b->notify("BBBL_DMP_TBA", taitBryan);
     b->notify("BBBL_DMP_QT", quaternion);
     b->notify("BBBL_IMU_TEMP", data.temp);
@@ -171,15 +174,17 @@ ACTable IMUDMPBlock::buildReport() {
     ACTable actab(5);
     actab << "Data|X/X1|Y/X2|Z/X3|X4";
     actab.addHeaderLines();
-    actab << "Tait-Bryan";
+    actab << "Tait-Bryan (rad)";
     for (int i = 0; i < 3; i++) actab << to_string(data.fused_TaitBryan[i]);
     actab << " ";
     actab << "Quaternion";
-    for (int i = 0; i < 3; i++) actab << to_string(data.fused_quat[i]);
-    actab << "Heading";
-    actab << to_string(data.compass_heading);
-    actab << "Temp";
-    actab << to_string(data.temp);
+    for (int i = 0; i < 4; i++) actab << to_string(data.fused_quat[i]);
+    actab << "Filtered Heading (deg)" << to_string(data.compass_heading*180/M_PI);
+    actab << " " << " " << " ";
+    actab << "Raw Heading (deg)" << to_string(data.compass_heading_raw*180/M_PI);
+    actab << " " << " " << " ";
+    actab << "Temp" << to_string(data.temp);
+    actab << " " << " " << " ";
     return actab;
 }
 
