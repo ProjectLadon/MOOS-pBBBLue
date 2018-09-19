@@ -141,6 +141,10 @@ ServoBlock* ServoBlock::instance() {
 bool ServoBlock::configure(rapidjson::Value &v) {
     int chanctr = 0;
     for (auto &s: v.GetArray()) {
+        if (rc_servo_init()) {
+            cerr << "Failed to initialize Servo subsystem; exiting" << endl;
+            exit(-1);
+        }
         if (s.IsNull()) {
             servos.push_back(std::unique_ptr<ServoChannel>(nullptr));
         } else {
@@ -192,8 +196,20 @@ ACTable ServoBlock::buildReport() {
         ctr++;
     }
     actab.addHeaderLines();
-    for (auto &s: servos) actab << to_string((int)(s->getMode()));
-    for (auto &s: servos) actab << to_string(s->getMicros());
+    for (auto &s: servos) {
+        if (s) {
+            actab << to_string((int)(s->getMode()));
+        } else {
+            actab << " ";
+        }
+    }
+    for (auto &s: servos) {
+        if (s) {
+            actab << to_string(s->getMicros());
+        } else {
+            actab << " ";
+        }
+    };
 
     return actab;
 }

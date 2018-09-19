@@ -5,7 +5,7 @@
 
 ServerHost	= localhost
 ServerPort 	= 9000
-Community	= imu_dmp_test
+Community	= servo_test
 MOOSTimeWarp 	= 1
 
 //------------------------------------
@@ -16,14 +16,14 @@ ProcessConfig = ANTLER
 
 	Run = MOOSDB	@ NewConsole = false
 	Run = uXMS		@ NewConsole = true
-    Run = pBBBlue   @ NewConsole = true
+    Run = pBBBlue   @ NewConsole = false
 }
 
 //-------------------------------------
 // uXMS Configuration block
 ProcessConfig = uXMS
 {
-	var = BBBL_DMP_HEADING, BBBL_IMU_TEMP, BBBL_DMP_HEADING_RAW, BBBL_DMP_TBA, BBBL_DMP_QT
+	var = BBBL_IMU_COMPASS, BBBL_IMU_TEMP, BBBL_IMU_ACCEL, BBBL_IMU_GYRO, BBBL_IMU_MAG
 }
 
 //-------------------------------------
@@ -32,5 +32,5 @@ ProcessConfig = pBBBlue
 {
     AppTick   = 10
     CommsTick = 10
-    conf = {"IMU":{"mode":"DMP", "magnetometer":true, "dmpSampleRate":200, "orientation": "Z_UP", "dmpCompassTimeConstant":5.0}}
+    conf = {"Servos":[null, {"name":"ST2", "action":"servo90"},{"name":"ST3", "action": "micros"}]}
 }

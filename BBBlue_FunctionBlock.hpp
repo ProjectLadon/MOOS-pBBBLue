@@ -152,9 +152,9 @@ class ServoBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured();
         ACTable buildReport();
-        ~ServoBlock() {rc_servo_power_rail_en(0);};
+        ~ServoBlock() {rc_servo_cleanup();};
     private:
-        ServoBlock() {rc_servo_power_rail_en(-1);};
+        ServoBlock() {};
         static ServoBlock* s_instance;
         std::vector<std::unique_ptr<ServoChannel>> servos;
 };

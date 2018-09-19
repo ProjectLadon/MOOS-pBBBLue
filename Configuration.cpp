@@ -82,11 +82,11 @@ bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
         result &= ButtonBlock::instance()->configure(conf["Button"]);
         blocks.insert(pair<string, FunctionBlock*>("Button", ButtonBlock::instance()));
     }
-    if (conf.HasMember("Motor") && conf["Motor"].IsObject()) {
+    if (conf.HasMember("Motor") && conf["Motor"].IsArray()) {
         result &= MotorBlock::instance()->configure(conf["Motor"]);
         blocks.insert(pair<string, FunctionBlock*>("Motor", MotorBlock::instance()));
     }
-    if (conf.HasMember("Encoders") && conf["Encoders"].IsObject()) {
+    if (conf.HasMember("Encoders") && conf["Encoders"].IsArray()) {
         result &= EncodersBlock::instance()->configure(conf["Encoders"]);
         blocks.insert(pair<string, FunctionBlock*>("Encoders", EncodersBlock::instance()));
     }
@@ -94,7 +94,7 @@ bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
         result &= ADCBlock::instance()->configure(conf["ADC"]);
         blocks.insert(pair<string, FunctionBlock*>("ADC", ADCBlock::instance()));
     }
-    if (conf.HasMember("Servos") && conf["Servos"].IsObject()) {
+    if (conf.HasMember("Servos") && conf["Servos"].IsArray()) {
         result &= ServoBlock::instance()->configure(conf["Servos"]);
         blocks.insert(pair<string, FunctionBlock*>("Servos", ServoBlock::instance()));
     }
@@ -118,11 +118,11 @@ bool ConfBlock::configureBlocks (rapidjson::Document &conf) {
         result &= BaroBlock::instance()->configure(conf["Barometer"]);
         blocks.insert(pair<string, FunctionBlock*>("Barometer", BaroBlock::instance()));
     }
-    if (conf.HasMember("GPIO") && conf["GPIO"].IsObject()) {
+    if (conf.HasMember("GPIO") && conf["GPIO"].IsArray()) {
         result &= GPIOBlock::instance()->configure(conf["GPIO"]);
         blocks.insert(pair<string, FunctionBlock*>("GPIO", GPIOBlock::instance()));
     }
-    if (conf.HasMember("PWM") && conf["PWM"].IsObject()) {
+    if (conf.HasMember("PWM") && conf["PWM"].IsArray()) {
         result &= PWMBlock::instance()->configure(conf["PWM"]);
         blocks.insert(pair<string, FunctionBlock*>("PWM", PWMBlock::instance()));
     }

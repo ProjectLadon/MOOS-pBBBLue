@@ -5,7 +5,7 @@
 
 ServerHost	= localhost
 ServerPort 	= 9000
-Community	= imu_test
+Community	= imu_random_test
 MOOSTimeWarp 	= 1
 
 //------------------------------------

@@ -126,7 +126,7 @@ bool BBBlue::buildReport() {
   m_msgs << "============================================ \n";
 
   for (auto &b: ConfBlock::getBlockMap()) {
-      m_msgs << "++++++++++++++++++\n";
+      m_msgs << "++++++++++++++++++";
       m_msgs << b.first;
       m_msgs << "++++++++++++++++++\n";
       m_msgs << (b.second->buildReport()).getFormattedString();

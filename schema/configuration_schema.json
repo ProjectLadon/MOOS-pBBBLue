@@ -6,20 +6,20 @@
 		"LED": {
 			"type": "object",
 			"properties": {
-				"RED" : {"oneOf": [{"type": "string"}, null]},
-				"GREEN" : {"oneOf": [{"type": "string"}, null]}
+				"RED" : {"oneOf": [{"type": "string"}, {"type": "null"}]},
+				"GREEN" : {"oneOf": [{"type": "string"}, {"type": "null"}]}
 			}
 		},
 		"Button": {
 			"type": "object",
 			"properties": {
-				"PAUSE" : {"oneOf": [{"type": "string"}, null]},
-				"MODE" : {"oneOf": [{"type": "string"}, null]}
+				"PAUSE" : {"oneOf": [{"type": "string"}, {"type": "null"}]},
+				"MODE" : {"oneOf": [{"type": "string"}, {"type": "null"}]}
 			}
 		},
 		"Motor": {
 			"type": "array",
-			"items": {"oneOf" :[null, {"type": "string"}]},
+			"items": {"oneOf" :[{"type": "null"}, {"type": "string"}]},
 			"minItems":0,
 			"maxItems":4,
 			"uniqueItems": true,
@@ -29,7 +29,7 @@
 			"type": "array",
 			"items": {
 				"oneOf": [
-					null,
+					{"type": "null"},
 					{"type": "string"},
 					{
 						"type": "object",
@@ -49,13 +49,13 @@
 			"properties": {
 				"rawChannels": {
 					"type": "array",
-					"items": {"oneOf": [null, {"type": "string"}]},
+					"items": {"oneOf": [{"type": "null"}, {"type": "string"}]},
 					"minItems":0,
 					"maxItems":7
 				},
 				"voltChannels": {
 					"type": "array",
-					"items": {"oneOf": [null, {"type": "string"}]},
+					"items": {"oneOf": [{"type": "null"}, {"type": "string"}]},
 					"minItems":0,
 					"maxItems":4
 				}
@@ -64,29 +64,23 @@
 		"Servos": {
 			"type" : "array",
 			"items": {
-				"oneOf": [
-					null,
+				"anyOf": [
 					{
 						"type": "object",
 						"properties": {
 							"name": {"type": "string"},
 							"action": {
 								"type": "string",
-								"enum": ["servo90", "servo180", "servo360", "micros", "ESC"],
-								"$comment": "servo90 designates a servo with a zero to 90 degree range",
-								"$comment": "servo180 designates a servo with a zero to 180 degree range",
-								"$comment": "servo360 designates a servo with a zero to 360 degree range",
-								"$comment": "micros designates a servo commanded in microseconds",
-								"$comment": "ESC designates an electronic speed control which accepts inputs from 0.0 to 100.0 (percent throttle)"
-							},
-							"period": {"type": "integer", "$comment": "Period in microseconds, default to 20000 (50 Hz)"},
-							"minServo": {"type": "number", "$comment" : "Minimum bound on command in microseconds; smaller commands will be set to this value. Defaults to 1000"},
-							"maxServo": {"type": "number", "$comment" : "Maximum bound on command in microseconds; larger commands will be set to this value. Defaults to 2000"},
-							"center": {"type": "integer", "$comment": "Location of center position, in microseconds. Defaults to 1500"},
-							"invert": {"type": "boolean", "$comment": "Reverses the direction of travel if true"}
+								"enum": ["servo90", "servo180", "servo360", "micros", "ESC"]},
+							"period": {"type": "integer"},
+							"minServo": {"type": "number"},
+							"maxServo": {"type": "number"},
+							"center": {"type": "integer"},
+							"invert": {"type": "boolean"}
 						},
 						"required": ["name", "action"]
-					}
+					},
+					{"type": "null"}
 				]
 			},
 			"minItems":0,
@@ -188,8 +182,8 @@
 		"PWM": {
 			"type": "array",
 			"items": {
-				"oneOf": [
-					null,
+				"anyOf": [
+					{"type": "null"},
 					{
 						"type": "object",
 						"properties": {
