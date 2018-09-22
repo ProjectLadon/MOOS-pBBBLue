@@ -67,10 +67,10 @@ bool BBBlue::Iterate() {
 bool BBBlue::OnStartUp() {
     AppCastingMOOSApp::OnStartUp();
 
-    if (rc_initialize()) {
-        std::cerr << "Failed to initialize Beaglebone Blue hardware" << endl;
-        std::abort();
-    }
+    //if (rc_initialize()) {
+    //    std::cerr << "Failed to initialize Beaglebone Blue hardware" << endl;
+    //    std::abort();
+    //}
 
     STRING_LIST sParams;
     m_MissionReader.EnableVerbatimQuoting(false);

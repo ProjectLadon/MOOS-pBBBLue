@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
   BBBlue.Run(run_command.c_str(), mission_file.c_str());
 
-  rc_cleanup();
+  //rc_cleanup();
 
   return(0);
 }
