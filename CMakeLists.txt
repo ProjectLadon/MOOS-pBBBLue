@@ -5,8 +5,10 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
-SET(XXD
-  /usr/bin/xxd)
+SET(XXD /usr/bin/xxd)
+SET(SUDO /usr/bin/sudo)
+SET(CHOWN /bin/chown)
+SET(CHMOD /bin/chmod)
 
 # List of schema files
 set(JSON_SCHEMA_FILES
@@ -55,3 +57,7 @@ TARGET_LINK_LIBRARIES(pBBBlue
    m
    roboticscape
    pthread)
+
+ADD_CUSTOM_TARGET(permissions ALL
+    ${SUDO} ${CHOWN} root:root ${EXECUTABLE_OUTPUT_PATH}/pBBBlue
+    COMMAND ${SUDO} ${CHMOD} u+s ${EXECUTABLE_OUTPUT_PATH}/pBBBlue)
