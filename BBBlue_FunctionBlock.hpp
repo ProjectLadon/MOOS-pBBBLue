@@ -61,7 +61,7 @@ class LEDBlock : public FunctionBlock {
         bool subscribe(BBBlue *b);
         bool isConfigured();
         ACTable buildReport();
-        ~LEDBlock() {};
+        ~LEDBlock();
     private:
         LEDBlock() {};
         static LEDBlock* s_instance;
@@ -78,7 +78,7 @@ class ButtonBlock : public FunctionBlock {
         bool subscribe(BBBlue *b) {return true;};
         bool isConfigured() {return ((pause != "") || (mode != ""));};
         ACTable buildReport();
-        ~ButtonBlock() {};
+        ~ButtonBlock();
     private:
         ButtonBlock() {};
         static ButtonBlock* s_instance;

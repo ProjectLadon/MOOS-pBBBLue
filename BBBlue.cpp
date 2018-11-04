@@ -67,11 +67,12 @@ bool BBBlue::Iterate() {
 bool BBBlue::OnStartUp() {
     AppCastingMOOSApp::OnStartUp();
 
-    if (rc_initialize()) {
-        std::cerr << "Failed to initialize Beaglebone Blue hardware" << endl;
-        std::abort();
-    }
+    // if (rc_initialize()) {
+    //     std::cerr << "Failed to initialize Beaglebone Blue hardware" << endl;
+    //     std::abort();
+    // }
 
+    std::cerr << "App name is: " << GetAppName() << endl;
     STRING_LIST sParams;
     m_MissionReader.EnableVerbatimQuoting(false);
     if(!m_MissionReader.GetConfiguration(GetAppName(), sParams)) {
@@ -85,10 +86,11 @@ bool BBBlue::OnStartUp() {
         string value = line;
 
         bool handled = false;
-        if(param == "conf") {
+        if(param == "CONF") {
+
             handled = ConfBlock::configureBlocks(ConfBlock::parseConf(value));
         }
-        else if(param == "confFile") {
+        else if(param == "CONFFILE") {
             handled = ConfBlock::configureBlocks(ConfBlock::loadConfFile(value));
         }
 
@@ -120,7 +122,7 @@ bool BBBlue::buildReport() {
   for (auto &b: ConfBlock::getBlockMap()) {
       m_msgs << "++++++++++++++++++\n";
       m_msgs << b.first;
-      m_msgs << "++++++++++++++++++\n";
+      m_msgs << "\n++++++++++++++++++\n";
       m_msgs << (b.second->buildReport()).getFormattedString();
   }
 

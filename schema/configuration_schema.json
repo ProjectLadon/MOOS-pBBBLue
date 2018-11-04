@@ -6,20 +6,20 @@
 		"LED": {
 			"type": "object",
 			"properties": {
-				"RED" : {"oneOf": [{"type": "string"}, null]},
-				"GREEN" : {"oneOf": [{"type": "string"}, null]}
+				"RED" : {"type": "string"},
+				"GREEN" : {"type": "string"}
 			}
 		},
 		"Button": {
 			"type": "object",
 			"properties": {
-				"PAUSE" : {"oneOf": [{"type": "string"}, null]},
-				"MODE" : {"oneOf": [{"type": "string"}, null]}
+				"PAUSE" : {"type": "string"},
+				"MODE" : {"type": "string"}
 			}
 		},
 		"Motor": {
 			"type": "array",
-			"items": {"oneOf" :[null, {"type": "string"}]},
+			"items": {"anyOf" :[{"type":"null"}, {"type": "string"}]},
 			"minItems":0,
 			"maxItems":4,
 			"uniqueItems": true,
@@ -29,7 +29,7 @@
 			"type": "array",
 			"items": {
 				"oneOf": [
-					null,
+					{"type":"null"},
 					{"type": "string"},
 					{
 						"type": "object",
@@ -49,13 +49,13 @@
 			"properties": {
 				"rawChannels": {
 					"type": "array",
-					"items": {"oneOf": [null, {"type": "string"}]},
+					"items": {"oneOf": [{"type":"null"}, {"type": "string"}]},
 					"minItems":0,
 					"maxItems":7
 				},
 				"voltChannels": {
 					"type": "array",
-					"items": {"oneOf": [null, {"type": "string"}]},
+					"items": {"oneOf": [{"type":"null"}, {"type": "string"}]},
 					"minItems":0,
 					"maxItems":4
 				}
@@ -65,7 +65,7 @@
 			"type" : "array",
 			"items": {
 				"oneOf": [
-					null,
+					{"type":"null"},
 					{
 						"type": "object",
 						"properties": {
@@ -189,7 +189,7 @@
 			"type": "array",
 			"items": {
 				"oneOf": [
-					null,
+					{"type":"null"},
 					{
 						"type": "object",
 						"properties": {
