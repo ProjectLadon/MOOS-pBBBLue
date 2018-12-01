@@ -6,20 +6,20 @@
 		"LED": {
 			"type": "object",
 			"properties": {
-				"RED" : {"oneOf": [{"type": "string"}, {"type": "null"}]},
-				"GREEN" : {"oneOf": [{"type": "string"}, {"type": "null"}]}
+				"RED" : {"type": "string"},
+				"GREEN" : {"type": "string"}
 			}
 		},
 		"Button": {
 			"type": "object",
 			"properties": {
-				"PAUSE" : {"oneOf": [{"type": "string"}, {"type": "null"}]},
-				"MODE" : {"oneOf": [{"type": "string"}, {"type": "null"}]}
+				"PAUSE" : {"type": "string"},
+				"MODE" : {"type": "string"}
 			}
 		},
 		"Motor": {
 			"type": "array",
-			"items": {"oneOf" :[{"type": "null"}, {"type": "string"}]},
+			"items": {"anyOf" :[{"type":"null"}, {"type": "string"}]},
 			"minItems":0,
 			"maxItems":4,
 			"uniqueItems": true,
@@ -64,7 +64,8 @@
 		"Servos": {
 			"type" : "array",
 			"items": {
-				"anyOf": [
+				"oneOf": [
+					{"type":"null"},
 					{
 						"type": "object",
 						"properties": {
@@ -182,8 +183,8 @@
 		"PWM": {
 			"type": "array",
 			"items": {
-				"anyOf": [
-					{"type": "null"},
+				"oneOf": [
+					{"type":"null"},
 					{
 						"type": "object",
 						"properties": {

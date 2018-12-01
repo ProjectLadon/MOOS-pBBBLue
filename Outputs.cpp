@@ -24,7 +24,9 @@
 #include "rapidjson/error/en.h"
 
 extern "C" {
-    #include "roboticscape.h"
+    #include "robotcontrol.h"
+    #include "rc/led.h"
+    #include "rc/motor.h"
 }
 
 using namespace std;
@@ -79,13 +81,17 @@ ACTable LEDBlock::buildReport() {
     return actab;
 }
 
+LEDBlock::~LEDBlock() {
+    rc_led_cleanup();
+}
+
 MotorBlock* MotorBlock::instance() {
     if (!s_instance) s_instance = new MotorBlock();
     return s_instance;
 }
 
 MotorBlock::MotorBlock () {
-    rc_motor_cleanup();
+    //rc_motor_cleanup();
     rapidjson::Document d;
     if (d.Parse(reinterpret_cast<char*>(motor_input_schema_json), motor_input_schema_json_len).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(d.GetParseError());

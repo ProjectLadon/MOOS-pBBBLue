@@ -28,8 +28,7 @@ using namespace BBBL;
 
 rapidjson::Document &ConfBlock::parseConf(std::string conf) {
     Document confSchema;
-    //if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json, configuration_schema_json_len)).HasParseError()) {
-    if (confSchema.Parse((char*)configuration_schema_json).HasParseError()) {
+    if (confSchema.Parse(reinterpret_cast<char*>(configuration_schema_json), configuration_schema_json_len).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(confSchema.GetParseError());
         cerr << " in configuration schema at offset " << confSchema.GetErrorOffset() << endl;
         std::abort();
@@ -39,6 +38,7 @@ rapidjson::Document &ConfBlock::parseConf(std::string conf) {
     if (configuration.Parse(conf.c_str()).HasParseError()) {
         cerr << "JSON parse error " << GetParseError_En(configuration.GetParseError());
         cerr << " in configuration JSON at offset " << configuration.GetErrorOffset() << endl;
+        cerr << "Configuration JSON: " << conf << endl;
         std::abort();
     }
     if (!configuration.Accept(validator)) {

@@ -24,6 +24,7 @@
 
 extern "C" {
     #include "roboticscape.h"
+    #include "rc/button.h"
 }
 
 using namespace std;
@@ -62,6 +63,10 @@ ACTable ButtonBlock::buildReport() {
     actab << rc_button_get_state(RC_BTN_PIN_MODE);
     actab << rc_button_get_state(RC_BTN_PIN_PAUSE);
     return actab;
+}
+
+ButtonBlock::~ButtonBlock() {
+    rc_button_cleanup();
 }
 
 ADCBlock* ADCBlock::instance() {
