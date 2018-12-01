@@ -1,0 +1,25 @@
+ServerHost	= localhost
+ServerPort 	= 9000
+Community	= led_test
+MOOSTimeWarp 	= 1
+
+//------------------------------------
+// Antler Configuration block
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches = 200
+
+	Run = MOOSDB	@ NewConsole = true
+	Run = pBBBlue		@ NewConsole = true
+}
+
+//------------------------------------------------
+// pBBBlue config block
+
+//ProcessConfig = /home/debian/LadonMOOS/bin/pBBBlue
+ProcessConfig = pBBBlue
+{
+   AppTick   = 4
+   CommsTick = 4
+   CONF = {"LED": {"RED": "RED_IN", "GREEN": "GRN_IN"}}
+}

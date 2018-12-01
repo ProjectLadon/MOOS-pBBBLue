@@ -1,0 +1,33 @@
+ServerHost	= localhost
+ServerPort 	= 9000
+Community	= button_test
+MOOSTimeWarp 	= 1
+
+//------------------------------------
+// Antler Configuration block
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches = 200
+
+	Run = MOOSDB   @ NewConsole = true
+	Run = pBBBlue  @ NewConsole = true
+    Run = uXMS     @ NewConsole = true
+}
+
+//------------------------------------------------
+// pBBBlue config block
+
+//ProcessConfig = /home/debian/LadonMOOS/bin/pBBBlue
+ProcessConfig = pBBBlue
+{
+   AppTick   = 10
+   CommsTick = 10
+   CONF = {"Button": {"MODE": "MODE_OUT", "PAUSE": "PAUSE_OUT"}}
+}
+
+//-------------------------------------
+// uXMS Configuration block
+ProcessConfig = uXMS
+{
+	var = MODE_OUT, PAUSE_OUT
+}
