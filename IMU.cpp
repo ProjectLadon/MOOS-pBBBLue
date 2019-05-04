@@ -162,8 +162,13 @@ bool IMUDMPBlock::tick(BBBlue *b) {
                         ",\"x2\":" + to_string(data.fused_quat[1]) +
                         ",\"x3\":" + to_string(data.fused_quat[2]) +
                         ",\"x4\":" + to_string(data.fused_quat[3]) + "}";
-    b->notify("BBBL_DMP_HEADING", (data.compass_heading*180/M_PI)); // output in degrees
-    b->notify("BBBL_DMP_HEADING_RAW", data.compass_heading_raw);    // output in radians
+    // Output headings need to be converted to clockwise sense, positive only values
+    double dmphdg = (data.compass_heading * -180)/M_PI;
+    double rawhdg = data.compass_heading_raw * -1;
+    if (dmphdg < 0) dmphdg += 360;
+    if (rawhdg < 0) rawhdg += (2 * M_PI);
+    b->notify("BBBL_DMP_HEADING", dmphdg);      // degrees
+    b->notify("BBBL_DMP_HEADING_RAW", rawhdg);    // radiants
     b->notify("BBBL_DMP_TBA", taitBryan);
     b->notify("BBBL_DMP_QT", quaternion);
     b->notify("BBBL_IMU_TEMP", data.temp);
@@ -179,9 +184,13 @@ ACTable IMUDMPBlock::buildReport() {
     actab << " ";
     actab << "Quaternion";
     for (int i = 0; i < 4; i++) actab << to_string(data.fused_quat[i]);
-    actab << "Filtered Heading (deg)" << to_string(data.compass_heading*180/M_PI);
+    double dmphdg = (data.compass_heading * -180)/M_PI;
+    double rawhdg = (data.compass_heading_raw * -180)/M_PI;
+    if (dmphdg < 0) dmphdg += 360;
+    if (rawhdg < 0) rawhdg += 360; 
+    actab << "Filtered Heading (deg)" << to_string(dmphdg);
     actab << " " << " " << " ";
-    actab << "Raw Heading (deg)" << to_string(data.compass_heading_raw*180/M_PI);
+    actab << "Raw Heading (deg)" << to_string(rawhdg);
     actab << " " << " " << " ";
     actab << "Temp" << to_string(data.temp);
     actab << " " << " " << " ";
