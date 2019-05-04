@@ -1,0 +1,25 @@
+ServerHost	= localhost
+ServerPort 	= 9000
+Community	= adc_test
+MOOSTimeWarp 	= 1
+
+//------------------------------------
+// Antler Configuration block
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches = 200
+
+	Run = MOOSDB   @ NewConsole = false
+	Run = pBBBlue  @ NewConsole = false
+}
+
+//------------------------------------------------
+// pBBBlue config block
+
+//ProcessConfig = /home/debian/LadonMOOS/bin/pBBBlue
+ProcessConfig = pBBBlue
+{
+   AppTick   = 10
+   CommsTick = 10
+   CONF = {"ADC": {"rawChannels":["A0", "A1", "A2", "A3", null, "A5", "A6", "A7"], "voltChannels":["V0", "V1", "V2", "V3"]}}
+}

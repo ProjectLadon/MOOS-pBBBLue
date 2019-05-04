@@ -1,6 +1,6 @@
 //------------------------------------
 // NAME: Pierce Nichols, Ladon Project
-// FILE: imu_test.moos
+// FILE: servo_test.moos
 //------------------------------------
 
 ServerHost	= localhost
@@ -15,15 +15,7 @@ ProcessConfig = ANTLER
 	MSBetweenLaunches = 200
 
 	Run = MOOSDB	@ NewConsole = false
-	Run = uXMS		@ NewConsole = true
     Run = pBBBlue   @ NewConsole = false
-}
-
-//-------------------------------------
-// uXMS Configuration block
-ProcessConfig = uXMS
-{
-	var = BBBL_IMU_COMPASS, BBBL_IMU_TEMP, BBBL_IMU_ACCEL, BBBL_IMU_GYRO, BBBL_IMU_MAG
 }
 
 //-------------------------------------

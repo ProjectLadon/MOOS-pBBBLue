@@ -83,10 +83,10 @@ bool ADCBlock::configure(rapidjson::Value &v) {
         }
     }
     if (v.HasMember("voltChannels") && v["voltChannels"].IsArray()) {
-        for (auto &c: v["rawChannels"].GetArray()) {
+        for (auto &c: v["voltChannels"].GetArray()) {
             if (c.IsString()) {
                 voltChannels.push_back(c.GetString());
-            } else {rawChannels.push_back("");}
+            } else {voltChannels.push_back("");}
         }
     }
     if (isConfigured()) return rc_adc_init();
@@ -99,6 +99,7 @@ bool ADCBlock::tick(BBBlue *b) {
         if (c != "") b->notify(c, rc_adc_read_raw(ch));
         ch++;
     }
+    ch = 0;
     for (auto &c: voltChannels) {
         if (c != "") b->notify(c, rc_adc_read_volt(ch));
         ch++;
