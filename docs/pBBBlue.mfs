@@ -1,0 +1,19 @@
+module      = pBBBlue
+type        = MOOS App
+author      = Pierce Nichols
+contact     = pierce@logos-electro.com
+org         = Project Ladon
+thumb       = A library to interface a MOOS community to the hardware of a
+    Beaglebone Blue using the librobotcontrol library.
+depends     = librobotcontrol, rapidjson
+group       = Project Ladon
+borndate    = 111017
+doc_url     = https://github.com/ProjectLadon/MOOS-pBBBLue/blob/master/README.md
+license     = LGPL v3
+
+synopsis    = pBBBlue was developed to allow access to the hardware of a
+    Beaglebone Blue from a MOOS community. The following hardware modules are
+    supported: ADC, user buttons, LEDs, IMU (in either random or DMP mode), PWM,
+    R/C Servo output, motor drivers, barometric pressure, and a GPIO. Due to
+    the limitations of librobotcontrol, one and only one copy of this module
+    may run at any time.
