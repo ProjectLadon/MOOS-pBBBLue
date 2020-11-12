@@ -162,16 +162,33 @@ bool IMUDMPBlock::tick(BBBlue *b) {
                         ",\"x2\":" + to_string(data.fused_quat[1]) +
                         ",\"x3\":" + to_string(data.fused_quat[2]) +
                         ",\"x4\":" + to_string(data.fused_quat[3]) + "}";
+
+    // Rotate the gyro rates into the world frame
+    rc_vector_t fquat, fquat_conjugate, gyro;
+    rc_vector_from_array(&fquat, data.fused_quat, 4);
+    rc_quaternion_conjugate(fquat, &fquat_conjugate);
+    rc_vector_from_array(&gyro, data.gyro, 3);
+    rc_quaternion_rotate_vector(&gyro, fquat_conjugate);
+
     // Output headings need to be converted to clockwise sense, positive only values
     double dmphdg = (data.compass_heading * -180)/M_PI;
     double rawhdg = data.compass_heading_raw * -1;
     if (dmphdg < 0) dmphdg += 360;
     if (rawhdg < 0) rawhdg += (2 * M_PI);
-    b->notify("BBBL_DMP_HEADING", dmphdg);      // degrees
-    b->notify("BBBL_DMP_HEADING_RAW", rawhdg);    // radiants
+    b->notify("BBBL_DMP_HEADING", dmphdg);          // degrees
+    b->notify("BBBL_DMP_HEADING_RAW", rawhdg);      // radiants
     b->notify("BBBL_DMP_TBA", taitBryan);
     b->notify("BBBL_DMP_QT", quaternion);
     b->notify("BBBL_IMU_TEMP", data.temp);
+    // We want this in world coordinates, which we calculated earlier
+    b->notify("BBBL_DMP_HEADING_RATE", -gyro.d[2]);   // deg/s
+    // Modified to account for pitching
+    b->notify("BBBL_DMP_LONG_ACCEL", data.accel[0] * cos(data.fused_TaitBryan[1]));
+
+    // Free our vectors
+    rc_vector_free(&fquat);
+    rc_vector_free(&fquat_conjugate);
+    rc_vector_free(&gyro);
     return true;
 }
 
@@ -187,7 +204,7 @@ ACTable IMUDMPBlock::buildReport() {
     double dmphdg = (data.compass_heading * -180)/M_PI;
     double rawhdg = (data.compass_heading_raw * -180)/M_PI;
     if (dmphdg < 0) dmphdg += 360;
-    if (rawhdg < 0) rawhdg += 360; 
+    if (rawhdg < 0) rawhdg += 360;
     actab << "Filtered Heading (deg)" << to_string(dmphdg);
     actab << " " << " " << " ";
     actab << "Raw Heading (deg)" << to_string(rawhdg);
