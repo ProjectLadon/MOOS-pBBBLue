@@ -164,7 +164,9 @@ bool IMUDMPBlock::tick(BBBlue *b) {
                         ",\"x4\":" + to_string(data.fused_quat[3]) + "}";
 
     // Rotate the gyro rates into the world frame
-    rc_vector_t fquat, fquat_conjugate, gyro;
+    rc_vector_t fquat = rc_vector_empty();
+    rc_vector_t fquat_conjugate = rc_vector_empty();
+    rc_vector_t gyro = rc_vector_empty();
     rc_vector_from_array(&fquat, data.fused_quat, 4);
     rc_quaternion_conjugate(fquat, &fquat_conjugate);
     rc_vector_from_array(&gyro, data.gyro, 3);
