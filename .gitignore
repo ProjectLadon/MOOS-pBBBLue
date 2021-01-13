@@ -37,3 +37,8 @@ schema/*.h
 Makefile
 *.cmake
 
+# Tags stuff
+*.lst
+tags
+.tags
+.tags*

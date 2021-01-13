@@ -35,16 +35,16 @@ FOREACH(LOOP_SCHEMA ${JSON_SCHEMA_FILES})
 ENDFOREACH(LOOP_SCHEMA)
 
 SET(SRC
-  BBBlue.cpp
-  BBBlue_Info.cpp
-  main.cpp
-  GPIO.cpp
-  Outputs.cpp
-  PWM.cpp
-  Servo.cpp
-  IMU.cpp
-  Inputs.cpp
-  Configuration.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/BBBlue.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/BBBlue_Info.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/GPIO.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Outputs.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/PWM.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Servo.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/IMU.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Inputs.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/Configuration.cpp
   "${JSON_HEADER_FILES}"
 )
 
@@ -57,6 +57,8 @@ TARGET_LINK_LIBRARIES(pBBBlue
    m
    roboticscape
    pthread)
+
+INCLUDE(${PROJECT_SOURCE_DIR}/tags.cmake)
 
 ADD_CUSTOM_TARGET(permissions ALL
     ${SUDO} ${CHOWN} root:root ${EXECUTABLE_OUTPUT_PATH}/pBBBlue

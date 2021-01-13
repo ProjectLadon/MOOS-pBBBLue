@@ -132,6 +132,7 @@ bool IMUDMPBlock::configure(rapidjson::Value &v) {
         (string(v["mode"].GetString()) != "DMP")) return false;
     configured = true;
     rc_mpu_set_config_to_default(&conf);
+    conf.dmp_fetch_accel_gyro = 1;	// Get the raw data so we can send it along
     if (v.HasMember("magnetometer") && v["magnetometer"].IsBool() &&
         v["magnetometer"].GetBool()) {
             conf.enable_magnetometer = 1;
@@ -170,8 +171,6 @@ bool IMUDMPBlock::tick(BBBlue *b) {
     rc_vector_from_array(&fquat, data.fused_quat, 4);
     rc_quaternion_conjugate(fquat, &fquat_conjugate);
     rc_vector_from_array(&gyro, data.gyro, 3);
-    rc_quaternion_rotate_vector(&gyro, fquat_conjugate);
-
     // Output headings need to be converted to clockwise sense, positive only values
     double dmphdg = (data.compass_heading * -180)/M_PI;
     double rawhdg = data.compass_heading_raw * -1;
@@ -183,9 +182,9 @@ bool IMUDMPBlock::tick(BBBlue *b) {
     b->notify("BBBL_DMP_QT", quaternion);
     b->notify("BBBL_IMU_TEMP", data.temp);
     // We want this in world coordinates, which we calculated earlier
-    b->notify("BBBL_DMP_HEADING_RATE", -gyro.d[2]);   // deg/s
+    b->notify("BBBL_DMP_HEADING_RATE", -gyro.d[2]);  // deg/s
     // Modified to account for pitching
-    b->notify("BBBL_DMP_LONG_ACCEL", data.accel[0] * cos(data.fused_TaitBryan[1]));
+    b->notify("BBBL_DMP_LONG_ACCEL", data.accel[0]/cos(data.fused_TaitBryan[TB_PITCH_X]));
 
     // Free our vectors
     rc_vector_free(&fquat);
