@@ -58,8 +58,16 @@ TARGET_LINK_LIBRARIES(pBBBlue
    roboticscape
    pthread)
 
-INCLUDE(${PROJECT_SOURCE_DIR}/tags.cmake)
-
-ADD_CUSTOM_TARGET(permissions ALL
+ADD_CUSTOM_TARGET(bbblue_permissions ALL
     ${SUDO} ${CHOWN} root:root ${EXECUTABLE_OUTPUT_PATH}/pBBBlue
-    COMMAND ${SUDO} ${CHMOD} u+s ${EXECUTABLE_OUTPUT_PATH}/pBBBlue)
+COMMAND ${SUDO} ${CHMOD} u+s ${EXECUTABLE_OUTPUT_PATH}/pBBBlue)
+
+find_program(CTAGS ctags)
+if (CTAGS)
+	FIND_FILE(MAKE_CTAGS make_ctags.sh ../..)
+    ADD_CUSTOM_TARGET(bbblue_ctags ALL
+        ${MAKE_CTAGS} .
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        DEPENDS pBBBlue
+    )
+endif(CTAGS)
